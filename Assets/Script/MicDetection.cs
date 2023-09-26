@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MicDetection : MonoBehaviour
 {
-    public float soundValue; // Ini adalah variabel untuk menyimpan nilai suara dari mikrofon.
+    public static float soundValue; // Ini adalah variabel untuk menyimpan nilai suara dari mikrofon.
     public string microphoneDeviceName = null; // Nama perangkat mikrofon (kosongkan untuk menggunakan mikrofon default).
     public int recordingDuration = 1; // Durasi rekaman dalam detik.
 
