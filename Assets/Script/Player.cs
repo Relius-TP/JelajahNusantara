@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float detectionRadius = 3f;
 
     private Rigidbody2D rb;
+    public float minSoundValue; 
     
     private void Start()
     {
@@ -46,6 +47,12 @@ public class Player : MonoBehaviour
         {
             moveSpeed = 5;
             detectionRadius = 3f;
+        }
+
+        if (MicDetection.soundValue >= minSoundValue)
+        {
+            moveSpeed = 10;
+            detectionRadius = 10f;
         }
     }
 
