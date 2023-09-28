@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     public float detectionRadius = 3f;
 
     private Rigidbody2D rb;
-
     
     private void Start()
     {
@@ -35,9 +34,6 @@ public class Player : MonoBehaviour
                 Debug.Log("Musuh terdeteksi!");
             }
         }
-
-
-
 
         if (Input.GetKey(KeyCode.LeftShift)){
             if (moveHorizontal != 0 || moveVertical != 0)
