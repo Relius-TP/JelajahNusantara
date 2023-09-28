@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     public float minSoundValue; 
-
     
     private void Start()
     {
