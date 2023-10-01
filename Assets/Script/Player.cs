@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
+    public static UnityAction OnCaught;
+
     public float moveSpeed = 5f;
     public float detectionRadius = 3f;
 
@@ -61,5 +64,13 @@ public class Player : MonoBehaviour
         // Menggambar lingkaran deteksi pada Scene View saat objek dipilih.
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            OnCaught?.Invoke();
+        }
     }
 }

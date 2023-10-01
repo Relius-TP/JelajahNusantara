@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Transform target;
+    public float distance;
 
     NavMeshAgent agent;
 
@@ -20,6 +21,15 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(target.position);
+        distance = Vector2.Distance(transform.position, target.position);
+
+        if ( distance <= 5f)
+        {
+            agent.SetDestination(target.position);
+        }
+        else if (distance <= 3f)
+        {
+            Debug.Log("Range Attack");
+        }
     }
 }
