@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] Transform target;
-    public float distance;
+    public static float distance;
 
     NavMeshAgent agent;
 

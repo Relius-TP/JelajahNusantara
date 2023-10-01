@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public static UnityAction OnCaught;
 
     public float moveSpeed = 5f;
-    public float detectionRadius = 3f;
+    public static float detectionRadius = 3f;
 
     private Rigidbody2D rb;
     public float minSoundValue; 
@@ -32,9 +32,9 @@ public class Player : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
-            if (collider.CompareTag("Enemy")) // Ubah "Enemy" dengan tag yang sesuai untuk musuh Anda.
+            if (collider.CompareTag("Enemy"))
             {
-                // Musuh terdeteksi. Lakukan sesuatu, misalnya serang musuh atau tampilkan pesan.
+
                 Debug.Log("Musuh terdeteksi!");
             }
         }
