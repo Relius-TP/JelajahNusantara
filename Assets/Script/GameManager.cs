@@ -5,12 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject QteUi;
-    QteSystem qteSystem;
+    public GameObject QteSys;
 
     private void Start()
     {
+        QteSys.SetActive(false);
         QteUi.SetActive(false);
-        qteSystem = GameObject.FindObjectOfType<QteSystem>().GetComponent<QteSystem>();
     }
 
     private void OnEnable()
@@ -25,7 +25,8 @@ public class GameManager : MonoBehaviour
 
     private void GetCaught()
     {
+        Time.timeScale = 0f;
         QteUi.SetActive(true);
-        qteSystem.GetQteButton();
+        QteSys.SetActive(true);
     }
 }

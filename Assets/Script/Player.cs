@@ -11,7 +11,8 @@ public class Player : MonoBehaviour
     public static float detectionRadius = 3f;
 
     private Rigidbody2D rb;
-    public float minSoundValue; 
+    public float minSoundValue;
+    public float soundValue;
     
     private void Start()
     {
@@ -20,6 +21,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        soundValue = MicDetection.soundValue;
+
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
 
