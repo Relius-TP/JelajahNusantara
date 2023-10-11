@@ -314,6 +314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd16e93555837949a5c71baf3dbbb9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hero: {fileID: 11400000, guid: 10f927184a55f2e49b30241b29b53c94, type: 2}
+  hero: {fileID: 11400000, guid: fb665daf53f6f2e4bbf2a26c83fe0f05, type: 2}
   img: {fileID: 1346458255634320170}
   nameChar: {fileID: 8706278406308354390}
