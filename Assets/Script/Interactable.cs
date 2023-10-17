@@ -11,7 +11,7 @@ public class Interactable : MonoBehaviour
         if (nearObject)
         {
             if (Input.GetKeyDown(KeyCode.F))
-            { 
+            {
                 Destroy(gameObject);
             }
         }

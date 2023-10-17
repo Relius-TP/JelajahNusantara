@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
 
 public class Player : MonoBehaviour
 {
@@ -13,9 +14,11 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     public float minSoundValue;
     public float soundValue;
+    private Light2D light;
     
     private void Start()
     {
+        light = GetComponentInChildren<Light2D>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -33,26 +36,27 @@ public class Player : MonoBehaviour
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
 
-        foreach (Collider2D collider in colliders)
+        /*foreach (Collider2D collider in colliders)
         {
             if (collider.CompareTag("Enemy"))
             {
-
                 Debug.Log("Musuh terdeteksi!");
             }
-        }
+        }*/
 
         if (Input.GetKey(KeyCode.LeftShift)){
             if (moveHorizontal != 0 || moveVertical != 0)
             {
                 moveSpeed = 10;
                 detectionRadius = 6f;
+                light.pointLightOuterRadius = 10f;
             }
         }
         else
         {
             moveSpeed = 5;
             detectionRadius = 3f;
+            light.pointLightOuterRadius = 3f;
         }
 
         if (MicDetection.soundValue >= minSoundValue)
