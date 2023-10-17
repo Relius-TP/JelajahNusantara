@@ -3,32 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Pathfinding : MonoBehaviour
 {
     [SerializeField] Transform target;
+    [SerializeField] Transform startPosition;
     public static float distance;
 
     NavMeshAgent agent;
-
-    private Transform player;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
-        if (Vector2.Distance(transform.position, player.position) <= Player.detectionRadius)
+        if (Vector2.Distance(transform.position, target.position) <= Player.detectionRadius)
         {
-            agent.SetDestination(player.position);
+            agent.SetDestination(target.position);
         }
         else
         {
-            agent.SetDestination(transform.position);
+            agent.SetDestination(startPosition.position);
         }
     }
 }

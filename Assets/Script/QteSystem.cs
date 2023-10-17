@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using TMPro.EditorUtilities;
 using UnityEngine.UIElements;
+using System;
 
 public class QteSystem : MonoBehaviour
 {
@@ -14,11 +15,13 @@ public class QteSystem : MonoBehaviour
     public int CorrectKey;
     public int CountingDown;
 
+    public static Action<bool> OnQTEResult;
+
     private void Update()
     {
         if(WaitingForKey == 0)
         {
-            QTEGen = Random.Range(1, 4);
+            QTEGen = UnityEngine.Random.Range(1, 4);
             CountingDown = 1;
             StartCoroutine(CountDown());
 
@@ -68,11 +71,13 @@ public class QteSystem : MonoBehaviour
         {
             CorrectKey = 1;
             StartCoroutine(KeyPressing());
+            OnQTEResult?.Invoke(true);
         }
         else
         {
             CorrectKey = 2;
             StartCoroutine(KeyPressing());
+            OnQTEResult?.Invoke(false);
         }
     }
 
@@ -108,8 +113,9 @@ public class QteSystem : MonoBehaviour
 
     IEnumerator CountDown()
     {
-        yield return new WaitForSecondsRealtime(5.0f);
-        if(CountingDown == 1)
+        yield return new WaitForSecondsRealtime(2.0f);
+        OnQTEResult?.Invoke(false);
+        if (CountingDown == 1)
         {
             QTEGen = 4;
             CountingDown = 2;
