@@ -397,8 +397,8 @@ MonoBehaviour:
   finishPoint: {fileID: 3609249423741806222}
   A: {fileID: 3965302000651524305}
   B: {fileID: 8576384711985205781}
-  randomA: 470
-  randomB: 551
+  randomA: 200
+  randomB: 400
   speed: 100
   background: {fileID: 3489523009154951225}
 --- !u!1 &8841941369954719241
