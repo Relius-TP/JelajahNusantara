@@ -1,32 +1,37 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    public bool nearObject = false;
+    public static Action OnGetItem;
+    private bool interacted = false;
 
-    private void Update()
+    private void Start()
     {
-        if (nearObject)
+        SkillCheckController.OnSkillCheckResults += GetSkillCheckResult;
+    }
+
+    private void OnDisable()
+    {
+        SkillCheckController.OnSkillCheckResults -= GetSkillCheckResult;
+    }
+
+    public void Interact()
+    {
+        interacted = true;
+        if (interacted)
         {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                Destroy(gameObject);
-            }
+            OnGetItem?.Invoke();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void GetSkillCheckResult(bool result)
     {
-        if (other.CompareTag("Player"))
+        if (result && interacted)
         {
-            nearObject = true;
+            gameObject.SetActive(false);
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        nearObject = false;
     }
 }
