@@ -12,6 +12,11 @@ public class Health : MonoBehaviour
         QteSystem.OnQTEResult += SetHealth;
     }
 
+    private void OnDisable()
+    {
+        QteSystem.OnQTEResult -= SetHealth;
+    }
+
     private void SetHealth(bool result)
     {
         if(!result)

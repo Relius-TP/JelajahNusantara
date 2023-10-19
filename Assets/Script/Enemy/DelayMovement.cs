@@ -11,6 +11,11 @@ public class DelayMovement : MonoBehaviour
         QteSystem.OnQTEResult += StunEnemy;
     }
 
+    private void OnDisable()
+    {
+        QteSystem.OnQTEResult -= StunEnemy;
+    }
+
     private void Start()
     {
         pathFinding = gameObject.GetComponent<Pathfinding>();
