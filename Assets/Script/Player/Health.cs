@@ -6,20 +6,21 @@ public class Health : MonoBehaviour
 {
     public GameObject[] healthICon;
     public int healthPoin = 3;
+    public GameObject gameOverUI;
 
     private void OnEnable()
     {
-        QteSystem.OnQTEResult += SetHealth;
+        QTEController.OnQTEResult += SetHealth;
     }
 
     private void OnDisable()
     {
-        QteSystem.OnQTEResult -= SetHealth;
+        QTEController.OnQTEResult -= SetHealth;
     }
 
     private void SetHealth(bool result)
     {
-        if(!result)
+        if(!result && healthPoin >= 1)
         {
             healthPoin--;
         }
@@ -31,6 +32,12 @@ public class Health : MonoBehaviour
         for (int i = 0; i < healthPoin; i++)
         {
             healthICon[i].SetActive(true);
+        }
+
+        if (healthPoin == 0)
+        {
+            gameOverUI.SetActive(true);
+            gameObject.SetActive(false);
         }
     }
 

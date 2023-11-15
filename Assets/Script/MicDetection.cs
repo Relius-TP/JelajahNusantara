@@ -2,65 +2,57 @@ using UnityEngine;
 
 public class MicDetection : MonoBehaviour
 {
-    public static float soundValue; // Ini adalah variabel untuk menyimpan nilai suara dari mikrofon.
-    public string microphoneDeviceName = null; // Nama perangkat mikrofon (kosongkan untuk menggunakan mikrofon default).
-    public int recordingDuration = 1; // Durasi rekaman dalam detik.
+    AudioSource audioSource;
+    public static float soundVolume;
+    [SerializeField] private float micSensitivity;
+    private bool micConnected;
 
-    private AudioSource audioSource;
-
-    public enum MicID
-    {
-        Mic1 = 0,
-        Mic2 = 1,
-        Mic3 = 2
-    }
-
-    public MicID selectedMicrophone = MicID.Mic1; // Set this in the Inspector
-
-    void Start()
+    private void Start()
     {
         audioSource = GetComponent<AudioSource>();
 
-        if (Microphone.devices.Length == 0)
+        //Check if there is a connected microphone
+        if(Microphone.devices.Length >= 0)
         {
-            Debug.LogError("No microphone detected.");
-            return;
-        }
-
-        int micIndex = (int)selectedMicrophone;
-
-        // Check if the selected microphone index is within the range of available devices.
-        if (micIndex >= 0 && micIndex < Microphone.devices.Length)
-        {
-            microphoneDeviceName = Microphone.devices[micIndex];
-
-            // Mulai merekam dari mikrofon.
-            audioSource.clip = Microphone.Start(microphoneDeviceName, true, recordingDuration, AudioSettings.outputSampleRate);
-
-            // Tunggu hingga rekaman dimulai.
-            while (Microphone.GetPosition(microphoneDeviceName) <= 0) { }
-
-            // Putar rekaman audio.
+            micConnected = true;
+            audioSource.clip = Microphone.Start(null, true, 1, 44100);
+            while (!(Microphone.GetPosition(null) > 0)) { }
             audioSource.Play();
         }
         else
         {
-            Debug.LogError("Selected microphone index is out of range.");
+            micConnected = false;
+            Debug.Log("No microphone device detected");
         }
     }
 
-    void Update()
+    private void Update()
     {
-        // Ambil nilai suara dari audio yang sedang diputar dan simpan ke soundValue.
+        if(micConnected)
+        {
+            GetVolumeFromMicrophone();
+        }
+    }
+
+    /*
+        Get clip data, store in sample variable
+        calculate sample data to volume variable
+        volume result times mic sensitivity
+    */
+    private void GetVolumeFromMicrophone()
+    {
         float[] samples = new float[audioSource.clip.samples];
+        float volume = 0.0f;
+
         audioSource.clip.GetData(samples, 0);
 
-        float sum = 0f;
         for (int i = 0; i < samples.Length; i++)
         {
-            sum += Mathf.Abs(samples[i]);
+            volume += Mathf.Abs(samples[i]);
         }
 
-        soundValue = sum / samples.Length;
+        volume /= samples.Length;
+
+        soundVolume = volume * micSensitivity;
     }
 }

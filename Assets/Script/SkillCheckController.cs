@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillCheckController : MonoBehaviour
@@ -26,22 +25,23 @@ public class SkillCheckController : MonoBehaviour
     public static bool isWaitingInput = false;
     public static Action<bool> OnSkillCheckResults;
 
-    private void Start()
+    private void Awake()
     {
+        goalTargetWidth = goalTarget.rect.width / 2;
         ResetCursorPosition();
         RandomGoalPosition();
-        goalTargetWidth = goalTarget.rect.width / 2;
     }
 
     void Update()
     {
         if (isWaitingInput && !isRunningResults)
         {
+            PauseGame(0);
             if (isMoving)
             {
                 if (targetCursor.localPosition.x + targetCursorWidth < background.localPosition.x + backgroundWidth)
                 {
-                    targetCursor.transform.Translate(Vector2.right * Time.deltaTime * cursorSpeed);
+                    targetCursor.transform.Translate(cursorSpeed * Time.unscaledDeltaTime * Vector2.right);
                 }
                 else
                 {
@@ -84,12 +84,13 @@ public class SkillCheckController : MonoBehaviour
         isMoving = true;
         isWaitingInput = false;
         isRunningResults = false;
+        PauseGame(1);
     }
 
     private void RandomGoalPosition()
     {
         float goalOffset = backgroundWidth / 2;
-        randomPosition = UnityEngine.Random.Range(-backgroundWidth + goalOffset, backgroundWidth - goalOffset);
+        randomPosition = UnityEngine.Random.Range(-backgroundWidth + goalOffset + goalOffset / 2, backgroundWidth - goalOffset);
         goalTarget.localPosition = new Vector3(randomPosition + goalTargetWidth, background.localPosition.y);
         minXRangeTarget.localPosition = new Vector3(-goalTargetWidth, 0, 0);
         maxXRangeTarget.localPosition = new Vector3(goalTargetWidth, 0, 0);
@@ -97,10 +98,15 @@ public class SkillCheckController : MonoBehaviour
 
     IEnumerator Results(bool result)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSecondsRealtime(1f);
         ResetCursorPosition();
         RandomGoalPosition();
         OnSkillCheckResults?.Invoke(result);
         yield break;
+    }
+
+    private void PauseGame(int state)
+    {
+        Time.timeScale = state;
     }
 }

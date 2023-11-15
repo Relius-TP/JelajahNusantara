@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,7 +5,6 @@ public class Pathfinding : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] Transform startPosition;
-    public static float distance;
 
     NavMeshAgent agent;
 
@@ -20,7 +17,7 @@ public class Pathfinding : MonoBehaviour
 
     void Update()
     {
-        if (Vector2.Distance(transform.position, target.position) <= Player.detectionRadius)
+        if (Vector2.Distance(transform.position, target.position) <= PlayerMovement.detectionRadius)
         {
             agent.SetDestination(target.position);
         }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DelayMovement : MonoBehaviour
@@ -8,12 +7,12 @@ public class DelayMovement : MonoBehaviour
 
     private void OnEnable()
     {
-        QteSystem.OnQTEResult += StunEnemy;
+        QTEController.OnQTEResult += StunEnemy;
     }
 
     private void OnDisable()
     {
-        QteSystem.OnQTEResult -= StunEnemy;
+        QTEController.OnQTEResult -= StunEnemy;
     }
 
     private void Start()
@@ -26,14 +25,27 @@ public class DelayMovement : MonoBehaviour
         if(result)
         {
             pathFinding.enabled = false;
+            gameObject.GetComponent<Collider2D>().enabled = false;
             StartCoroutine(StunMovement());
         }
+        else
+        {
+            StartCoroutine(DisableCollider());
+        }
+    }
+
+    IEnumerator DisableCollider()
+    {
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        yield return new WaitForSeconds(2f);
+        gameObject.GetComponent<Collider2D>().enabled = true;
     }
 
     IEnumerator StunMovement()
     {
         Debug.Log("Enemy Stunned");
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
+        gameObject.GetComponent<Collider2D>().enabled = true;
         pathFinding.enabled = true;
         Debug.Log("Enemy Move");
     }

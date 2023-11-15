@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
     public float interactRange = 2f;
+    public PlayerData playerData;
 
     private void Update()
     {
@@ -15,12 +16,27 @@ public class PlayerInteraction : MonoBehaviour
             {
                 if(collie.TryGetComponent(out Interactable interactable))
                 {
-                    interactable.Interact();
+                    if(!playerData.IsHoldingKey)
+                    {
+                        Debug.Log("Interact");
+                        interactable.Interact();
+                    }
+                    else
+                    {
+                        Debug.Log("Cannot carry more than one key");
+                    }
                 }
 
                 if(collie.TryGetComponent(out Portal portal) )
                 {
-                    portal.OpenPortal();
+                    if (playerData.IsHoldingKey)
+                    {
+                        portal.OpenPortal();
+                    }
+                    else
+                    {
+                        Debug.Log("No key in inventory");
+                    }
                 }
             }
         }
