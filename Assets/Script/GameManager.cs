@@ -1,23 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public GameObject QteUi;
     public GameObject QteSys;
     public GameObject SkillCheckUI;
+    public GameObject WinScreen;
+    public GameObject GameOverScreen;
+    public GameObject JumpScareScene;
+
+    public AudioClip clip;
+    private AudioSource playerAudioSource;
 
     private void Start()
     {
         QteSys.SetActive(false);
         QteUi.SetActive(false);
         SkillCheckUI.SetActive(false);
+        //WinScreen.SetActive(false);
+        //GameOverScreen.SetActive(false);
+        //JumpScareScene.SetActive(false);
+        //playerAudioSource = GameObject.FindFirstObjectByType<AudioSource>().GetComponent<AudioSource>();
     }
 
     private void Update()
     {
-        if(SkillCheckController.isWaitingInput == false)
+        if (SkillCheckController.isWaitingInput == false)
         {
             SkillCheckUI.SetActive(false);
         }
@@ -25,24 +34,33 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        Player.OnCaught += GetCaught;
+        PlayerMovement.OnCaught += GetCaught;
         Interactable.OnGetItem += GetQuestItem;
         Portal.OnSkillCheckRunning += OpeningPortal;
     }
 
     private void OnDisable()
     {
-        Player.OnCaught -= GetCaught;
+        PlayerMovement.OnCaught -= GetCaught;
         Interactable.OnGetItem -= GetQuestItem;
         Portal.OnSkillCheckRunning -= OpeningPortal;
     }
 
     private void GetCaught()
     {
-        Time.timeScale = 0f;
+        //StartCoroutine(JumpScare());
         QteUi.SetActive(true);
         QteSys.SetActive(true);
+        Time.timeScale = 0f;
     }
+
+    //IEnumerator JumpScare()
+    //{
+    //    JumpScareScene.SetActive(true);
+    //    playerAudioSource.PlayOneShot(clip);
+    //    yield return new WaitForSecondsRealtime(0.5f);
+    //    JumpScareScene.SetActive(false);
+    //}
 
     private void GetQuestItem()
     {
@@ -55,4 +73,10 @@ public class GameManager : MonoBehaviour
         SkillCheckUI.SetActive(true);
         SkillCheckController.isWaitingInput = true;
     }
+
+    //public void RestartGame()
+    //{
+    //    UnityEngine.SceneManagement.Scene scene = SceneManager.GetActiveScene();
+    //    SceneManager.LoadScene(scene.name);
+    //}
 }

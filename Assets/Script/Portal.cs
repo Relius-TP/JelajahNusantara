@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Portal : MonoBehaviour
@@ -8,6 +6,8 @@ public class Portal : MonoBehaviour
     [SerializeField] private int itemNeeded = 2;
     [SerializeField] private bool isFailed = false;
     public static bool skillCheckRunning = false;
+    public GameObject WinUI;
+    public PlayerData playerData;
 
     public static Action OnSkillCheckRunning;
 
@@ -22,33 +22,49 @@ public class Portal : MonoBehaviour
 
     private void GetResult(bool result)
     {
-        if(result == false)
+        if(skillCheckRunning)
         {
-            isFailed = true;
+            if (result == false)
+            {
+                return;
+            }
+            skillCheckRunning = false;
+            itemNeeded--;
+            playerData.IsHoldingKey = false;
         }
-        skillCheckRunning = false;
     }
 
     public void OpenPortal()
     {
-        StartCoroutine(WaitingSkillCheck());
-    }
+        skillCheckRunning = true;
 
-    IEnumerator WaitingSkillCheck()
-    {
-        isFailed = false;
-        for(int i = 0; i < itemNeeded; i++)
+        OnSkillCheckRunning?.Invoke();
+
+        if (itemNeeded == 0)
         {
-            if(isFailed)
-            {
-                Debug.Log("Gagal Buka Portal");
-                break;
-            }
-
-            skillCheckRunning = true;
-            OnSkillCheckRunning?.Invoke();
-            yield return new WaitWhile(() => skillCheckRunning == true);
+            WinUI.SetActive(true);
         }
-        yield break;
     }
+
+    //IEnumerator WaitingSkillCheck()
+    //{
+    //    isFailed = false;
+    //    for(int i = 0; i < itemNeeded; i++)
+    //    {
+    //        if(isFailed)
+    //        {
+    //            Debug.Log("Gagal Buka Portal");
+    //            break;
+    //        }
+
+    //        skillCheckRunning = true;
+    //        OnSkillCheckRunning?.Invoke();
+    //        yield return new WaitWhile(() => skillCheckRunning == true);
+    //    }
+
+    //    if(!isFailed)
+    //    {
+    //        WinUI.SetActive(true);
+    //    }
+    //}
 }

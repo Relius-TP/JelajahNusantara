@@ -7,6 +7,7 @@ public class Interactable : MonoBehaviour
 {
     public static Action OnGetItem;
     private bool interacted = false;
+    public PlayerData playerData;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class Interactable : MonoBehaviour
     {
         if (result && interacted)
         {
+            playerData.IsHoldingKey = true;
             gameObject.SetActive(false);
         }
     }

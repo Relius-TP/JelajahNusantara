@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        soundValue = MicDetection.soundValue;
+        //soundValue = MicDetection.soundValue;
 
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
@@ -59,11 +59,11 @@ public class Player : MonoBehaviour
             light.pointLightOuterRadius = 3f;
         }
 
-        if (MicDetection.soundValue >= minSoundValue)
-        {
-            moveSpeed = 10;
-            detectionRadius = 10f;
-        }
+        //if (MicDetection.soundValue >= minSoundValue)
+        //{
+        //    moveSpeed = 10;
+        //    detectionRadius = 10f;
+        //}
     }
 
     private void OnDrawGizmos()
