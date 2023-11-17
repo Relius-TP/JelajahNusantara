@@ -16,6 +16,6 @@ MonoBehaviour:
   heroName: Gatotkaca
   hpPoint: 4
   speed: 3
-  vision: 5
+  vision: 4
   skillCheckSpeed: 3
   qteSpeed: 3

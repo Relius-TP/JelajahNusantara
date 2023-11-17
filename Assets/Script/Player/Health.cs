@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -7,15 +5,23 @@ public class Health : MonoBehaviour
     public GameObject[] healthICon;
     public int healthPoin = 3;
     public GameObject gameOverUI;
+    public PlayerData playerData;
+
+    private void Start()
+    {
+        healthPoin = playerData.hero_health;
+    }
 
     private void OnEnable()
     {
         QTEController.OnQTEResult += SetHealth;
+        PotionDetection.GetLifePotion += GetLifePotion;
     }
 
     private void OnDisable()
     {
         QTEController.OnQTEResult -= SetHealth;
+        PotionDetection.GetLifePotion -= GetLifePotion;
     }
 
     private void SetHealth(bool result)
@@ -46,6 +52,14 @@ public class Health : MonoBehaviour
         foreach (var item in healthICon)
         {
             item.SetActive(false);
+        }
+    }
+
+    private void GetLifePotion(int i)
+    {
+        if(healthPoin != playerData.hero_health)
+        {
+            healthPoin += i;
         }
     }
 }

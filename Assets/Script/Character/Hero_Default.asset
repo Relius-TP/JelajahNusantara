@@ -16,6 +16,6 @@ MonoBehaviour:
   heroName: Default
   hpPoint: 3
   speed: 5
-  vision: 5
+  vision: 4
   skillCheckSpeed: 3
   qteSpeed: 3
