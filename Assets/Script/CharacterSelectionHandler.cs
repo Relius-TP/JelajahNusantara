@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class CharacterSelectionHandler : MonoBehaviour
@@ -17,6 +18,9 @@ public class CharacterSelectionHandler : MonoBehaviour
     [SerializeField] private Slider visionBar;
     [SerializeField] private Slider skillCheckBar;
     [SerializeField] private Slider qteBar;
+
+    [SerializeField] private PlayerData playerData;
+    [SerializeField] private string sceneName;
 
     private int index;
 
@@ -62,5 +66,15 @@ public class CharacterSelectionHandler : MonoBehaviour
         visionBar.value = heroes[index].vision / 10f;
         skillCheckBar.value = heroes[index].skillCheckSpeed / 10f;
         qteBar.value = heroes[index].qteSpeed / 10f;
+    }
+
+    public void SetPlayerData()
+    {
+        playerData.hero_name = heroes[index].heroName;
+        playerData.hero_speed = heroes[index].speed;
+        playerData.hero_health = heroes[index].hpPoint;
+        playerData.hero_visionRange = heroes[index].vision;
+
+        SceneManager.LoadScene(sceneName);
     }
 }

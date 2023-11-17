@@ -16,6 +16,6 @@ MonoBehaviour:
   heroName: Sri Asih
   hpPoint: 3
   speed: 5
-  vision: 7
+  vision: 5
   skillCheckSpeed: 5
   qteSpeed: 5

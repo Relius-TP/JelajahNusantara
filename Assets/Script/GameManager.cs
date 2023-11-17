@@ -10,8 +10,11 @@ public class GameManager : MonoBehaviour
     public GameObject GameOverScreen;
     public GameObject JumpScareScene;
 
-    public AudioClip clip;
-    private AudioSource playerAudioSource;
+    public PlayerData playerData;
+    public GameObject keyIcon;
+
+    //public AudioClip clip;
+    //private AudioSource playerAudioSource;
 
     private void Start()
     {
@@ -30,6 +33,8 @@ public class GameManager : MonoBehaviour
         {
             SkillCheckUI.SetActive(false);
         }
+
+        keyIcon.SetActive(playerData.IsHoldingKey);
     }
 
     private void OnEnable()
