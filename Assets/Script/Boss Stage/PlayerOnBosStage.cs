@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerOnBosStage : MonoBehaviour
 {
+    private Transform player;
+    public static Vector3 playerPosition;
     public float moveSpeed = 5.0f;
     public float jumpPower = 5.0f;
     private float moveHorizontal;
@@ -19,6 +21,7 @@ public class PlayerOnBosStage : MonoBehaviour
 
     void Start()
     {
+        player = this.transform;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -63,6 +66,8 @@ public class PlayerOnBosStage : MonoBehaviour
         {
             transform.position = new Vector2(transform.position.x - 2, transform.position.y);
         }
+
+        Vector3 playerPosition = player.position;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

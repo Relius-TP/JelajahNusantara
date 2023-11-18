@@ -14,8 +14,7 @@ public class Boss : MonoBehaviour
     
     private int bossHp = 200;
 
-    public GameObject spawn;
-    public Transform spawnPosition;
+    private Vector2 spawn;
 
     //skill 1
     private Vector2 positionSkill1;
@@ -33,7 +32,7 @@ public class Boss : MonoBehaviour
         banaspati = this.transform;
         rb = GetComponent<Rigidbody2D>();
 
-        spawnPosition = spawn.transform;
+        spawn = new Vector2(0, 0);
 
         positionSkill1 = new Vector2(24, -11);
         skill1Left = new Vector2(-24, -11);
@@ -50,7 +49,7 @@ public class Boss : MonoBehaviour
         {
             if (loopCount <= 3)
             {
-                Skill1Active();
+                Invoke("Skill1Active", 5);
                 StartCoroutine(Skill1());
             }
             else
@@ -114,11 +113,11 @@ public class Boss : MonoBehaviour
 
     IEnumerator Stun()
     {
+        yield return new WaitForSeconds(5f);
         if (bossHp >= 100)
         {
-            yield return new WaitForSeconds(5f);
             moveSpeedHor = 5;
-            banaspati.transform.position = Vector2.MoveTowards(transform.position, spawnPosition, moveSpeedHor * Time.deltaTime);
+            banaspati.transform.position = Vector2.MoveTowards(transform.position, spawn, moveSpeedHor * Time.deltaTime);
             if (banaspati.transform.position.x == spawn.x && banaspati.transform.position.y == spawn.y)
             {
                 loopCount = 0;
