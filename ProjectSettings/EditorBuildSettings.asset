@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/BosStage.unity
+    guid: ba44cabc21ff3c042b3910aed4e1869d
+  - enabled: 1
+    path: Assets/Scenes/Gacha.unity
+    guid: 8b9ccf3cb1bb6b54bb91fb2b171a8430
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: 8c11da76fe7897444892ee772118059d
   m_configObjects: {}
