@@ -29,6 +29,11 @@ public class SkillCheckControllerBoss : MonoBehaviour
     public static bool isWaitingInput = false;
     public static Action<bool> OnSkillCheckResults;
 
+
+
+    //QTE
+
+
     private void Awake()
     {
         isWaitingInput = true;
@@ -116,4 +121,7 @@ public class SkillCheckControllerBoss : MonoBehaviour
     {
         Time.timeScale = state;
     }
+
+
+
 }
