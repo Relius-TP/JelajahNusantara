@@ -40,11 +40,11 @@ public class Health : MonoBehaviour
             healthICon[i].SetActive(true);
         }
 
-        if (healthPoin == 0)
-        {
-            gameOverUI.SetActive(true);
-            gameObject.SetActive(false);
-        }
+        //if (healthPoin == 0)
+        //{
+        //    gameOverUI.SetActive(true);
+        //    gameObject.SetActive(false);
+        //}
     }
 
     private void ResetHealthUI()

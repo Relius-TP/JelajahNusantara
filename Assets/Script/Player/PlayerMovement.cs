@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private float newDetectionRange;
 
     public static event Action OnCaught;
+    public static event Action<bool> OnWalk;
 
     private void OnEnable()
     {
@@ -34,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     {
         playerPos = GetComponent<Transform>();
         inputSystem = new InputSystem();
-        detectionRadius = playerData.hero_visionRange;
+        newDetectionRange = playerData.hero_visionRange;
         speed = playerData.hero_speed;
         runSpeed = speed + 2;
         screamSpeed = speed + 4;
@@ -43,6 +44,15 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         direction = inputSystem.Player.Movement.ReadValue<Vector2>();
+
+        if(direction != Vector2.zero)
+        {
+            OnWalk?.Invoke(true);
+        }
+        else
+        {
+            OnWalk?.Invoke(false);
+        }
 
         if(inputSystem.Player.Run.ReadValue<float>() == 1f)
         {
