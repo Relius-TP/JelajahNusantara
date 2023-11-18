@@ -14,6 +14,9 @@ public class Boss : MonoBehaviour
     
     private int bossHp = 200;
 
+    public GameObject spawn;
+    public Transform spawnPosition;
+
     //skill 1
     private Vector2 positionSkill1;
     public GameObject checkSkill1Left;
@@ -30,9 +33,13 @@ public class Boss : MonoBehaviour
         banaspati = this.transform;
         rb = GetComponent<Rigidbody2D>();
 
+        spawnPosition = spawn.transform;
+
         positionSkill1 = new Vector2(24, -11);
         skill1Left = new Vector2(-24, -11);
         skill1Right = new Vector2(24, -11);
+
+
 
         //positionSkill2 = new Vector2(30, 11);
 
@@ -41,16 +48,15 @@ public class Boss : MonoBehaviour
     {
         if (bossHp >= 100)
         {
-            Skill1Active(); 
             if (loopCount <= 3)
             {
-                Skill1();
+                Skill1Active();
+                StartCoroutine(Skill1());
             }
             else
             {
-                Stun();
+                StartCoroutine(Stun());
             }
-            //Invoke("MaxCount", 5);
         }
         else
         {
@@ -60,32 +66,29 @@ public class Boss : MonoBehaviour
 
 
     }
-
-    void MaxCount()
-    {
-        loopCount = 4;
-    }
-
     bool isMoving()
     {
         return rb.velocity.magnitude > movementThreshold;
     }
-    
-    void Skill1()
+
+    IEnumerator Skill1()
     {
+        
         if (banaspati.transform.position.x == skill1Left.x && banaspati.transform.position.y == skill1Left.y)
         {
-            Invoke("Skill1Right", 1);
+            yield return new WaitForSeconds(1f);
+            Skill1Right();
         }
         if (banaspati.transform.position.x == skill1Right.x && banaspati.transform.position.y == skill1Right.y)
         {
-            Invoke("Skill1Left", 1);
+            yield return new WaitForSeconds(1f);
+            Skill1Left();
         }
     }
     
     void Skill1Active()
     {
-        if (banaspati.position.x !=  positionSkill1.x && banaspati.position.y != positionSkill1.y && !isMoving())
+        if (banaspati.position.x !=  positionSkill1.x && banaspati.position.y != positionSkill1.y)
         {
             banaspati.transform.position = Vector2.MoveTowards(transform.position, positionSkill1, moveSpeedHor * Time.deltaTime);
             moveSpeedHor = 45;
@@ -109,9 +112,22 @@ public class Boss : MonoBehaviour
 
     }
 
-    void Stun()
+    IEnumerator Stun()
     {
-        Invoke("MaxCount", 5);
+        if (bossHp >= 100)
+        {
+            yield return new WaitForSeconds(5f);
+            moveSpeedHor = 5;
+            banaspati.transform.position = Vector2.MoveTowards(transform.position, spawnPosition, moveSpeedHor * Time.deltaTime);
+            if (banaspati.transform.position.x == spawn.x && banaspati.transform.position.y == spawn.y)
+            {
+                loopCount = 0;
+                banaspati.transform.position = Vector2.MoveTowards(transform.position, positionSkill1, moveSpeedHor * Time.deltaTime);
+                moveSpeedHor = 45;
+            }
+        }
+        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

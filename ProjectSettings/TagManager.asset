@@ -17,6 +17,7 @@ TagManager:
   - Sky
   - Skill1Left
   - Skill1Right
+  - BossSkill1
   layers:
   - Default
   - TransparentFX
