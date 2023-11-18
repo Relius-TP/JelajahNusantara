@@ -12,9 +12,12 @@ public class Boss : MonoBehaviour
     public float movementThreshold = 0.1f;
     [SerializeField]private int loopCount;
     
-    private int bossHp = 100;
+    private int bossHp = 200;
 
+    //skill 1
     private Vector2 positionSkill1;
+    public GameObject checkSkill1Left;
+    public GameObject checkSkill1Right;
     [SerializeField] private Vector2 skill1Left;
     [SerializeField] private Vector2 skill1Right;
 
@@ -27,25 +30,33 @@ public class Boss : MonoBehaviour
         banaspati = this.transform;
         rb = GetComponent<Rigidbody2D>();
 
-        positionSkill1 = new Vector2(31, -11);
-        skill1Left = new Vector2(-31, -11);
-        skill1Right = new Vector2(31, -11);
+        positionSkill1 = new Vector2(24, -11);
+        skill1Left = new Vector2(-24, -11);
+        skill1Right = new Vector2(24, -11);
 
         //positionSkill2 = new Vector2(30, 11);
 
     }
     void Update()
     {
-        Skill1Active();
-        if (loopCount <= 3)
+        if (bossHp >= 100)
         {
-            Skill1();
+            Skill1Active(); 
+            if (loopCount <= 3)
+            {
+                Skill1();
+            }
+            else
+            {
+                Stun();
+            }
+            //Invoke("MaxCount", 5);
         }
         else
         {
-            Stun();
+            Skill2Active();
         }
-        Invoke("MaxCount", 5);
+        
 
 
     }
@@ -92,16 +103,31 @@ public class Boss : MonoBehaviour
         moveSpeedHor = 75;
     }
 
-    void Stun()
+
+    void Skill2Active()
     {
 
     }
 
+    void Stun()
+    {
+        Invoke("MaxCount", 5);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Ground")
+        if (collision.gameObject.tag == "Player")
         {
+            Debug.Log("Kena Damage dari Bos");
+        }
 
+        if (collision.gameObject.tag == "Skill1Left")
+        {
+            loopCount += 1;
+        }
+        if (collision.gameObject.tag == "Skill1Right")
+        {
+            loopCount += 1;
         }
     }
 }

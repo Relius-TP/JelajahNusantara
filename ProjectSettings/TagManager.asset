@@ -9,6 +9,14 @@ TagManager:
   - LifePotion
   - SpeedPotion
   - VisionPotion
+  - Background
+  - FinishPoint
+  - Play
+  - Cupboard
+  - Ground
+  - Sky
+  - Skill1Left
+  - Skill1Right
   layers:
   - Default
   - TransparentFX
