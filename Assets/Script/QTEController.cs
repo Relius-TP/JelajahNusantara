@@ -15,13 +15,17 @@ public class QTEController : MonoBehaviour
     [SerializeField] private List<GameObject> arrowPrefab;
 
     public static bool gettingKey = false;
+    public static bool generateKey = false;
     private bool isFailed = false;
 
     public static Action<bool> OnQTEResult;
 
     private void OnEnable()
     {
-        GenerateKeys();
+        if(generateKey)
+        {
+            GenerateKeys();
+        }
     }
 
     private void Awake()
@@ -35,7 +39,7 @@ public class QTEController : MonoBehaviour
         if (gettingKey)
         {
             StartCoroutine(RemainingTime());
-            if (Input.anyKeyDown) // Check user input
+            if (Input.anyKeyDown)
             {
                 if(Input.GetKeyDown(KeyCode.UpArrow))
                 {
@@ -83,7 +87,7 @@ public class QTEController : MonoBehaviour
 
         for (int i = 0; i < keysNeed; i++)
         {
-            int randomNumber = UnityEngine.Random.Range(0, 3);
+            int randomNumber = UnityEngine.Random.Range(0, 4);
 
             if (randomNumber == 0)
             {
@@ -104,6 +108,7 @@ public class QTEController : MonoBehaviour
         }
         SetText(keys);
         gettingKey = true;
+        generateKey = false;
         isFailed = false;
         inputFromUser.Clear();
     }
@@ -137,36 +142,28 @@ public class QTEController : MonoBehaviour
 
     private void SetText(List<KeyCode> keys)
     {
-        string keysText = "";
-
         foreach (KeyCode key in keys)
         {
             if (key == KeyCode.UpArrow)
             {
                 var arrow = Instantiate(arrowPrefab[3]) as GameObject;
                 arrow.transform.SetParent(QTE_Box.transform, false);
-                keysText += "[E]";
             }
             else if (key == KeyCode.DownArrow)
             {
                 var arrow = Instantiate(arrowPrefab[0]) as GameObject;
                 arrow.transform.SetParent(QTE_Box.transform, false);
-                keysText += "[R]";
             }
             else if (key == KeyCode.LeftArrow)
             {
                 var arrow = Instantiate(arrowPrefab[1]) as GameObject;
                 arrow.transform.SetParent(QTE_Box.transform, false);
-                keysText += "[T]";
             }
             else if(key == KeyCode.RightArrow)
             {
                 var arrow = Instantiate(arrowPrefab[2]) as GameObject;
                 arrow.transform.SetParent(QTE_Box.transform, false);
-                keysText += "Right";
             }
         }
-
-        QTE_TextUI.SetText(keysText);
     }
 }

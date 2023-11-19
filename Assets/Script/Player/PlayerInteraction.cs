@@ -1,35 +1,42 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
     public float interactRange = 2f;
     public PlayerData playerData;
+    public GameObject ToolTipUI;
+
+    private void Start()
+    {
+        ToolTipUI.SetActive(false);
+    }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F))
+        Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, interactRange);
+        foreach(Collider2D collie in colliderArray)
         {
-            Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, interactRange);
-            foreach(Collider2D collie in colliderArray)
+            if(collie.TryGetComponent(out Interactable interactable))
             {
-                if(collie.TryGetComponent(out Interactable interactable))
+                ToolTipUI.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.F))
                 {
-                    if(!playerData.IsHoldingKey)
+                    if (!playerData.IsHoldingKey)
                     {
-                        Debug.Log("Interact");
                         interactable.Interact();
                     }
                     else
                     {
                         Debug.Log("Cannot carry more than one key");
                     }
-                }
-
-                if(collie.TryGetComponent(out Portal portal) )
+                } 
+            }
+            else if(collie.TryGetComponent(out Portal portal) )
+            {
+                ToolTipUI.SetActive(true);
+                if (Input.GetKeyDown(KeyCode.F))
                 {
-                    if (playerData.IsHoldingKey)
+                    if (playerData.IsHoldingKey || Portal.portalOpen)
                     {
                         portal.OpenPortal();
                     }
@@ -38,6 +45,10 @@ public class PlayerInteraction : MonoBehaviour
                         Debug.Log("No key in inventory");
                     }
                 }
+            }
+            else
+            {
+                ToolTipUI.SetActive(false);
             }
         }
     }
