@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationHandler : MonoBehaviour
 {
     private Animator anim;
-    public static bool isWalking;
+    public bool isWalking;
 
     // Start is called before the first frame update
     void Start()

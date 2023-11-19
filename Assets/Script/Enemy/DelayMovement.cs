@@ -4,6 +4,7 @@ using UnityEngine;
 public class DelayMovement : MonoBehaviour
 {
     Pathfinding pathFinding;
+    private AnimationHandler animHandler;
 
     private void OnEnable()
     {
@@ -18,6 +19,7 @@ public class DelayMovement : MonoBehaviour
     private void Start()
     {
         pathFinding = gameObject.GetComponent<Pathfinding>();
+        animHandler = gameObject.GetComponent<AnimationHandler>();
     }
 
     private void StunEnemy(bool result)
@@ -25,7 +27,7 @@ public class DelayMovement : MonoBehaviour
         if(result)
         {
             pathFinding.enabled = false;
-            AnimationHandler.isWalking = false;
+            animHandler.isWalking = false;
             gameObject.GetComponent<Collider2D>().enabled = false;
             StartCoroutine(StunMovement());
         }
@@ -47,7 +49,7 @@ public class DelayMovement : MonoBehaviour
         Debug.Log("Enemy Stunned");
         yield return new WaitForSeconds(2f);
         gameObject.GetComponent<Collider2D>().enabled = true;
-        AnimationHandler.isWalking = true;
+        animHandler.isWalking = true;
         pathFinding.enabled = true;
         Debug.Log("Enemy Move");
     }

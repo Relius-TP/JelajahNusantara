@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerData playerData;
     private float newDetectionRange;
 
+    private Animator anim;
+
     public static event Action OnCaught;
     public static event Action<bool> OnWalk;
 
@@ -33,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         playerPos = GetComponent<Transform>();
         inputSystem = new InputSystem();
         newDetectionRange = playerData.hero_visionRange;
@@ -48,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         if(direction != Vector2.zero)
         {
             OnWalk?.Invoke(true);
+            anim.SetTrigger("Walking");
         }
         else
         {
@@ -57,11 +61,13 @@ public class PlayerMovement : MonoBehaviour
         if(inputSystem.Player.Run.ReadValue<float>() == 1f)
         {
             speed = runSpeed;
+            anim.SetTrigger("Walking");
         }
         else if(MicDetection.soundVolume >= 2f)
         {
             speed = screamSpeed;
             detectionRadius = newDetectionRange + 3f;
+            anim.SetTrigger("Walking");
         }
         else
         {
