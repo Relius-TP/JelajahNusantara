@@ -25,6 +25,7 @@ public class DelayMovement : MonoBehaviour
         if(result)
         {
             pathFinding.enabled = false;
+            AnimationHandler.isWalking = false;
             gameObject.GetComponent<Collider2D>().enabled = false;
             StartCoroutine(StunMovement());
         }
@@ -46,6 +47,7 @@ public class DelayMovement : MonoBehaviour
         Debug.Log("Enemy Stunned");
         yield return new WaitForSeconds(2f);
         gameObject.GetComponent<Collider2D>().enabled = true;
+        AnimationHandler.isWalking = true;
         pathFinding.enabled = true;
         Debug.Log("Enemy Move");
     }

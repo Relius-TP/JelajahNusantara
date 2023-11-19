@@ -7,10 +7,12 @@ using System;
 public class QTEController : MonoBehaviour
 {
     public TMP_Text QTE_TextUI;
+    public GameObject QTE_Box;
     public int keysNeed;
 
     private List<KeyCode> keys;
     private List<KeyCode> inputFromUser;
+    [SerializeField] private List<GameObject> arrowPrefab;
 
     public static bool gettingKey = false;
     private bool isFailed = false;
@@ -35,13 +37,21 @@ public class QTEController : MonoBehaviour
             StartCoroutine(RemainingTime());
             if (Input.anyKeyDown) // Check user input
             {
-                foreach (KeyCode key in System.Enum.GetValues(typeof(KeyCode)))
+                if(Input.GetKeyDown(KeyCode.UpArrow))
                 {
-                    if (Input.GetKey(key))
-                    {
-                        inputFromUser.Add(key);
-                        break; //Stop loop when same key found
-                    }
+                    inputFromUser.Add(KeyCode.UpArrow);
+                }
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    inputFromUser.Add(KeyCode.DownArrow);
+                }
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    inputFromUser.Add(KeyCode.LeftArrow);
+                }
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    inputFromUser.Add(KeyCode.RightArrow);
                 }
             }
 
@@ -77,15 +87,19 @@ public class QTEController : MonoBehaviour
 
             if (randomNumber == 0)
             {
-                keys.Add(KeyCode.E);
+                keys.Add(KeyCode.UpArrow);
             }
             else if (randomNumber == 1)
             {
-                keys.Add(KeyCode.R);
+                keys.Add(KeyCode.DownArrow);
             }
             else if (randomNumber == 2)
             {
-                keys.Add(KeyCode.T);
+                keys.Add(KeyCode.LeftArrow);
+            }
+            else if(randomNumber == 3)
+            {
+                keys.Add(KeyCode.RightArrow);
             }
         }
         SetText(keys);
@@ -127,17 +141,29 @@ public class QTEController : MonoBehaviour
 
         foreach (KeyCode key in keys)
         {
-            if (key == KeyCode.E)
+            if (key == KeyCode.UpArrow)
             {
+                var arrow = Instantiate(arrowPrefab[3]) as GameObject;
+                arrow.transform.SetParent(QTE_Box.transform, false);
                 keysText += "[E]";
             }
-            else if (key == KeyCode.R)
+            else if (key == KeyCode.DownArrow)
             {
+                var arrow = Instantiate(arrowPrefab[0]) as GameObject;
+                arrow.transform.SetParent(QTE_Box.transform, false);
                 keysText += "[R]";
             }
-            else if (key == KeyCode.T)
+            else if (key == KeyCode.LeftArrow)
             {
+                var arrow = Instantiate(arrowPrefab[1]) as GameObject;
+                arrow.transform.SetParent(QTE_Box.transform, false);
                 keysText += "[T]";
+            }
+            else if(key == KeyCode.RightArrow)
+            {
+                var arrow = Instantiate(arrowPrefab[2]) as GameObject;
+                arrow.transform.SetParent(QTE_Box.transform, false);
+                keysText += "Right";
             }
         }
 

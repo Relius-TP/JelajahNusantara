@@ -20,10 +20,17 @@ public class Pathfinding : MonoBehaviour
         if (Vector2.Distance(transform.position, target.position) <= PlayerMovement.detectionRadius)
         {
             agent.SetDestination(target.position);
+            AnimationHandler.isWalking = true;
+        }
+        else if (Vector2.Distance(gameObject.transform.position, startPosition.position) <= 3f)
+        {
+            AnimationHandler.isWalking = false;
         }
         else
         {
             agent.SetDestination(startPosition.position);
         }
+
+        
     }
 }
