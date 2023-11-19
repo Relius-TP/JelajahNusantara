@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,11 +26,21 @@ public class Boss : MonoBehaviour
     [SerializeField] private Vector2 skill1Right;
 
     private Vector2 positionSkill2;
-
+    public static bool isTakingDamage = false;
 
     public float bossHealth = 200.0f;
     public Image bossHealt;
     public GameObject winScene;
+
+    private void OnEnable()
+    {
+        SkillCheckQTEBossController.GiveDamage += TakeDamage;
+    }
+
+    private void OnDisable()
+    {
+        SkillCheckQTEBossController.GiveDamage -= TakeDamage;
+    }
 
     void Start()
     {
@@ -41,10 +52,6 @@ public class Boss : MonoBehaviour
         positionSkill1 = new Vector2(24, -13);
         skill1Left = new Vector2(-24, -13);
         skill1Right = new Vector2(24, -13);
-
-
-
-        //positionSkill2 = new Vector2(30, 11);
 
     }
     void Update()
@@ -71,7 +78,6 @@ public class Boss : MonoBehaviour
             winScene.SetActive(true);
             Time.timeScale = 0;
         }
-
     }
     bool isMoving()
     {
@@ -80,7 +86,6 @@ public class Boss : MonoBehaviour
 
     IEnumerator Skill1()
     {
-        
         if (banaspati.transform.position.x == skill1Left.x && banaspati.transform.position.y == skill1Left.y)
         {
             yield return new WaitForSeconds(1f);
@@ -100,7 +105,6 @@ public class Boss : MonoBehaviour
             banaspati.transform.position = Vector2.MoveTowards(transform.position, positionSkill1, moveSpeedHor * Time.deltaTime);
             moveSpeedHor = 45;
         }
-
     }
     void Skill1Left()
     {
@@ -125,6 +129,7 @@ public class Boss : MonoBehaviour
         {
             QTEActive();
             yield return new WaitForSeconds(5f);
+            SkillCheckQTEBossController.bossStun = false;
             if (bossHp >= 100)
             {
                 qte.SetActive(false);
@@ -141,6 +146,7 @@ public class Boss : MonoBehaviour
         else
         {
             yield return new WaitForSeconds(5f);
+            SkillCheckQTEBossController.bossStun = false;
             if (bossHp >= 100)
             {
                 qte.SetActive(false);
@@ -161,22 +167,6 @@ public class Boss : MonoBehaviour
         qte.SetActive(true);
         SkillCheckQTEBossController.bossStun = true;
         PlayerOnBosStage.moveSpeed = 0;
-
-        if (SkillCheckQTEBossController.result == 1)
-        {
-            TakeDamage(10);
-            Debug.Log("BOSS Kena 10 Damage");
-        }
-        else if (SkillCheckQTEBossController.result == 2)
-        {
-            TakeDamage(20);
-            Debug.Log("BOSS Kena 20 Damage");
-        }
-        else if (SkillCheckQTEBossController.result == 3)
-        {
-            TakeDamage(30);
-            Debug.Log("BOSS Kena 30 Damage");
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -194,6 +184,6 @@ public class Boss : MonoBehaviour
     public void TakeDamage(float damage)
     {
         bossHealth -= damage;
-        bossHealt.fillAmount = bossHealth / 100f;
+        bossHealt.fillAmount = bossHealth / 200f;
     }
 }

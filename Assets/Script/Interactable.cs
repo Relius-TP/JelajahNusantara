@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
@@ -8,6 +6,9 @@ public class Interactable : MonoBehaviour
     public static Action OnGetItem;
     private bool interacted = false;
     public PlayerData playerData;
+
+    public AudioClip clip;
+    public AudioSource audioSource;
 
     private void Start()
     {
@@ -34,6 +35,7 @@ public class Interactable : MonoBehaviour
         {
             playerData.IsHoldingKey = true;
             gameObject.SetActive(false);
+            audioSource.PlayOneShot(clip);
         }
     }
 }

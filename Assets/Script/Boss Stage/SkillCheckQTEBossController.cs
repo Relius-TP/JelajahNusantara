@@ -29,7 +29,7 @@ public class SkillCheckQTEBossController : MonoBehaviour
     private float strongGoalImgWidth;
 
     private bool targetMoving = true;
-    public static float result;
+    public float result;
 
     [Header("QTE Settings")]
     [SerializeField] private TMP_Text QTE_TextUI;
@@ -44,7 +44,7 @@ public class SkillCheckQTEBossController : MonoBehaviour
     private int counter;
 
     public static bool bossStun = true;
-    public static event Action<int> GiveDamage;
+    public static event Action<float> GiveDamage;
 
 
     private enum State
@@ -91,37 +91,42 @@ public class SkillCheckQTEBossController : MonoBehaviour
 
             if(qteState == State.WaitingCheckResult && skillCheckState == State.WaitingCheckResult)
             {
+                Boss.isTakingDamage = true;
                 CheckResult();
             }
         }
-
-        
-
-
+        else
+        {
+            needGenerateKey = true;
+            qteState = State.WaitingInputPlayer;
+            skillCheckState = State.WaitingResetSkillCheck;
+            result = 0;
+        }
     }
 
 
     private void CheckResult()
     {
+        qteState = State.WaitingInputPlayer;
+        skillCheckState = State.WaitingResetSkillCheck;
+
         if (!isFailed && result != 0)
         {
             if (result == 1)
             {
-                Debug.Log("10");
+                GiveDamage?.Invoke(10);
             }
             else if (result == 2)
             {
-                Debug.Log("20");
+                GiveDamage?.Invoke(20);
             }
             else if (result == 3)
             {
-                Debug.Log("35");
+                GiveDamage?.Invoke(35);
             }
         }
 
         needGenerateKey = true;
-        qteState = State.WaitingInputPlayer;
-        skillCheckState = State.WaitingResetSkillCheck;
     }
 
     private void SkillCheckStart()

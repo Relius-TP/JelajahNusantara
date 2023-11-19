@@ -182,6 +182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: b2908938b8f12df46a069fde614685ee, type: 2}
+  clip: {fileID: 8300000, guid: e624e871630db80438f44df0acd6f4ef, type: 3}
+  audioSource: {fileID: 0}
 --- !u!61 &1276109944465872058
 BoxCollider2D:
   m_ObjectHideFlags: 0
