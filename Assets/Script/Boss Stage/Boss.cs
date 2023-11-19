@@ -34,9 +34,9 @@ public class Boss : MonoBehaviour
 
         spawn = new Vector2(0, 0);
 
-        positionSkill1 = new Vector2(24, -9);
-        skill1Left = new Vector2(-24, -9);
-        skill1Right = new Vector2(24, -9);
+        positionSkill1 = new Vector2(24, -13);
+        skill1Left = new Vector2(-24, -13);
+        skill1Right = new Vector2(24, -13);
 
 
 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 026bb16886165b14ebd639ee1009d36f
+guid: 754d0193b807a5d419d428e1f5fc7cb4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -128,17 +128,17 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b28adf34bf74f64f9dc264f937fd689
-      internalID: -1565530434
+      spriteID: e6ca7ec1081d6134aafbbaf27063f830
+      internalID: 1116698403
       vertices: []
       indices: 
       edges: []
@@ -147,19 +147,19 @@ TextureImporter:
       name: Banaspati_1
       rect:
         serializedVersion: 2
-        x: 300
+        x: 500
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03b2620b910c9fb44becf89459e12d32
-      internalID: 1167545848
+      spriteID: f2a1b11270407a94f894e7e5742c93fe
+      internalID: 565624216
       vertices: []
       indices: 
       edges: []
@@ -168,19 +168,19 @@ TextureImporter:
       name: Banaspati_2
       rect:
         serializedVersion: 2
-        x: 600
+        x: 1000
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e96e86d1133773344bcca91196bc0da3
-      internalID: 1000860442
+      spriteID: 417020cf70f5bb945b25e1337a40a228
+      internalID: -635575731
       vertices: []
       indices: 
       edges: []
@@ -189,19 +189,19 @@ TextureImporter:
       name: Banaspati_3
       rect:
         serializedVersion: 2
-        x: 900
+        x: 1500
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27de2d17fc586bb4bbe925b234e49d07
-      internalID: 1264887921
+      spriteID: 90ef3e50e7c01ad43b54b55a4a3836ae
+      internalID: 2091000744
       vertices: []
       indices: 
       edges: []
@@ -210,19 +210,19 @@ TextureImporter:
       name: Banaspati_4
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 2000
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bad2845d4a47af443ba76472ed3806e6
-      internalID: 1422037970
+      spriteID: 64ba369a3379f3048903131fa634b4a3
+      internalID: 1826276967
       vertices: []
       indices: 
       edges: []
@@ -231,19 +231,19 @@ TextureImporter:
       name: Banaspati_5
       rect:
         serializedVersion: 2
-        x: 1500
+        x: 2500
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 413f6f83f4e2c954680e6e2403fb361e
-      internalID: -1398346619
+      spriteID: 31d50f8bebe09ed4296f8af93870b81c
+      internalID: 88295160
       vertices: []
       indices: 
       edges: []
@@ -252,19 +252,19 @@ TextureImporter:
       name: Banaspati_6
       rect:
         serializedVersion: 2
-        x: 1800
+        x: 3000
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e25d751302f8df842b2afa635a34f925
-      internalID: -1532321927
+      spriteID: 3200b6a04331c124d8bc9cd94c3327ab
+      internalID: 289044950
       vertices: []
       indices: 
       edges: []
@@ -273,19 +273,19 @@ TextureImporter:
       name: Banaspati_7
       rect:
         serializedVersion: 2
-        x: 2100
+        x: 3500
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b032650b89aaf546ad2bbd73d731476
-      internalID: -71048323
+      spriteID: fe1499a5c4408d04db118968f67d6c3f
+      internalID: -1194567191
       vertices: []
       indices: 
       edges: []
@@ -294,19 +294,19 @@ TextureImporter:
       name: Banaspati_8
       rect:
         serializedVersion: 2
-        x: 2400
+        x: 4000
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08fe97d297c0e5f43ba1d8fd091a4eef
-      internalID: -1377637362
+      spriteID: 7f5579f9b8ff5e3429ad3cce08199031
+      internalID: -683973782
       vertices: []
       indices: 
       edges: []
@@ -315,19 +315,19 @@ TextureImporter:
       name: Banaspati_9
       rect:
         serializedVersion: 2
-        x: 2700
+        x: 4500
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d16dfd12aa53874b9cb5f6d32fa2835
-      internalID: 1572789906
+      spriteID: 899a809e1a5f9fd4e956ec1af84bba04
+      internalID: -2048990320
       vertices: []
       indices: 
       edges: []
@@ -336,19 +336,19 @@ TextureImporter:
       name: Banaspati_10
       rect:
         serializedVersion: 2
-        x: 3000
+        x: 5000
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92a3d2dc0eb73dc4b847bdfff186ffad
-      internalID: 887177901
+      spriteID: acf0305d30f518543b27985f025c90c3
+      internalID: -257192634
       vertices: []
       indices: 
       edges: []
@@ -357,19 +357,19 @@ TextureImporter:
       name: Banaspati_11
       rect:
         serializedVersion: 2
-        x: 3300
+        x: 5500
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d436c1b89fe2f9346ba0630fddb63361
-      internalID: 1490447987
+      spriteID: 28210ee35e7685d45a966329f9c56afb
+      internalID: -1599459647
       vertices: []
       indices: 
       edges: []
@@ -378,19 +378,19 @@ TextureImporter:
       name: Banaspati_12
       rect:
         serializedVersion: 2
-        x: 3600
+        x: 6000
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6bd7b8f9811d224c8f8ab143e9f6eea
-      internalID: -26828071
+      spriteID: e8993d9b320c42b42b242e45f971c278
+      internalID: -1479627048
       vertices: []
       indices: 
       edges: []
@@ -399,19 +399,19 @@ TextureImporter:
       name: Banaspati_13
       rect:
         serializedVersion: 2
-        x: 3900
+        x: 6500
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b269a74a19e79948b3892268c6e1629
-      internalID: 1232810842
+      spriteID: 2306b729727af1349b4e6b0eeab7855a
+      internalID: -1897648738
       vertices: []
       indices: 
       edges: []
@@ -420,19 +420,19 @@ TextureImporter:
       name: Banaspati_14
       rect:
         serializedVersion: 2
-        x: 4200
+        x: 7000
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5dfcf088affae614db29bee701b9cead
-      internalID: 2005967994
+      spriteID: 4c02e2a55abf1df40a610520e5539b62
+      internalID: 219847879
       vertices: []
       indices: 
       edges: []
@@ -441,19 +441,19 @@ TextureImporter:
       name: Banaspati_15
       rect:
         serializedVersion: 2
-        x: 4500
+        x: 7500
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a1755bac4e6fa8419a676c7d0b0fe04
-      internalID: -1978166366
+      spriteID: 4aa254d80fd64554ab17d4b5f76435bd
+      internalID: -1477785239
       vertices: []
       indices: 
       edges: []
@@ -462,19 +462,19 @@ TextureImporter:
       name: Banaspati_16
       rect:
         serializedVersion: 2
-        x: 4800
+        x: 8000
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 578aaf4e4d970f442b723c738f5dba17
-      internalID: 1203441999
+      spriteID: 3b4177e7c7be2ca40a7fa7a78ef7b8ec
+      internalID: 1899655659
       vertices: []
       indices: 
       edges: []
@@ -483,61 +483,19 @@ TextureImporter:
       name: Banaspati_17
       rect:
         serializedVersion: 2
-        x: 5100
+        x: 8500
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d328271a976aac459e43cf754ea97cb
-      internalID: -405039511
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Banaspati_18
-      rect:
-        serializedVersion: 2
-        x: 5400
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c913576927d83c43b6c854c19d478d9
-      internalID: 573830841
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Banaspati_19
-      rect:
-        serializedVersion: 2
-        x: 5700
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9d8f0ee8c79cee142aaaf5ebb0788e71
-      internalID: 2046301520
+      spriteID: a64cac2ad23389d49b4ff34715ec40d9
+      internalID: 5266595
       vertices: []
       indices: 
       edges: []
@@ -553,26 +511,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Banaspati_0: -1565530434
-      Banaspati_1: 1167545848
-      Banaspati_10: 887177901
-      Banaspati_11: 1490447987
-      Banaspati_12: -26828071
-      Banaspati_13: 1232810842
-      Banaspati_14: 2005967994
-      Banaspati_15: -1978166366
-      Banaspati_16: 1203441999
-      Banaspati_17: -405039511
-      Banaspati_18: 573830841
-      Banaspati_19: 2046301520
-      Banaspati_2: 1000860442
-      Banaspati_3: 1264887921
-      Banaspati_4: 1422037970
-      Banaspati_5: -1398346619
-      Banaspati_6: -1532321927
-      Banaspati_7: -71048323
-      Banaspati_8: -1377637362
-      Banaspati_9: 1572789906
+      Banaspati_0: 1116698403
+      Banaspati_1: 565624216
+      Banaspati_10: -257192634
+      Banaspati_11: -1599459647
+      Banaspati_12: -1479627048
+      Banaspati_13: -1897648738
+      Banaspati_14: 219847879
+      Banaspati_15: -1477785239
+      Banaspati_16: 1899655659
+      Banaspati_17: 5266595
+      Banaspati_2: -635575731
+      Banaspati_3: 2091000744
+      Banaspati_4: 1826276967
+      Banaspati_5: 88295160
+      Banaspati_6: 289044950
+      Banaspati_7: -1194567191
+      Banaspati_8: -683973782
+      Banaspati_9: -2048990320
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
