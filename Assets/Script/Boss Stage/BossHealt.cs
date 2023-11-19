@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class HealthBar : MonoBehaviour
+public class BossHealt : MonoBehaviour
 {
     public RectTransform bar;
-    public float maxSize = 100f;
+    public float maxSize = 200.0f;
 
     public void SetSize(float sizeNormalized)
     {

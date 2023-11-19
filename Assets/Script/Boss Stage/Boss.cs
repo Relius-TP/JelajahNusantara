@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Boss : MonoBehaviour
     private int bossHp = 200;
 
     private Vector2 spawn;
+    public GameObject qte;
 
     //skill 1
     private Vector2 positionSkill1;
@@ -25,6 +27,9 @@ public class Boss : MonoBehaviour
     private Vector2 positionSkill2;
 
 
+    public float bossHealth = 200.0f;
+    public Image bossHealt;
+    public GameObject winScene;
 
     void Start()
     {
@@ -60,8 +65,12 @@ public class Boss : MonoBehaviour
         {
             Skill2Active();
         }
-        
 
+        if (bossHealth == 0)
+        {
+            winScene.SetActive(true);
+            Time.timeScale = 0;
+        }
 
     }
     bool isMoving()
@@ -112,17 +121,61 @@ public class Boss : MonoBehaviour
 
     IEnumerator Stun()
     {
-        yield return new WaitForSeconds(5f);
-        if (bossHp >= 100)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            moveSpeedHor = 5;
-            banaspati.transform.position = Vector2.MoveTowards(transform.position, spawn, moveSpeedHor * Time.deltaTime);
-            if (banaspati.transform.position.x == spawn.x && banaspati.transform.position.y == spawn.y)
+            QTEActive();
+            yield return new WaitForSeconds(5f);
+            if (bossHp >= 100)
             {
-                loopCount = 0;
-                banaspati.transform.position = Vector2.MoveTowards(transform.position, positionSkill1, moveSpeedHor * Time.deltaTime);
-                moveSpeedHor = 45;
+                qte.SetActive(false);
+                moveSpeedHor = 5;
+                banaspati.transform.position = Vector2.MoveTowards(transform.position, spawn, moveSpeedHor * Time.deltaTime);
+                if (banaspati.transform.position.x == spawn.x && banaspati.transform.position.y == spawn.y)
+                {
+                    loopCount = 0;
+                    banaspati.transform.position = Vector2.MoveTowards(transform.position, positionSkill1, moveSpeedHor * Time.deltaTime);
+                    moveSpeedHor = 45;
+                }
             }
+        }
+        else
+        {
+            yield return new WaitForSeconds(5f);
+            if (bossHp >= 100)
+            {
+                qte.SetActive(false);
+                moveSpeedHor = 5;
+                banaspati.transform.position = Vector2.MoveTowards(transform.position, spawn, moveSpeedHor * Time.deltaTime);
+                if (banaspati.transform.position.x == spawn.x && banaspati.transform.position.y == spawn.y)
+                {
+                    loopCount = 0;
+                    banaspati.transform.position = Vector2.MoveTowards(transform.position, positionSkill1, moveSpeedHor * Time.deltaTime);
+                    moveSpeedHor = 45;
+                }
+            }
+        }
+    }
+
+    void QTEActive()
+    {
+        qte.SetActive(true);
+        SkillCheckQTEBossController.bossStun = true;
+        PlayerOnBosStage.moveSpeed = 0;
+
+        if (SkillCheckQTEBossController.result == 1)
+        {
+            TakeDamage(10);
+            Debug.Log("BOSS Kena 10 Damage");
+        }
+        else if (SkillCheckQTEBossController.result == 2)
+        {
+            TakeDamage(20);
+            Debug.Log("BOSS Kena 20 Damage");
+        }
+        else if (SkillCheckQTEBossController.result == 3)
+        {
+            TakeDamage(30);
+            Debug.Log("BOSS Kena 30 Damage");
         }
     }
 
@@ -136,5 +189,11 @@ public class Boss : MonoBehaviour
         {
             loopCount += 1;
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        bossHealth -= damage;
+        bossHealt.fillAmount = bossHealth / 100f;
     }
 }

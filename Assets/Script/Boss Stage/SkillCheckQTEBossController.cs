@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SkillCheckQTEBossController : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class SkillCheckQTEBossController : MonoBehaviour
     private float strongGoalImgWidth;
 
     private bool targetMoving = true;
-    private float result;
+    public static float result;
 
     [Header("QTE Settings")]
     [SerializeField] private TMP_Text QTE_TextUI;
@@ -44,6 +45,7 @@ public class SkillCheckQTEBossController : MonoBehaviour
 
     public static bool bossStun = true;
     public static event Action<int> GiveDamage;
+
 
     private enum State
     {
@@ -92,7 +94,12 @@ public class SkillCheckQTEBossController : MonoBehaviour
                 CheckResult();
             }
         }
+
+        
+
+
     }
+
 
     private void CheckResult()
     {
@@ -101,17 +108,14 @@ public class SkillCheckQTEBossController : MonoBehaviour
             if (result == 1)
             {
                 Debug.Log("10");
-                GiveDamage?.Invoke(10);
             }
             else if (result == 2)
             {
                 Debug.Log("20");
-                GiveDamage?.Invoke(20);
             }
             else if (result == 3)
             {
                 Debug.Log("35");
-                GiveDamage?.Invoke(35);
             }
         }
 

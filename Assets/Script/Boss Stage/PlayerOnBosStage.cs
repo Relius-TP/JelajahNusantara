@@ -5,7 +5,7 @@ public class PlayerOnBosStage : MonoBehaviour
 {
     private Transform player;
     public static Vector3 playerPosition;
-    public float moveSpeed = 5.0f;
+    public static float moveSpeed = 5.0f;
     public float jumpPower = 5.0f;
     private float moveHorizontal;
 
@@ -93,7 +93,7 @@ public class PlayerOnBosStage : MonoBehaviour
             Debug.Log("Kena Damage dari Bos");
         }
     }
-        public void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         healthBar.fillAmount = health / 100f;
