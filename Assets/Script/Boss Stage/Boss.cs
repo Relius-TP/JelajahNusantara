@@ -34,9 +34,9 @@ public class Boss : MonoBehaviour
 
         spawn = new Vector2(0, 0);
 
-        positionSkill1 = new Vector2(24, -11);
-        skill1Left = new Vector2(-24, -11);
-        skill1Right = new Vector2(24, -11);
+        positionSkill1 = new Vector2(24, -9);
+        skill1Left = new Vector2(-24, -9);
+        skill1Right = new Vector2(24, -9);
 
 
 
@@ -131,11 +131,6 @@ public class Boss : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            Debug.Log("Kena Damage dari Bos");
-        }
-
         if (collision.gameObject.tag == "Skill1Left")
         {
             loopCount += 1;

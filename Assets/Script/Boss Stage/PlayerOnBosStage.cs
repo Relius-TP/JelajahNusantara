@@ -19,6 +19,8 @@ public class PlayerOnBosStage : MonoBehaviour
     public float health = 100.0f;
     public Image healthBar;
 
+    public GameObject gameOver;
+
     void Start()
     {
         player = this.transform;
@@ -67,7 +69,15 @@ public class PlayerOnBosStage : MonoBehaviour
             transform.position = new Vector2(transform.position.x - 2, transform.position.y);
         }
 
-        Vector3 playerPosition = player.position;
+        if (health == 0)
+        {
+            gameOver.SetActive(true);
+            Time.timeScale = 0;
+        }
+
+
+
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -76,8 +86,17 @@ public class PlayerOnBosStage : MonoBehaviour
         {
             isJump = true;
         }
+
     }
-    public void TakeDamage(float damage)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Boss")
+        {
+            TakeDamage(10);
+            Debug.Log("Kena Damage dari Bos");
+        }
+    }
+        public void TakeDamage(float damage)
     {
         health -= damage;
         healthBar.fillAmount = health / 100f;
