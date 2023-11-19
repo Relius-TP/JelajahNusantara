@@ -971,7 +971,7 @@ MonoBehaviour:
   weakGoalImg: {fileID: 996642898}
   normalGoalImg: {fileID: 365969024}
   strongGoalImg: {fileID: 124957533}
-  targetSpeed: 500
+  targetSpeed: 200
   minWeakRange: {fileID: 788550714}
   maxWeakRange: {fileID: 519442647}
   minNormalRange: {fileID: 551299456}
