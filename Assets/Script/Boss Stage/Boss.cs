@@ -74,7 +74,7 @@ public class Boss : MonoBehaviour
             Skill2Active();
         }
 
-        if (bossHealth == 0)
+        if (bossHealth <= 0)
         {
             winScene.SetActive(true);
             Time.timeScale = 0;

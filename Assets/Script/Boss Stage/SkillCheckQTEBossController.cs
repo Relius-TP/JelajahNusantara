@@ -34,6 +34,8 @@ public class SkillCheckQTEBossController : MonoBehaviour
     [Header("QTE Settings")]
     [SerializeField] private TMP_Text QTE_TextUI;
     [SerializeField] private int keysNeed;
+    [SerializeField] private List<GameObject> arrowPrefab;
+    public GameObject QTE_Box;
 
     private List<KeyCode> keys;
     private List<KeyCode> inputFromUser;
@@ -45,6 +47,7 @@ public class SkillCheckQTEBossController : MonoBehaviour
 
     public static bool bossStun = true;
     public static event Action<float> GiveDamage;
+    public static Action<bool> OnQTEResult;
 
 
     private enum State
@@ -66,7 +69,7 @@ public class SkillCheckQTEBossController : MonoBehaviour
         strongGoalImgWidth = strongGoalImg.rect.width / 2;
 
         inputFromUser = new List<KeyCode>();
-        QTE_TextUI.SetText("[Button][Here]");
+        QTE_TextUI.SetText("");
     }
 
     // Update is called once per frame
@@ -264,29 +267,29 @@ public class SkillCheckQTEBossController : MonoBehaviour
 
     private void SetText(List<KeyCode> keys)
     {
-        string keysText = "";
-
         foreach (KeyCode key in keys)
         {
             if (key == KeyCode.UpArrow)
             {
-                keysText += "[Up]";
+                var arrow = Instantiate(arrowPrefab[3]) as GameObject;
+                arrow.transform.SetParent(QTE_Box.transform, false);
             }
             else if (key == KeyCode.DownArrow)
             {
-                keysText += "[Down]";
+                var arrow = Instantiate(arrowPrefab[0]) as GameObject;
+                arrow.transform.SetParent(QTE_Box.transform, false);
             }
             else if (key == KeyCode.LeftArrow)
             {
-                keysText += "[Left]";
+                var arrow = Instantiate(arrowPrefab[1]) as GameObject;
+                arrow.transform.SetParent(QTE_Box.transform, false);
             }
-            else if(key == KeyCode.RightArrow)
+            else if (key == KeyCode.RightArrow)
             {
-                keysText += "[Right]";
+                var arrow = Instantiate(arrowPrefab[2]) as GameObject;
+                arrow.transform.SetParent(QTE_Box.transform, false);
             }
         }
-
-        QTE_TextUI.SetText(keysText);
     }
 
     private void CheckKeys(List<KeyCode> keys)
@@ -305,11 +308,13 @@ public class SkillCheckQTEBossController : MonoBehaviour
         if (!isFailed)
         {
             QTE_TextUI.SetText("Success");
+            OnQTEResult?.Invoke(true);
             qteState = State.WaitingCheckResult;
         }
         else
         {
             QTE_TextUI.SetText("Failed!!!!");
+            OnQTEResult?.Invoke(false);
             qteState = State.WaitingCheckResult;
         }
     }

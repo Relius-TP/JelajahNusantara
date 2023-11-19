@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &369407767303011428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1159296973782444698}
+  - component: {fileID: 1290788424852303358}
+  m_Layer: 0
+  m_Name: QTEBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1159296973782444698
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369407767303011428}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6513245916338048341}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1290788424852303358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369407767303011428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1173851257521313534
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5245072191532250966
 Transform:
   m_ObjectHideFlags: 0
@@ -201,8 +263,15 @@ MonoBehaviour:
   maxNormalRange: {fileID: 1009657273188789326}
   minStrongRange: {fileID: 2130641774130830925}
   maxStrongRange: {fileID: 1741440336166120700}
+  result: 0
   QTE_TextUI: {fileID: 4857780381284193234}
   keysNeed: 3
+  arrowPrefab:
+  - {fileID: 7060072615486538485, guid: 4cb1fa106bc814a40b1cc5c4f2a6f029, type: 3}
+  - {fileID: 7198702658835237300, guid: fb6a81087c4229b45b9f6877de3838a0, type: 3}
+  - {fileID: 4616358579151597901, guid: cf9f5706ee79e234cb0e4ffd6049f885, type: 3}
+  - {fileID: 5566010494122304354, guid: 2dff8ee8698a7de40a4598eff9dc181c, type: 3}
+  QTE_Box: {fileID: 369407767303011428}
 --- !u!1 &3958828535502703160
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4806944481861031695
 Transform:
   m_ObjectHideFlags: 0
@@ -443,7 +512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7434562239765122226
 RectTransform:
   m_ObjectHideFlags: 0
@@ -949,6 +1018,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8018918503894609469}
+  - {fileID: 1159296973782444698}
   m_Father: {fileID: 3951401303694269273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
