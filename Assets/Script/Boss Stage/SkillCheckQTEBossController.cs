@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -27,6 +28,7 @@ public class SkillCheckQTEBossController : MonoBehaviour
     private float strongGoalImgWidth;
 
     private bool targetMoving = true;
+    private float result;
 
     [Header("QTE Settings")]
     [SerializeField] private TMP_Text QTE_TextUI;
@@ -40,6 +42,17 @@ public class SkillCheckQTEBossController : MonoBehaviour
     private bool isFailed = false;
 
     public static bool bossStun = true;
+    public static event Action<int> GiveDamage;
+
+    private enum State
+    {
+        WaitingResetSkillCheck,
+        WaitingInputPlayer,
+        WaitingCheckResult
+    }
+
+    private State qteState = State.WaitingInputPlayer;
+    private State skillCheckState = State.WaitingResetSkillCheck;
 
     void Awake()
     {
@@ -58,9 +71,52 @@ public class SkillCheckQTEBossController : MonoBehaviour
     {
         if (bossStun)
         {
-            SkillCheckStart();
-            QTEStart();
+            if(qteState == State.WaitingInputPlayer) 
+            {
+                QTEStart();
+            }
+            if(skillCheckState == State.WaitingResetSkillCheck)
+            {
+                ResetPosition();
+                SetRandomPosition();
+                skillCheckState = State.WaitingInputPlayer;
+            }
+            else if(skillCheckState == State.WaitingInputPlayer)
+            {
+                SkillCheckStart();
+            }
+
+            if(qteState == State.WaitingCheckResult && skillCheckState == State.WaitingCheckResult)
+            {
+                CheckResult();
+            }
         }
+    }
+
+    private void CheckResult()
+    {
+        if (!isFailed && result != 0)
+        {
+            if (result == 1)
+            {
+                Debug.Log("10");
+                GiveDamage?.Invoke(10);
+            }
+            else if (result == 2)
+            {
+                Debug.Log("20");
+                GiveDamage?.Invoke(20);
+            }
+            else if (result == 3)
+            {
+                Debug.Log("35");
+                GiveDamage?.Invoke(35);
+            }
+        }
+
+        needGenerateKey = true;
+        qteState = State.WaitingInputPlayer;
+        skillCheckState = State.WaitingResetSkillCheck;
     }
 
     private void SkillCheckStart()
@@ -82,29 +138,23 @@ public class SkillCheckQTEBossController : MonoBehaviour
                         && !(targetImg.position.x > minNormalRange.position.x && targetImg.position.x < maxNormalRange.position.x)
                         && !(targetImg.position.x > minStrongRange.position.x && targetImg.position.x < maxStrongRange.position.x))
             {
-                Debug.Log("Weak Spot");
-                ResetPosition();
-                SetRandomPosition();
+                result = 1;
             }
             else if (targetImg.position.x >= minNormalRange.position.x && targetImg.position.x <= maxNormalRange.position.x
                 && !(targetImg.position.x > minStrongRange.position.x && targetImg.position.x < maxStrongRange.position.x))
             {
-                Debug.Log("Normal Spot");
-                ResetPosition();
-                SetRandomPosition();
+                result = 2;
             }
             else if (targetImg.position.x >= minStrongRange.position.x && targetImg.position.x <= maxStrongRange.position.x)
             {
-                Debug.Log("Strong Spot");
-                ResetPosition();
-                SetRandomPosition();
+                result = 3;
             }
             else
             {
-                Debug.Log("Failedd");
-                ResetPosition();
-                SetRandomPosition();
+                result = 0; 
             }
+
+            skillCheckState = State.WaitingCheckResult;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -122,7 +172,7 @@ public class SkillCheckQTEBossController : MonoBehaviour
     private void SetRandomPosition()
     {
         float goalOffset = backgroundImgWidth / 2;
-        float randomPosition = Random.Range(-backgroundImgWidth + goalOffset, backgroundImgWidth - goalOffset);
+        float randomPosition = UnityEngine.Random.Range(-backgroundImgWidth + goalOffset, backgroundImgWidth - goalOffset);
         weakGoalImg.localPosition = new Vector3(randomPosition + weakGoalImgWidth, backgroundImg.localPosition.y, 0);
         minWeakRange.localPosition = new Vector3(-weakGoalImgWidth, 0, 0);
         maxWeakRange.localPosition = new Vector3(weakGoalImgWidth, 0, 0);
@@ -172,7 +222,7 @@ public class SkillCheckQTEBossController : MonoBehaviour
 
         for (int i = 0; i < keysNeed; i++)
         {
-            int randomNumber = Random.Range(0, 3);
+            int randomNumber = UnityEngine.Random.Range(0, 3);
 
             if (randomNumber == 0)
             {
@@ -232,12 +282,12 @@ public class SkillCheckQTEBossController : MonoBehaviour
         if (!isFailed)
         {
             QTE_TextUI.SetText("Success");
+            qteState = State.WaitingCheckResult;
         }
         else
         {
             QTE_TextUI.SetText("Failed!!!!");
+            qteState = State.WaitingCheckResult;
         }
-
-        needGenerateKey = true;
     }
 }
