@@ -197,9 +197,9 @@ public class SkillCheckQTEBossController : MonoBehaviour
                 {
                     inputFromUser.Add(KeyCode.UpArrow);
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                else if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
-                    inputFromUser.Add(KeyCode.LeftArrow);
+                    inputFromUser.Add(KeyCode.DownArrow);
                 }
                 else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
