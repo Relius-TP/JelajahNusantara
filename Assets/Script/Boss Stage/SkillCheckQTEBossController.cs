@@ -40,6 +40,7 @@ public class SkillCheckQTEBossController : MonoBehaviour
     private bool gettingKey = false;
     private bool needGenerateKey = true;
     private bool isFailed = false;
+    private int counter;
 
     public static bool bossStun = true;
     public static event Action<int> GiveDamage;
@@ -248,6 +249,7 @@ public class SkillCheckQTEBossController : MonoBehaviour
         SetText(keys);
         gettingKey = true;
         isFailed = false;
+        counter = 0;
         inputFromUser.Clear();
     }
 

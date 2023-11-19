@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss : MonoBehaviour
@@ -125,8 +124,6 @@ public class Boss : MonoBehaviour
                 moveSpeedHor = 45;
             }
         }
-        
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

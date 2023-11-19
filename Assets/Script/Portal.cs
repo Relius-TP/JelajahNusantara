@@ -1,15 +1,23 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    [SerializeField] private int itemNeeded = 2;
+    public static bool portalOpen = false;
+    [SerializeField] private int itemNeeded = 4;
     [SerializeField] private bool isFailed = false;
     public static bool skillCheckRunning = false;
     public GameObject WinUI;
     public PlayerData playerData;
+    private Animator anim;
 
     public static Action OnSkillCheckRunning;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void OnEnable()
     {
@@ -18,6 +26,15 @@ public class Portal : MonoBehaviour
     private void OnDisable()
     {
         SkillCheckController.OnSkillCheckResults -= GetResult;
+    }
+
+    private void Update()
+    {
+        if (itemNeeded == 0)
+        {
+            anim.SetBool("Activate", true);
+            portalOpen = true;
+        }
     }
 
     private void GetResult(bool result)
@@ -36,35 +53,14 @@ public class Portal : MonoBehaviour
 
     public void OpenPortal()
     {
-        skillCheckRunning = true;
-
-        OnSkillCheckRunning?.Invoke();
-
-        if (itemNeeded == 0)
+        if(itemNeeded == 0)
         {
-            WinUI.SetActive(true);
+            SceneManager.LoadScene("BosStage");
+        }
+        else
+        {
+            skillCheckRunning = true;
+            OnSkillCheckRunning?.Invoke();
         }
     }
-
-    //IEnumerator WaitingSkillCheck()
-    //{
-    //    isFailed = false;
-    //    for(int i = 0; i < itemNeeded; i++)
-    //    {
-    //        if(isFailed)
-    //        {
-    //            Debug.Log("Gagal Buka Portal");
-    //            break;
-    //        }
-
-    //        skillCheckRunning = true;
-    //        OnSkillCheckRunning?.Invoke();
-    //        yield return new WaitWhile(() => skillCheckRunning == true);
-    //    }
-
-    //    if(!isFailed)
-    //    {
-    //        WinUI.SetActive(true);
-    //    }
-    //}
 }
