@@ -44,6 +44,7 @@ public class Boss : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         banaspati = this.transform;
         rb = GetComponent<Rigidbody2D>();
 
