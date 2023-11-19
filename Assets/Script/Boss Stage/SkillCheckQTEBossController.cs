@@ -193,17 +193,21 @@ public class SkillCheckQTEBossController : MonoBehaviour
         {
             if (Input.anyKeyDown)
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.UpArrow))
                 {
-                    inputFromUser.Add(KeyCode.E);
+                    inputFromUser.Add(KeyCode.UpArrow);
                 }
-                else if (Input.GetKeyDown(KeyCode.R))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    inputFromUser.Add(KeyCode.R);
+                    inputFromUser.Add(KeyCode.LeftArrow);
                 }
-                else if (Input.GetKeyDown(KeyCode.T))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    inputFromUser.Add(KeyCode.T);
+                    inputFromUser.Add(KeyCode.LeftArrow);
+                }
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    inputFromUser.Add(KeyCode.RightArrow);
                 }
             }
 
@@ -222,19 +226,23 @@ public class SkillCheckQTEBossController : MonoBehaviour
 
         for (int i = 0; i < keysNeed; i++)
         {
-            int randomNumber = UnityEngine.Random.Range(0, 3);
+            int randomNumber = UnityEngine.Random.Range(0, 4);
 
             if (randomNumber == 0)
             {
-                keys.Add(KeyCode.E);
+                keys.Add(KeyCode.UpArrow);
             }
             else if (randomNumber == 1)
             {
-                keys.Add(KeyCode.R);
+                keys.Add(KeyCode.DownArrow);
             }
             else if (randomNumber == 2)
             {
-                keys.Add(KeyCode.T);
+                keys.Add(KeyCode.LeftArrow);
+            }
+            else if (randomNumber == 3)
+            {
+                keys.Add(KeyCode.RightArrow);
             }
         }
         SetText(keys);
@@ -249,17 +257,21 @@ public class SkillCheckQTEBossController : MonoBehaviour
 
         foreach (KeyCode key in keys)
         {
-            if (key == KeyCode.E)
+            if (key == KeyCode.UpArrow)
             {
-                keysText += "[E]";
+                keysText += "[Up]";
             }
-            else if (key == KeyCode.R)
+            else if (key == KeyCode.DownArrow)
             {
-                keysText += "[R]";
+                keysText += "[Down]";
             }
-            else if (key == KeyCode.T)
+            else if (key == KeyCode.LeftArrow)
             {
-                keysText += "[T]";
+                keysText += "[Left]";
+            }
+            else if(key == KeyCode.RightArrow)
+            {
+                keysText += "[Right]";
             }
         }
 
