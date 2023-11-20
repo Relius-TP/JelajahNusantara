@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -6,6 +8,7 @@ public class Health : MonoBehaviour
     public int healthPoin = 3;
     public GameObject gameOverUI;
     public PlayerData playerData;
+    public Button back;
 
     private void Start()
     {
@@ -45,6 +48,8 @@ public class Health : MonoBehaviour
             gameOverUI.SetActive(true);
             Time.timeScale = 0;
         }
+
+        back.onClick.AddListener(Back);
     }
 
     private void ResetHealthUI()
@@ -61,5 +66,9 @@ public class Health : MonoBehaviour
         {
             healthPoin += i;
         }
+    }
+    void Back()
+    {
+        SceneManager.LoadScene("Main_Menu");
     }
 }
