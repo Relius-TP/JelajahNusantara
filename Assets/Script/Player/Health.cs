@@ -49,7 +49,7 @@ public class Health : MonoBehaviour
             Time.timeScale = 0;
         }
 
-        back.onClick.AddListener(Back);
+        back.onClick.AddListener(BackMain);
     }
 
     private void ResetHealthUI()
@@ -67,7 +67,7 @@ public class Health : MonoBehaviour
             healthPoin += i;
         }
     }
-    void Back()
+    void BackMain()
     {
         SceneManager.LoadScene("Main_Menu");
     }
