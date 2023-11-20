@@ -59,11 +59,11 @@ public class Player : MonoBehaviour
             light.pointLightOuterRadius = 3f;
         }
 
-        //if (MicDetection.soundValue >= minSoundValue)
-        //{
-        //    moveSpeed = 10;
-        //    detectionRadius = 10f;
-        //}
+        if (MicDetection.soundVolume >= minSoundValue)
+        {
+            moveSpeed = 10;
+            detectionRadius = 10f;
+        }
     }
 
     private void OnDrawGizmos()
