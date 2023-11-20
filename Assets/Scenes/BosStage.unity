@@ -2563,6 +2563,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 5172456678075429239, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5172456678075429239, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -32.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5932683191995883747, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2578,6 +2586,14 @@ PrefabInstance:
     - target: {fileID: 6331672959674537099, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
       propertyPath: m_Name
       value: BosStage
+      objectReference: {fileID: 0}
+    - target: {fileID: 6431921282814544854, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6431921282814544854, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32.5
       objectReference: {fileID: 0}
     - target: {fileID: 7216831620133614240, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
       propertyPath: gameOver
