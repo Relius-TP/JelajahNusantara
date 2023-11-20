@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8126039779427741890}
   - component: {fileID: 6615641945931206921}
-  - component: {fileID: 3388982753211518232}
   - component: {fileID: 7182145382297493833}
   - component: {fileID: 4811128624260201331}
   - component: {fileID: 5388623006594341802}
@@ -95,41 +94,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!70 &3388982753211518232
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4815844643482068490}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
 --- !u!50 &7182145382297493833
 Rigidbody2D:
   serializedVersion: 4
@@ -294,6 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRange: 2
   playerData: {fileID: 11400000, guid: b2908938b8f12df46a069fde614685ee, type: 2}
+  ToolTipUI: {fileID: 0}
 --- !u!114 &6185618316099911706
 MonoBehaviour:
   m_ObjectHideFlags: 0
