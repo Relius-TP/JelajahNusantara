@@ -8,12 +8,13 @@ public class Boss : MonoBehaviour
     //statistik banaspati
     private Transform banaspati;
     private Rigidbody2D rb;
-    public float moveSpeedVer = 10f;
-    public float moveSpeedHor = 5f;
+    public static float moveSpeedVer = 10f;
+    public static float moveSpeedHor = 5f;
     public float movementThreshold = 0.1f;
     [SerializeField]private int loopCount;
     
     private int bossHp = 200;
+    public static bool isTakingDamage = false;
 
     private Vector2 spawn;
     public GameObject qte;
@@ -25,8 +26,10 @@ public class Boss : MonoBehaviour
     [SerializeField] private Vector2 skill1Left;
     [SerializeField] private Vector2 skill1Right;
 
+    //skill2
     private Vector2 positionSkill2;
-    public static bool isTakingDamage = false;
+    [SerializeField] private Vector2 skill2Up;
+    [SerializeField] private Vector2 skill2Down;
 
     public float bossHealth = 200.0f;
     public Image bossHealt;
@@ -54,6 +57,9 @@ public class Boss : MonoBehaviour
         skill1Left = new Vector2(-24, -13);
         skill1Right = new Vector2(24, -13);
 
+        positionSkill2 = new Vector2(24, -14.2f);
+        skill2Up = new Vector2(transform.position.x, 10);
+        skill2Down = new Vector2(transform.position.x, -14.2f);
     }
     void Update()
     {
@@ -61,17 +67,17 @@ public class Boss : MonoBehaviour
         {
             if (loopCount <= 3)
             {
-                Invoke("Skill1Active", 5);
-                StartCoroutine(Skill1());
+                Invoke("Skill2Active", 5);
+                StartCoroutine(Skill2());
             }
             else
             {
                 StartCoroutine(Stun());
             }
         }
-        else
+        else if(bossHp < 100)
         {
-            Skill2Active();
+            //Skill2Active();
         }
 
         if (bossHealth <= 0)
@@ -111,18 +117,61 @@ public class Boss : MonoBehaviour
     {
         banaspati.transform.position = Vector2.MoveTowards(transform.position, skill1Left, moveSpeedHor * Time.deltaTime);
         moveSpeedHor = 75;
+        GetComponent<SpriteRenderer>().flipX = true;
     }
     void Skill1Right()
     {
         banaspati.transform.position = Vector2.MoveTowards(transform.position, skill1Right, moveSpeedHor * Time.deltaTime);
         moveSpeedHor = 75;
+        GetComponent<SpriteRenderer>().flipX = false;
     }
 
-
+    IEnumerator Skill2()
+    {
+        if (banaspati.transform.position.y == skill2Down.y)
+        {
+            yield return new WaitForSeconds(1f);
+            Skill2Up();
+        }
+        if (banaspati.transform.position.y == skill2Up.y)
+        {
+            yield return new WaitForSeconds(1f);
+            Skill2Down();
+        }
+    }
     void Skill2Active()
     {
-
+        if (banaspati.position.x != positionSkill2.x && banaspati.position.y != positionSkill2.y)
+        {
+            banaspati.transform.position = Vector2.MoveTowards(transform.position, positionSkill2, moveSpeedHor * Time.deltaTime);
+            moveSpeedHor = 45;
+        }
     }
+    void Skill2Up()
+    {
+        if (banaspati.GetComponent<SpriteRenderer>().flipX == false)
+        {
+            banaspati.transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x - 1, transform.position.y + 5), moveSpeedVer * Time.deltaTime);
+        }
+        else if(banaspati.GetComponent<SpriteRenderer>().flipX == true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + 1, transform.position.y + 5), moveSpeedVer * Time.deltaTime);
+        }
+        
+    }
+
+    void Skill2Down()
+    {
+        if (banaspati.GetComponent<SpriteRenderer>().flipX == false)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x - 1, transform.position.y - 5), moveSpeedVer * Time.deltaTime);
+        }
+        else if (banaspati.GetComponent<SpriteRenderer>().flipX == true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + 1, transform.position.y - 5), moveSpeedVer * Time.deltaTime);
+        }
+    }
+
 
     IEnumerator Stun()
     {
@@ -182,9 +231,11 @@ public class Boss : MonoBehaviour
         }
     }
 
+
     public void TakeDamage(float damage)
     {
         bossHealth -= damage;
         bossHealt.fillAmount = bossHealth / 200f;
     }
+
 }
