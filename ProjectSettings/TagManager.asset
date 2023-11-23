@@ -19,6 +19,8 @@ TagManager:
   - Skill1Right
   - BossSkill1
   - Boss
+  - LeftWall
+  - RightWall
   layers:
   - Default
   - TransparentFX

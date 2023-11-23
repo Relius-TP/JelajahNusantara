@@ -8,7 +8,7 @@ public class Boss : MonoBehaviour
     //statistik banaspati
     private Transform banaspati;
     private Rigidbody2D rb;
-    public static float moveSpeedVer = 10f;
+    public static float moveSpeedVer = 100f;
     public static float moveSpeedHor = 5f;
     public float movementThreshold = 0.1f;
     [SerializeField]private int loopCount;
@@ -30,6 +30,8 @@ public class Boss : MonoBehaviour
     private Vector2 positionSkill2;
     [SerializeField] private Vector2 skill2Up;
     [SerializeField] private Vector2 skill2Down;
+    [SerializeField]private bool skill2UpActive;
+    [SerializeField]private bool skill2DownActive;
 
     public float bossHealth = 200.0f;
     public Image bossHealt;
@@ -57,9 +59,11 @@ public class Boss : MonoBehaviour
         skill1Left = new Vector2(-24, -13);
         skill1Right = new Vector2(24, -13);
 
-        positionSkill2 = new Vector2(24, -14.2f);
-        skill2Up = new Vector2(transform.position.x, 10);
-        skill2Down = new Vector2(transform.position.x, -14.2f);
+        positionSkill2 = new Vector2(24, -14);
+        skill2Up = new Vector2(0, 10);
+        skill2Down = new Vector2(0, -14);
+        skill2UpActive = false;
+        skill2DownActive = false;
     }
     void Update()
     {
@@ -67,7 +71,6 @@ public class Boss : MonoBehaviour
         {
             if (loopCount <= 3)
             {
-                Invoke("Skill2Active", 5);
                 StartCoroutine(Skill2());
             }
             else
@@ -85,11 +88,11 @@ public class Boss : MonoBehaviour
             winScene.SetActive(true);
             Time.timeScale = 0;
         }
-    }
+    }/*
     bool isMoving()
     {
         return rb.velocity.magnitude > movementThreshold;
-    }
+    }*/
 
     IEnumerator Skill1()
     {
@@ -126,36 +129,57 @@ public class Boss : MonoBehaviour
         GetComponent<SpriteRenderer>().flipX = false;
     }
 
+
+
     IEnumerator Skill2()
     {
         if (banaspati.transform.position.y == skill2Down.y)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.35f);
+            moveSpeedVer = 100;
             Skill2Up();
+            if (banaspati.transform.position.y == skill2Up.y)
+            {
+                skill2UpActive = true;
+                skill2DownActive = false;
+            }
         }
         if (banaspati.transform.position.y == skill2Up.y)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.35f);
+            moveSpeedVer = 100;
             Skill2Down();
+            if (banaspati.transform.position.y == skill2Down.y)
+            {
+                skill2UpActive = false;
+                skill2DownActive = true;
+            }
+            
         }
-    }
-    void Skill2Active()
-    {
-        if (banaspati.position.x != positionSkill2.x && banaspati.position.y != positionSkill2.y)
+        if (skill2UpActive == false && skill2DownActive == false)
         {
-            banaspati.transform.position = Vector2.MoveTowards(transform.position, positionSkill2, moveSpeedHor * Time.deltaTime);
+            yield return new WaitForSeconds(0.1f);
             moveSpeedHor = 45;
+            banaspati.transform.position = Vector2.MoveTowards(transform.position, positionSkill2, moveSpeedHor * Time.deltaTime);
+            if (banaspati.transform.position.x == positionSkill2.x && banaspati.transform.position.y == positionSkill2.y)
+            {
+                moveSpeedVer = 0;
+                yield return new WaitForSeconds(3f);
+                skill2UpActive = true;
+            }
+            
         }
+       
     }
     void Skill2Up()
     {
         if (banaspati.GetComponent<SpriteRenderer>().flipX == false)
         {
-            banaspati.transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x - 1, transform.position.y + 5), moveSpeedVer * Time.deltaTime);
+            banaspati.transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x - 0.2f, 10), moveSpeedVer * Time.deltaTime);
         }
         else if(banaspati.GetComponent<SpriteRenderer>().flipX == true)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + 1, transform.position.y + 5), moveSpeedVer * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + 0.2f, 10), moveSpeedVer * Time.deltaTime);
         }
         
     }
@@ -164,11 +188,11 @@ public class Boss : MonoBehaviour
     {
         if (banaspati.GetComponent<SpriteRenderer>().flipX == false)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x - 1, transform.position.y - 5), moveSpeedVer * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x - 0.2f, -14), moveSpeedVer * Time.deltaTime);
         }
         else if (banaspati.GetComponent<SpriteRenderer>().flipX == true)
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + 1, transform.position.y - 5), moveSpeedVer * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(transform.position.x + 0.2f, -14), moveSpeedVer * Time.deltaTime);
         }
     }
 
@@ -187,9 +211,10 @@ public class Boss : MonoBehaviour
                 banaspati.transform.position = Vector2.MoveTowards(transform.position, spawn, moveSpeedHor * Time.deltaTime);
                 if (banaspati.transform.position.x == spawn.x && banaspati.transform.position.y == spawn.y)
                 {
+                    yield return new WaitForSeconds(1f);
                     loopCount = 0;
-                    banaspati.transform.position = Vector2.MoveTowards(transform.position, positionSkill1, moveSpeedHor * Time.deltaTime);
-                    moveSpeedHor = 45;
+                    skill2UpActive = false;
+                    skill2DownActive = false;
                 }
             }
         }
@@ -204,9 +229,10 @@ public class Boss : MonoBehaviour
                 banaspati.transform.position = Vector2.MoveTowards(transform.position, spawn, moveSpeedHor * Time.deltaTime);
                 if (banaspati.transform.position.x == spawn.x && banaspati.transform.position.y == spawn.y)
                 {
+                    yield return new WaitForSeconds(1f);
                     loopCount = 0;
-                    banaspati.transform.position = Vector2.MoveTowards(transform.position, positionSkill1, moveSpeedHor * Time.deltaTime);
-                    moveSpeedHor = 45;
+                    skill2UpActive = false;
+                    skill2DownActive = false;
                 }
             }
         }
@@ -227,6 +253,16 @@ public class Boss : MonoBehaviour
         }
         if (collision.gameObject.tag == "Skill1Right")
         {
+            loopCount += 1;
+        }
+        if (collision.gameObject.tag == "LeftWall")
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+            loopCount += 1;
+        }
+        if (collision.gameObject.tag == "RightWall")
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
             loopCount += 1;
         }
     }
