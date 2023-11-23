@@ -139,40 +139,19 @@ TextureImporter:
       name: SkillCheck_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 26
-        width: 58
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 3, y: 3, z: 3, w: 3}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5384cd86156887d44bae56c9dabcd0fe
-      internalID: -1740124183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SkillCheck_1
-      rect:
-        serializedVersion: 2
-        x: 88
-        y: 29
-        width: 6
-        height: 6
+        x: 0
+        y: 0
+        width: 0
+        height: 0
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 77004765ae7f2354eb834735fb42d31c
-      internalID: 1841320072
+      spriteID: 2387a3f1be47ce8f0800000000000000
+      internalID: -509904104609646542
       vertices: []
       indices: 
       edges: []
@@ -180,7 +159,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -188,8 +167,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SkillCheck_0: -1740124183
-      SkillCheck_1: 1841320072
+      SkillCheck_0: -509904104609646542
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

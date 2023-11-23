@@ -150,71 +150,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a36899811bd10da4b8dc79a5d21218c8
-      internalID: 222497361
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: StoneQTE_1
-      rect:
-        serializedVersion: 2
-        x: 33
-        y: 32
-        width: 14
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72c155cd0f07bbe49871260bb8bf1dd3
-      internalID: 879164101
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: StoneQTE_2
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 17
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c260316d107d6cd47a2e925be5a81c1b
-      internalID: -411765896
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: StoneQTE_3
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 16
-        width: 14
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3ff0aeeb78ff0f4479b9299a9df52ae9
-      internalID: -253124734
+      spriteID: 8bd11ec4447bd4a60800000000000000
+      internalID: 7659980045202562488
       vertices: []
       indices: 
       edges: []
@@ -222,7 +159,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -230,10 +167,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      StoneQTE_0: 222497361
-      StoneQTE_1: 879164101
-      StoneQTE_2: -411765896
-      StoneQTE_3: -253124734
+      StoneQTE_0: 7659980045202562488
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

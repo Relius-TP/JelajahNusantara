@@ -587,7 +587,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.6875, y: 6.454468}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -614,9 +614,6 @@ MonoBehaviour:
   checkSkill1Right: {fileID: 2564945921315674468}
   skill1Left: {x: -31, y: -11}
   skill1Right: {x: 31, y: -11}
-  Bot: {fileID: 0}
-  Up: {fileID: 0}
-  WallDec: {fileID: 0}
   bossHealth: 200
   bossHealt: {fileID: 0}
   winScene: {fileID: 0}
@@ -657,7 +654,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
     oldSize: {x: 4.6875, y: 6.454468}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 4.6875, y: 6.454468}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

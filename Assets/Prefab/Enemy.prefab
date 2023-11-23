@@ -116,7 +116,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.21875, y: 0.765625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a29ad400490c64387283c77dcacd68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 8126039779427741890, guid: 05a3afe18be1fd84db2936ec9a6e881b, type: 3}
+  target: {fileID: 7393553941725394965, guid: 05a3afe18be1fd84db2936ec9a6e881b, type: 3}
   startPosition: {fileID: 1109569145265241087}
 --- !u!114 &2467195986489438843
 MonoBehaviour:
@@ -244,6 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11445de8f4097aa49976d0c3f55901a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWalking: 0
 --- !u!95 &4621103379458405887
 Animator:
   serializedVersion: 5

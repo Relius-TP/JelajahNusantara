@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3358660417062027283}
-  - component: {fileID: 5542848432705189853}
   m_Layer: 5
   m_Name: RightArrow
   m_TagString: Untagged
@@ -38,18 +37,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5542848432705189853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4616358579151597901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b35550282b384b48a2a7b6bdc5085de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7187746652534290002
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,7 +72,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0, y: 0}
-  m_SizeDelta: {x: 32, y: 25}
+  m_SizeDelta: {x: 28.125, y: 21.875}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6308338655988050320
 CanvasRenderer:
@@ -115,7 +102,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 59666812, guid: bc10594f975b4fc4f9dee8f2a9e1171f, type: 3}
+  m_Sprite: {fileID: -535718939, guid: bc10594f975b4fc4f9dee8f2a9e1171f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -190,7 +177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 222497361, guid: eed1d78ca446f2049b5ee9acfd1ca770, type: 3}
+  m_Sprite: {fileID: -521425391, guid: eed1d78ca446f2049b5ee9acfd1ca770, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

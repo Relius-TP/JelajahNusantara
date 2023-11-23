@@ -150,71 +150,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: acde0a8cd99626343b52a1533980c4d2
-      internalID: -1202793101
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArrowKey_1
-      rect:
-        serializedVersion: 2
-        x: 89
-        y: 23
-        width: 14
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 51161c6b25d7e8f4ea531372a6994e6e
-      internalID: 1221509087
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArrowKey_2
-      rect:
-        serializedVersion: 2
-        x: 151
-        y: 25
-        width: 18
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fff1a01bbf4a463409c9cb1125b7d003
-      internalID: -1188869814
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ArrowKey_3
-      rect:
-        serializedVersion: 2
-        x: 214
-        y: 26
-        width: 18
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0136f4dbbd1f3f441af285c5aa48ae77
-      internalID: 59666812
+      spriteID: da2ecf3d3b24aa350800000000000000
+      internalID: 6028704391311975085
       vertices: []
       indices: 
       edges: []
@@ -222,7 +159,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -230,10 +167,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ArrowKey_0: -1202793101
-      ArrowKey_1: 1221509087
-      ArrowKey_2: -1188869814
-      ArrowKey_3: 59666812
+      ArrowKey_0: 6028704391311975085
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
