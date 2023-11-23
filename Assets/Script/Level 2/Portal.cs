@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
@@ -38,10 +39,6 @@ public class Portal : MonoBehaviour
 
     public void OpenPortal()
     {
-        skillCheckRunning = true;
-
-        OnSkillCheckRunning?.Invoke();
-
         if (itemNeeded == 0)
         {
             SceneManager.LoadScene("BosStage");
@@ -51,26 +48,4 @@ public class Portal : MonoBehaviour
             GameManager.Instance.PlayerGetItem();
         }
     }
-
-    //IEnumerator WaitingSkillCheck()
-    //{
-    //    isFailed = false;
-    //    for(int i = 0; i < itemNeeded; i++)
-    //    {
-    //        if(isFailed)
-    //        {
-    //            Debug.Log("Gagal Buka Portal");
-    //            break;
-    //        }
-
-    //        skillCheckRunning = true;
-    //        OnSkillCheckRunning?.Invoke();
-    //        yield return new WaitWhile(() => skillCheckRunning == true);
-    //    }
-
-    //    if(!isFailed)
-    //    {
-    //        WinUI.SetActive(true);
-    //    }
-    //}
 }
