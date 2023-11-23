@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c3e5c08ab177b4c9e613b171e4e922, type: 3}
   m_Name: playerData
   m_EditorClassIdentifier: 
-  isHoldingKey: 0
+  hero_name: Default
+  hero_speed: 3
+  hero_visionRange: 7
+  hero_health: 3
