@@ -156,10 +156,73 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: StoneQTE_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 32
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f78909c7a707dab42b3d75f4fa826697
+      internalID: -1096887500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StoneQTE_2
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 17
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f79c882da3fcbb142a8e320e9f40150b
+      internalID: 1319737426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StoneQTE_3
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 16
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71705724c0a46f9478eb12d0f0cc8f73
+      internalID: 1203024963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4ec896992c5966b4aaa8218ec6664fc8
     internalID: 0
     vertices: []
     indices: 
@@ -168,6 +231,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       StoneQTE_0: 7659980045202562488
+      StoneQTE_1: -1096887500
+      StoneQTE_2: 1319737426
+      StoneQTE_3: 1203024963
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

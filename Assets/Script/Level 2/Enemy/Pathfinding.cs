@@ -5,7 +5,6 @@ public class Pathfinding : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] Transform startPosition;
-    private AnimationHandler animHandler;
 
     NavMeshAgent agent;
 
@@ -14,7 +13,6 @@ public class Pathfinding : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
-        animHandler = GetComponent<AnimationHandler>();
     }
 
     void Update()
@@ -22,11 +20,6 @@ public class Pathfinding : MonoBehaviour
         if (Vector2.Distance(transform.position, target.position) <= PlayerMovement.detectionRadius)
         {
             agent.SetDestination(target.position);
-            animHandler.isWalking = true;
-        }
-        else if (Vector2.Distance(gameObject.transform.position, startPosition.position) <= 3f)
-        {
-            animHandler.isWalking = false;
         }
         else
         {
