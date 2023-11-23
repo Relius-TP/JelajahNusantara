@@ -210,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42911951}
   serializedVersion: 2
-  m_LocalRotation: {x: 3e-45, y: 1e-45, z: 0, w: 1}
+  m_LocalRotation: {x: -1e-45, y: 1e-45, z: 0, w: 1}
   m_LocalPosition: {x: 0.63, y: 13.57, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -16479,6 +16479,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillCheck
       objectReference: {fileID: 0}
+    - target: {fileID: 3351924858379341193, guid: b0384a32c97466149b3f3f1ed0ebd1ab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -509904104609646542, guid: ceed5ea13ba4cee469f0d7fa6667e633, type: 3}
+    - target: {fileID: 3529320247876507057, guid: b0384a32c97466149b3f3f1ed0ebd1ab, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529320247876507057, guid: b0384a32c97466149b3f3f1ed0ebd1ab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 759336871, guid: ceed5ea13ba4cee469f0d7fa6667e633, type: 3}
+    - target: {fileID: 3743472273472149238, guid: b0384a32c97466149b3f3f1ed0ebd1ab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2033256079, guid: ceed5ea13ba4cee469f0d7fa6667e633, type: 3}
     - target: {fileID: 5629796459762428988, guid: b0384a32c97466149b3f3f1ed0ebd1ab, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -16817,7 +16833,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079252733}
   serializedVersion: 2
-  m_LocalRotation: {x: 3e-45, y: 1e-45, z: -0, w: 1}
+  m_LocalRotation: {x: -1e-45, y: 1e-45, z: 0, w: 1}
   m_LocalPosition: {x: 0.63, y: 13.57, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19419,11 +19435,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 2
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96

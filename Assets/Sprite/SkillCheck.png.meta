@@ -139,12 +139,12 @@ TextureImporter:
       name: SkillCheck_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
+        x: 75
+        y: 45
+        width: 17
+        height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -156,10 +156,52 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: SkillCheck_1
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 26
+        width: 58
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 3, y: 4, z: 3, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 586d31a001a9d2b4b8e9269c9bc8a2f8
+      internalID: 759336871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SkillCheck_2
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 29
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 463f14a0966acd245bdcd8cad06b0c98
+      internalID: -2033256079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 464ba1de4f3201f45aeeba11891ed264
     internalID: 0
     vertices: []
     indices: 
@@ -168,6 +210,8 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       SkillCheck_0: -509904104609646542
+      SkillCheck_1: 759336871
+      SkillCheck_2: -2033256079
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
