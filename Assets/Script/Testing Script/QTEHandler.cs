@@ -1,10 +1,12 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class QTEHandler : MonoBehaviour
 {
+    public static QTEHandler instance;
+
     [SerializeField] private List<GameObject> KeyPrefab;
     [SerializeField] private Transform KeyBoxUI;
     [SerializeField] private TMP_Text timerText;
@@ -15,10 +17,21 @@ public class QTEHandler : MonoBehaviour
     private List<GameObject> spawnedArrows = new List<GameObject>();
     private QTEState qteState;
 
+    public static event Action<QTEState> OnStateChanged;
+    public static event Action<QTEState> OnQTEResult;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+
     void Start()
     {
         qte = new QTE();
-        UpdateQTEState(QTEState.InProgress);
+        UpdateQTEState(QTEState.Ended);
     }
 
     private void Update()
@@ -44,6 +57,23 @@ public class QTEHandler : MonoBehaviour
         }
     }
 
+    public void StartQTE(BossState state)
+    {
+        if (state == BossState.Stunned)
+        {
+            if(qte.ListCount() > 0)
+            {
+                ResetStatus();
+            }
+            UpdateQTEState(QTEState.InProgress);
+        }
+        else if(state != BossState.Stunned) 
+        {
+            UpdateQTEState(QTEState.Ended);
+            ResetStatus();
+        }
+    }
+
     private void UpdateQTEState(QTEState state)
     {
         qteState = state;
@@ -59,6 +89,8 @@ public class QTEHandler : MonoBehaviour
             case QTEState.Failure:
                 HandleFailureState();
                 break;
+            case QTEState.Ended:
+                break;
         }
     }
 
@@ -66,32 +98,25 @@ public class QTEHandler : MonoBehaviour
     {
         qte.GenerateRandomKey(keysNeed);
         SetArrowUI();
-        StartCoroutine(FailedOn(time));
         UpdateQTEState(QTEState.WaitUserInput);
     }
 
     private void HandleSuccessState()
     {
         ResetStatus();
+        OnStateChanged?.Invoke(QTEState.Success);
     }
 
     private void HandleFailureState()
     {
-        qte.ResetList();
         ResetStatus();
-    }
-
-    private void HandlerEnded()
-    {
-        StopAllCoroutines();
-        DestroySpawnedArrows();
+        OnStateChanged?.Invoke(QTEState.Failure);
     }
 
     private void ResetStatus()
     {
-        StopAllCoroutines();
+        qte.ResetList();
         DestroySpawnedArrows();
-        UpdateQTEState(QTEState.InProgress);
     }
 
     private void SetArrowUI()
@@ -144,17 +169,5 @@ public class QTEHandler : MonoBehaviour
             return KeyCode.RightArrow;
 
         return KeyCode.None;
-    }
-
-    IEnumerator FailedOn(float duration)
-    {
-        float timer = duration;
-        while (timer > 0)
-        {
-            timerText.SetText(timer.ToString());
-            yield return new WaitForSeconds(1f);
-            timer--;
-        }
-        UpdateQTEState(QTEState.Failure);
     }
 }

@@ -46,7 +46,7 @@ public class Portal : MonoBehaviour
     {
         if (itemNeeded == 0)
         {
-            SceneManager.LoadScene("BosStage");
+            SceneManager.LoadScene("LastStage");
         }
         else
         {

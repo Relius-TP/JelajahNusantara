@@ -21,7 +21,7 @@ public class CanvasHandler : MonoBehaviour
 
     private void UpdateCanvasUI(GameState state)
     {
-        //pauseMenuUI.SetActive(state == GameState.GamePaused);
+        pauseMenuUI.SetActive(state == GameState.GamePaused);
         loseUI.SetActive(state == GameState.PlayerDie);
         qteUI.SetActive(state == GameState.GetCaught);
         skillCheckUI.SetActive(state == GameState.GetItem);

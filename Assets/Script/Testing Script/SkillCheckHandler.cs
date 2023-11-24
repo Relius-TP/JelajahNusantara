@@ -1,7 +1,10 @@
+using System;
 using UnityEngine;
 
 public class SkillCheckHandler : MonoBehaviour
 {
+    public static SkillCheckHandler instance;
+
     [Header("Skill Check Settings")]
     [SerializeField] private RectTransform backgroundImg;
     [SerializeField] private RectTransform targetImg;
@@ -26,12 +29,21 @@ public class SkillCheckHandler : MonoBehaviour
 
     private SkillCheckState state;
 
+    public static event Action<float> OnStateChange;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+
     private void Start()
     {
         backgroundImgWidth = backgroundImg.rect.width / 2;
         targetImgWidth = targetImg.rect.width / 2;
-
-        UpdateSkillCheckState(SkillCheckState.ResetStat);
+        UpdateSkillCheckState(SkillCheckState.None);
     }
 
     private void Update()
@@ -39,6 +51,18 @@ public class SkillCheckHandler : MonoBehaviour
         if(state == SkillCheckState.InProgress)
         {
             SkillCheckStart();
+        }
+    }
+
+    public void StartSkillCheck(BossState state)
+    {
+        if(state == BossState.Stunned)
+        {
+            UpdateSkillCheckState(SkillCheckState.ResetStat);
+        }
+        else if(state != BossState.Stunned)
+        {
+            UpdateSkillCheckState(SkillCheckState.None);
         }
     }
 
@@ -61,27 +85,26 @@ public class SkillCheckHandler : MonoBehaviour
 
     private void CheckResult()
     {
+        UpdateSkillCheckState(SkillCheckState.None);
         if (targetImg.position.x >= minWeakRange.position.x & targetImg.position.x <= maxWeakRange.position.x
                     && !(targetImg.position.x > minNormalRange.position.x && targetImg.position.x < maxNormalRange.position.x)
                     && !(targetImg.position.x > minStrongRange.position.x && targetImg.position.x < maxStrongRange.position.x))
         {
-            result = 1;
+            OnStateChange?.Invoke(10f);
         }
         else if (targetImg.position.x >= minNormalRange.position.x && targetImg.position.x <= maxNormalRange.position.x
             && !(targetImg.position.x > minStrongRange.position.x && targetImg.position.x < maxStrongRange.position.x))
         {
-            result = 2;
+            OnStateChange?.Invoke(20f);
         }
         else if (targetImg.position.x >= minStrongRange.position.x && targetImg.position.x <= maxStrongRange.position.x)
         {
-            result = 3;
+            OnStateChange?.Invoke(35f);
         }
         else
         {
-            result = 0;
+            OnStateChange?.Invoke(0f);
         }
-
-        UpdateSkillCheckState(SkillCheckState.ResetStat);
     }
 
     private void SkillCheckStart()
@@ -90,7 +113,6 @@ public class SkillCheckHandler : MonoBehaviour
         {
             if (targetImg.localPosition.x + targetImgWidth < backgroundImgWidth)
             {
-                
                 targetImg.transform.Translate(Vector3.right * Time.deltaTime * targetSpeed);
             }
             else

@@ -1,5 +1,6 @@
 public enum SkillCheckState
 {
+    None,
     InProgress,
     ResetStat,
     Ended,

@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -34,6 +35,18 @@ public class GameManager : MonoBehaviour
         UpdateGameState(GameState.NotCaught);
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape) && state != GameState.GamePaused)
+        {
+            UpdateGameState(GameState.GamePaused);
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && state == GameState.GamePaused)
+        {
+            UpdateGameState(GameState.NotCaught);
+        }
+    }
+
     public void UpdateGameState(GameState newState)
     {
         state = newState;
@@ -51,9 +64,17 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.PlayerDie:
                 break;
+            case GameState.GamePaused:
+                GamePauseHandler();
+                break;
         }
 
         GameStateChanged?.Invoke(newState);
+    }
+
+    private void GamePauseHandler()
+    {
+        Time.timeScale = 0f;
     }
 
     private void NotCaughtHandler()
@@ -82,5 +103,10 @@ public class GameManager : MonoBehaviour
             UpdateGameState(GameState.GetItem);
             skillCheckController.StartSkillCheck();
         }
+    }
+
+    public void ChangeScene(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 }
