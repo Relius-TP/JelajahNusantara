@@ -19,11 +19,16 @@ public class Portal : MonoBehaviour
         SkillCheckController.OnSkillCheckResults -= GetResult;
     }
 
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     private void Update()
     {
         if (itemNeeded == 0)
         {
-            anim.SetBool("Activate", true);
+            anim.SetBool("Activated", true);
             portalOpen = true;
         }
     }

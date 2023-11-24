@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
 
     private Light2D playerLight;
+    private Animator animator;
 
     private InputSystem inputSystem;
     private Vector2 direction;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private float tempVision;
 
     public static float detectionRadius;
+
     public static event Action<bool> OnWalk;
 
     private void OnEnable()
@@ -34,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         playerLight = GetComponentInChildren<Light2D>();
         playerRb = GetComponent<Rigidbody2D>();
         inputSystem = new InputSystem();
@@ -47,24 +50,46 @@ public class PlayerMovement : MonoBehaviour
     {
         direction = inputSystem.Player.Movement.ReadValue<Vector2>().normalized;
 
-        if(inputSystem.Player.Run.ReadValue<float>() == 1f)
+        Move();
+
+        playerLight.pointLightOuterRadius = detectionRadius;
+        playerRb.velocity = new Vector2(direction.x * speed, direction.y * speed);
+    }
+
+    private void Move()
+    {
+        if (inputSystem.Player.Run.ReadValue<float>() == 1f)
         {
             speed = runSpeed + tempSpeed;
         }
-        else if(MicDetection.soundVolume >= 2f)
+        else if (MicDetection.soundVolume >= 2f)
         {
             speed = screamSpeed + tempSpeed;
             detectionRadius = newDetectionRange + 3f + tempVision;
+        }
+        else if (direction != Vector2.zero)
+        {
+            speed = playerData.hero_speed + tempSpeed;
+            detectionRadius = newDetectionRange + tempVision;
         }
         else
         {
             speed = playerData.hero_speed + tempSpeed;
             detectionRadius = newDetectionRange + tempVision;
         }
-
-        playerLight.pointLightOuterRadius = detectionRadius;
-        playerRb.velocity = new Vector2(direction.x * speed, direction.y * speed);
     }
+
+    //private void PlayAnimation(string animationPrefix)
+    //{
+    //    if (direction.y > 0)
+    //    {
+    //        animator.SetTrigger(animationPrefix + "Up");
+    //    }
+    //    else if (direction.y < 0)
+    //    {
+    //        animator.SetTrigger(animationPrefix + "Down");
+    //    }
+    //}
 
     private void OnDrawGizmos()
     {
