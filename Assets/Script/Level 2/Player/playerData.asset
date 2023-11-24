@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hero_name: Default
   hero_speed: 3
-  hero_visionRange: 7
+  hero_visionRange: 3
   hero_health: 3

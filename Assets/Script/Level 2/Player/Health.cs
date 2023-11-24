@@ -4,7 +4,6 @@ public class Health : MonoBehaviour
 {
     public GameObject[] healthICon;
     public int healthPoin = 3;
-    public GameObject gameOverUI;
     public PlayerData playerData;
 
     private void Start()
@@ -54,6 +53,15 @@ public class Health : MonoBehaviour
         if(healthPoin != playerData.hero_health)
         {
             healthPoin += i;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("LifePotion"))
+        {
+            GetLifePotion(1);
+            Destroy(collision.gameObject);
         }
     }
 }

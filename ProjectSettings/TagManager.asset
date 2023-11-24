@@ -21,6 +21,7 @@ TagManager:
   - Boss
   - LeftWall
   - RightWall
+  - Obstacle
   layers:
   - Default
   - TransparentFX

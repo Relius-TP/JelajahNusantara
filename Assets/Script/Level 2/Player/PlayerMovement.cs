@@ -1,42 +1,43 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerData playerData;
+    [SerializeField] private float speed;
+
+    private Light2D playerLight;
+
     private InputSystem inputSystem;
     private Vector2 direction;
     private Transform playerPos;
-    public static float detectionRadius;
-    [SerializeField] private float speed;
     private float runSpeed;
     private float screamSpeed;
-    [SerializeField] private PlayerData playerData;
     private float newDetectionRange;
+    private float tempSpeed;
+    private float tempVision;
 
-    private Animator anim;
-
+    public static float detectionRadius;
     public static event Action<bool> OnWalk;
 
     private void OnEnable()
     {
         inputSystem.Player.Enable();
-        PotionDetection.GetSpeedPotion += GetSpeedPotion;
-        PotionDetection.GetVisionPotion += GetVisionPotion;
     }
 
     private void OnDisable()
     {
         inputSystem.Player.Disable();
-        PotionDetection.GetSpeedPotion -= GetSpeedPotion;
-        PotionDetection.GetVisionPotion -= GetVisionPotion;
     }
 
     private void Awake()
     {
+        playerLight = GetComponentInChildren<Light2D>();
         playerPos = GetComponent<Transform>();
         inputSystem = new InputSystem();
-        detectionRadius = playerData.hero_visionRange;
+        newDetectionRange = playerData.hero_visionRange;
         speed = playerData.hero_speed;
         runSpeed = speed + 2;
         screamSpeed = speed + 4;
@@ -48,19 +49,20 @@ public class PlayerMovement : MonoBehaviour
 
         if(inputSystem.Player.Run.ReadValue<float>() == 1f)
         {
-            speed = runSpeed;
+            speed = runSpeed + tempSpeed;
         }
         else if(MicDetection.soundVolume >= 2f)
         {
-            speed = screamSpeed;
-            detectionRadius = newDetectionRange + 3f;
+            speed = screamSpeed + tempSpeed;
+            detectionRadius = newDetectionRange + 3f + tempVision;
         }
         else
         {
-            speed = playerData.hero_speed;
-            detectionRadius = newDetectionRange;
+            speed = playerData.hero_speed + tempSpeed;
+            detectionRadius = newDetectionRange + tempVision;
         }
 
+        playerLight.pointLightOuterRadius = detectionRadius;
         playerPos.Translate(speed * Time.deltaTime * direction);
     }
 
@@ -78,29 +80,31 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void GetVisionPotion(float effect, float duration)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        newDetectionRange += effect;
-        StartCoroutine(ResetVisionStatus(effect, duration));
+        if (collision.CompareTag("SpeedPotion")){
+            Destroy(collision.gameObject);
+            tempSpeed = 2f;
+            StartCoroutine(EffectTimeSpeed(5f));
+        }
+
+        if (collision.CompareTag("VisionPotion"))
+        {
+            Destroy(collision.gameObject);
+            tempVision = 2f;
+            StartCoroutine(EffectTimeVision(5f));
+        }
     }
 
-    IEnumerator ResetVisionStatus(float effect, float duration)
+    IEnumerator EffectTimeSpeed(float time)
     {
-        yield return new WaitForSeconds(duration);
-        newDetectionRange -= effect;
+        yield return new WaitForSeconds(time);
+        tempSpeed = 0;
     }
 
-    private void GetSpeedPotion(float effect, float duration)
+    IEnumerator EffectTimeVision(float time)
     {
-        runSpeed += effect;
-        screamSpeed += effect;
-        StartCoroutine(ResetSpeedStatus(effect, duration));
-    }
-
-    IEnumerator ResetSpeedStatus(float effect, float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        runSpeed -= effect;
-        screamSpeed -= effect;
+        yield return new WaitForSeconds(time);
+        tempVision = 0;
     }
 }
