@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     private InputSystem inputSystem;
     private Vector2 direction;
-    private Transform playerPos;
+    private Rigidbody2D playerRb;
     private float runSpeed;
     private float screamSpeed;
     private float newDetectionRange;
@@ -35,17 +35,17 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         playerLight = GetComponentInChildren<Light2D>();
-        playerPos = GetComponent<Transform>();
+        playerRb = GetComponent<Rigidbody2D>();
         inputSystem = new InputSystem();
         newDetectionRange = playerData.hero_visionRange;
         speed = playerData.hero_speed;
-        runSpeed = speed + 2;
-        screamSpeed = speed + 4;
+        runSpeed = speed + 1;
+        screamSpeed = speed + 3;
     }
 
     private void Update()
     {
-        direction = inputSystem.Player.Movement.ReadValue<Vector2>();
+        direction = inputSystem.Player.Movement.ReadValue<Vector2>().normalized;
 
         if(inputSystem.Player.Run.ReadValue<float>() == 1f)
         {
@@ -63,7 +63,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         playerLight.pointLightOuterRadius = detectionRadius;
-        playerPos.Translate(speed * Time.deltaTime * direction);
+        playerRb.velocity = new Vector2(direction.x * speed, direction.y * speed);
     }
 
     private void OnDrawGizmos()
@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.CompareTag("SpeedPotion")){
             Destroy(collision.gameObject);
-            tempSpeed = 2f;
+            tempSpeed = 3f;
             StartCoroutine(EffectTimeSpeed(5f));
         }
 

@@ -20677,6 +20677,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1799184474}
     - target: {fileID: 697931696932562060, guid: b31748bf9f821f74592b8aa45c87ec48, type: 3}
+      propertyPath: cursorSpeed
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 697931696932562060, guid: b31748bf9f821f74592b8aa45c87ec48, type: 3}
       propertyPath: targetCursor
       value: 
       objectReference: {fileID: 426585900}
@@ -27972,6 +27976,10 @@ PrefabInstance:
     - target: {fileID: 7572890986559228831, guid: 05a3afe18be1fd84db2936ec9a6e881b, type: 3}
       propertyPath: m_PointLightOuterRadius
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8999524469865678245, guid: 05a3afe18be1fd84db2936ec9a6e881b, type: 3}
+      propertyPath: speed
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
