@@ -123,6 +123,25 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &49029284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5009987981598737936, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
+  m_PrefabInstance: {fileID: 8967603782950584956}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &49029291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49029284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a5f58cae09b3741afabd9b2b7c315f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: {fileID: 1669783355}
+  maxSize: 200
 --- !u!1 &144954988
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +408,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170532126}
   m_CullTransparentMesh: 1
+--- !u!1 &293704303 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3612374198739980817, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
+  m_PrefabInstance: {fileID: 8967603782950584956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &303226786
 GameObject:
   m_ObjectHideFlags: 0
@@ -1600,6 +1624,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640798198}
   m_CullTransparentMesh: 1
+--- !u!224 &1669783355 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7216490907473947402, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
+  m_PrefabInstance: {fileID: 8967603782950584956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1966330571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,14 +2031,30 @@ PrefabInstance:
       propertyPath: winScene
       value: 
       objectReference: {fileID: 2146918222}
+    - target: {fileID: 444640519777687916, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
+      propertyPath: skill1checker
+      value: 
+      objectReference: {fileID: 293704303}
     - target: {fileID: 1171793284980083592, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1161705911}
+    - target: {fileID: 3612374198739980817, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4651020605939017934, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1161705911}
+    - target: {fileID: 5932683191995883747, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932683191995883747, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6331672959674537099, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
       propertyPath: m_Name
       value: BosStage
@@ -2018,6 +2063,10 @@ PrefabInstance:
       propertyPath: gameOver
       value: 
       objectReference: {fileID: 2005430676}
+    - target: {fileID: 9026793197173061345, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 9073699457129158583, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2061,7 +2110,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5009987981598737936, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 49029291}
   m_SourcePrefab: {fileID: 100100000, guid: ea0d8ab784a7d764d9f086c161e06131, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

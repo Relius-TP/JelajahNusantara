@@ -25,6 +25,7 @@ public class Boss : MonoBehaviour
     public GameObject checkSkill1Right;
     [SerializeField] private Vector2 skill1Left;
     [SerializeField] private Vector2 skill1Right;
+    public GameObject skill1checker;
 
     //skill2
     private Vector2 positionSkill2;
@@ -71,16 +72,25 @@ public class Boss : MonoBehaviour
         {
             if (loopCount <= 3)
             {
-                StartCoroutine(Skill2());
+                Invoke("Skill1Active", 5);
+                StartCoroutine(Skill1());
             }
-            else
+            else if (loopCount == 4)
             {
                 StartCoroutine(Stun());
             }
         }
         else if(bossHp < 100)
         {
-            //Skill2Active();
+            skill1checker.SetActive(false);
+            if (loopCount <= 3)
+            {
+                StartCoroutine(Skill2());
+            }
+            else if (loopCount == 4)
+            {
+                StartCoroutine(Stun());
+            }
         }
 
         if (bossHealth <= 0)
@@ -88,11 +98,7 @@ public class Boss : MonoBehaviour
             winScene.SetActive(true);
             Time.timeScale = 0;
         }
-    }/*
-    bool isMoving()
-    {
-        return rb.velocity.magnitude > movementThreshold;
-    }*/
+    }
 
     IEnumerator Skill1()
     {
@@ -101,7 +107,7 @@ public class Boss : MonoBehaviour
             yield return new WaitForSeconds(1f);
             Skill1Right();
         }
-        if (banaspati.transform.position.x == skill1Right.x && banaspati.transform.position.y == skill1Right.y)
+        else if (banaspati.transform.position.x == skill1Right.x && banaspati.transform.position.y == skill1Right.y)
         {
             yield return new WaitForSeconds(1f);
             Skill1Left();
@@ -144,7 +150,7 @@ public class Boss : MonoBehaviour
                 skill2DownActive = false;
             }
         }
-        if (banaspati.transform.position.y == skill2Up.y)
+        else if (banaspati.transform.position.y == skill2Up.y)
         {
             yield return new WaitForSeconds(0.35f);
             moveSpeedVer = 100;
@@ -156,7 +162,7 @@ public class Boss : MonoBehaviour
             }
             
         }
-        if (skill2UpActive == false && skill2DownActive == false)
+        else if (skill2UpActive == false && skill2DownActive == false)
         {
             yield return new WaitForSeconds(0.1f);
             moveSpeedHor = 45;
@@ -164,7 +170,6 @@ public class Boss : MonoBehaviour
             if (banaspati.transform.position.x == positionSkill2.x && banaspati.transform.position.y == positionSkill2.y)
             {
                 moveSpeedVer = 0;
-                yield return new WaitForSeconds(3f);
                 skill2UpActive = true;
             }
             
@@ -209,10 +214,23 @@ public class Boss : MonoBehaviour
                 qte.SetActive(false);
                 moveSpeedHor = 5;
                 banaspati.transform.position = Vector2.MoveTowards(transform.position, spawn, moveSpeedHor * Time.deltaTime);
+                yield return new WaitForSeconds(7f);
                 if (banaspati.transform.position.x == spawn.x && banaspati.transform.position.y == spawn.y)
                 {
-                    yield return new WaitForSeconds(1f);
                     loopCount = 0;
+                    banaspati.transform.position = Vector2.MoveTowards(transform.position, positionSkill1, moveSpeedHor * Time.deltaTime);
+                    moveSpeedHor = 45;
+                }
+            }
+            else if (bossHp < 100)
+            {
+                qte.SetActive(false);
+                moveSpeedHor = 5;
+                loopCount = 0;
+                banaspati.transform.position = Vector2.MoveTowards(transform.position, spawn, moveSpeedHor * Time.deltaTime);
+                yield return new WaitForSeconds(7f);
+                if (banaspati.transform.position.x == spawn.x && banaspati.transform.position.y == spawn.y)
+                {
                     skill2UpActive = false;
                     skill2DownActive = false;
                 }
@@ -227,10 +245,23 @@ public class Boss : MonoBehaviour
                 qte.SetActive(false);
                 moveSpeedHor = 5;
                 banaspati.transform.position = Vector2.MoveTowards(transform.position, spawn, moveSpeedHor * Time.deltaTime);
+                yield return new WaitForSeconds(7f);
                 if (banaspati.transform.position.x == spawn.x && banaspati.transform.position.y == spawn.y)
                 {
-                    yield return new WaitForSeconds(1f);
                     loopCount = 0;
+                    banaspati.transform.position = Vector2.MoveTowards(transform.position, positionSkill1, moveSpeedHor * Time.deltaTime);
+                    moveSpeedHor = 45;
+                }
+            }
+            else if (bossHp < 100)
+            {
+                qte.SetActive(false);
+                moveSpeedHor = 5;
+                loopCount = 0;
+                banaspati.transform.position = Vector2.MoveTowards(transform.position, spawn, moveSpeedHor * Time.deltaTime);
+                yield return new WaitForSeconds(7f);
+                if (banaspati.transform.position.x == spawn.x && banaspati.transform.position.y == spawn.y)
+                {
                     skill2UpActive = false;
                     skill2DownActive = false;
                 }
