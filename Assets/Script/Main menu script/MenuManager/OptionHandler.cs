@@ -13,7 +13,7 @@ public class OptionHandler : MonoBehaviour
         RefreshMicrophoneList();
     }
 
-    private void RefreshMicrophoneList()
+    public void RefreshMicrophoneList()
     {
         micDropdownMenu.options.Clear();
         microphoneList.Clear();
@@ -24,5 +24,11 @@ public class OptionHandler : MonoBehaviour
         }
 
         micDropdownMenu.AddOptions(microphoneList);
+    }
+
+    public void UpdateSettings()
+    {
+        PlayerPrefs.SetString("deviceName", micDropdownMenu.options[micDropdownMenu.value].text);
+        Debug.Log(PlayerPrefs.GetString("deviceName"));
     }
 }

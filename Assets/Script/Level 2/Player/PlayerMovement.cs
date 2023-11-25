@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         newDetectionRange = playerData.hero_visionRange;
         speed = playerData.hero_speed;
         runSpeed = speed + 1;
-        screamSpeed = speed + 3;
+        screamSpeed = speed + 5;
     }
 
     private void Update()

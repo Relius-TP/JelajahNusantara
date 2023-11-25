@@ -10,13 +10,14 @@ public class MicDetection : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        string usedDevice = PlayerPrefs.GetString("deviceName");
 
         //Check if there is a connected microphone
         if(Microphone.devices.Length >= 0)
         {
             micConnected = true;
-            audioSource.clip = Microphone.Start(null, true, 1, 44100);
-            while (!(Microphone.GetPosition(null) > 0)) { }
+            audioSource.clip = Microphone.Start(usedDevice, true, 1, 44100);
+            while (!(Microphone.GetPosition(usedDevice) > 0)) { }
             audioSource.Play();
         }
         else

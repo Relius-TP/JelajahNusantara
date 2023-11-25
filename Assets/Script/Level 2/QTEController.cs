@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 public class QTEController : MonoBehaviour
 {
