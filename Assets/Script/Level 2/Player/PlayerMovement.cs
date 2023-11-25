@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float newDetectionRange;
     private float tempSpeed;
     private float tempVision;
+    private bool isCollide = false;
 
     public static float detectionRadius;
 
@@ -99,9 +100,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && !isCollide)
         {
+            isCollide = true;
             GameManager.Instance.PlayerGotCaught();
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") && isCollide)
+        {
+            isCollide = false;
         }
     }
 
