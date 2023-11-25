@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public class QTEController : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class QTEController : MonoBehaviour
     {
         if (qteState == QTEState.WaitUserInput)
         {
-            if (Input.anyKeyDown && !Input.GetKeyDown(KeyCode.Space))
+            if (CheckKey())
             {
                 KeyCode pressedKey = GetPressedKey();
                 bool wrongInput = qte.CheckKey(pressedKey);
@@ -135,6 +136,20 @@ public class QTEController : MonoBehaviour
         var arrow = Instantiate(KeyPrefab[index]) as GameObject;
         arrow.transform.SetParent(KeyBoxUI, false);
         spawnedArrows.Add(arrow);
+    }
+
+    private bool CheckKey()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            return true;
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+            return true;
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            return true;
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+            return true;
+
+        return false;
     }
 
     private KeyCode GetPressedKey()
