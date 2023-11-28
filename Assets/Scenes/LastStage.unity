@@ -1591,7 +1591,7 @@ MonoBehaviour:
   - {fileID: 5566010494122304354, guid: 2dff8ee8698a7de40a4598eff9dc181c, type: 3}
   KeyBoxUI: {fileID: 1545094199}
   timerText: {fileID: 1041466011}
-  keysNeed: 4
+  keysNeed: 3
   time: 3
 --- !u!4 &531748786
 Transform:
@@ -3086,7 +3086,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 2
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ff4562a56310d0e47b6f815dc0455c70, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
