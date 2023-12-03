@@ -1,15 +1,21 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OptionHandler : MonoBehaviour
 {
+    [SerializeField] private Slider bgmSlider;
+    [SerializeField] private Slider sfxSlider;
     [SerializeField] private TMP_Dropdown micDropdownMenu;
     private List<string> microphoneList;
+
+    private PlayerSettingsData playerSettingsData;
 
     private void Start()
     {
         microphoneList = new List<string>();
+        playerSettingsData = new PlayerSettingsData();
         RefreshMicrophoneList();
     }
 
@@ -28,7 +34,9 @@ public class OptionHandler : MonoBehaviour
 
     public void UpdateSettings()
     {
-        PlayerPrefs.SetString("deviceName", micDropdownMenu.options[micDropdownMenu.value].text);
-        Debug.Log(PlayerPrefs.GetString("deviceName"));
+        //playerSettingsData.bgmValue = bgmSlider.value;
+        //playerSettingsData.sfxValue = sfxSlider.value;
+        playerSettingsData.deviceName = micDropdownMenu.options[micDropdownMenu.value].text;
+        FileSytemManager.instance.SavePlayerSettings(playerSettingsData);
     }
 }
