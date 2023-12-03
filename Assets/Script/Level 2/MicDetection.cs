@@ -1,7 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MicDetection : MonoBehaviour
 {
+    [SerializeField] private Image micValueFill;
+
     AudioSource audioSource;
     public static float soundVolume;
     [SerializeField] private float micSensitivity;
@@ -12,12 +15,11 @@ public class MicDetection : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         string usedDevice = PlayerPrefs.GetString("deviceName");
 
-        //Check if there is a connected microphone
         if(Microphone.devices.Length >= 0)
         {
             micConnected = true;
-            audioSource.clip = Microphone.Start(usedDevice, true, 1, 44100);
-            while (!(Microphone.GetPosition(usedDevice) > 0)) { }
+            audioSource.clip = Microphone.Start(null, true, 1, 44100);
+            while (!(Microphone.GetPosition(null) > 0)) { }
             audioSource.Play();
         }
         else
@@ -55,5 +57,7 @@ public class MicDetection : MonoBehaviour
         volume /= samples.Length;
 
         soundVolume = volume * micSensitivity;
+
+        micValueFill.fillAmount = soundVolume / 10;
     }
 }
