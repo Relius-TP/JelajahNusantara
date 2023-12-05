@@ -1,20 +1,20 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MicDetection : MonoBehaviour
 {
     [SerializeField] private Image micValueFill;
-
-    AudioSource audioSource;
-    public static float soundVolume;
     [SerializeField] private float micSensitivity;
+    [SerializeField] private AudioSource audioSource;
+
+    public float soundVolume;
     private bool micConnected;
+
+    public static event Action<float> OnSoundValueChanged;
 
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        string usedDevice = PlayerPrefs.GetString("deviceName");
-
         if(Microphone.devices.Length >= 0)
         {
             micConnected = true;
@@ -34,14 +34,15 @@ public class MicDetection : MonoBehaviour
         if(micConnected)
         {
             GetVolumeFromMicrophone();
+            SetMicValueUI();
         }
     }
 
-    /*
-        Get clip data, store in sample variable
-        calculate sample data to volume variable
-        volume result times mic sensitivity
-    */
+    private void SetMicValueUI()
+    {
+        micValueFill.fillAmount = soundVolume;
+    }
+
     private void GetVolumeFromMicrophone()
     {
         float[] samples = new float[audioSource.clip.samples];
@@ -55,9 +56,8 @@ public class MicDetection : MonoBehaviour
         }
 
         volume /= samples.Length;
-
         soundVolume = volume * micSensitivity;
 
-        micValueFill.fillAmount = soundVolume / 10;
+        OnSoundValueChanged?.Invoke(soundVolume);
     }
 }

@@ -19,7 +19,7 @@ public class Pathfinding : MonoBehaviour
 
     void Update()
     {
-        if (Vector2.Distance(transform.position, target.position) <= PlayerMovement.detectionRadius)
+        if (Vector2.Distance(transform.position, target.position) <= 2f)
         {
             agent.SetDestination(target.position);
             animator.SetBool("Walk", true);

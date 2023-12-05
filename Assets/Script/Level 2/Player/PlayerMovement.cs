@@ -1,138 +1,75 @@
-using System;
-using System.Collections;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData;
-    [SerializeField] private float speed;
-    [SerializeField] private AudioClip walkClip;
-
-    [SerializeField] private AudioSource audioSource;
-
-    private Light2D playerLight;
+    
     private InputSystem inputSystem;
-    private Vector2 direction;
-    private Rigidbody2D playerRb;
-    private float runSpeed;
-    private float screamSpeed;
-    private float newDetectionRange;
-    private float tempSpeed;
-    private float tempVision;
-    private bool isCollide = false;
 
-    public static float detectionRadius;
+    private float walkSpeed;
+    private float runSpeed = 1;
+    private float runSpeedUsingMic = 2;
+    private float currentSpeed;
+    private float soundValue;
 
-    public static event Action<bool> OnWalk;
+    private bool isRun;
+
+    private Vector2 moveDirection;
 
     private void OnEnable()
     {
-        inputSystem.Player.Enable();
+        MicDetection.OnSoundValueChanged += GetSoundValue;
     }
 
     private void OnDisable()
     {
-        inputSystem.Player.Disable();
+        MicDetection.OnSoundValueChanged -= GetSoundValue;
     }
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
-        playerLight = GetComponentInChildren<Light2D>();
-        playerRb = GetComponent<Rigidbody2D>();
         inputSystem = new InputSystem();
-        audioSource.clip = walkClip;
-        newDetectionRange = playerData.hero_visionRange;
-        speed = playerData.hero_speed;
-        runSpeed = speed + 1;
-        screamSpeed = speed + 5;
+        inputSystem.Player.Enable();
+    }
+
+    private void Start()
+    {
+        GetPlayerData();
     }
 
     private void Update()
     {
-        direction = inputSystem.Player.Movement.ReadValue<Vector2>().normalized;
+        moveDirection = inputSystem.Player.Movement.ReadValue<Vector2>();
+        PlayerMove();
 
-        if(direction != Vector2.zero )
-        {
-            Move();
-            audioSource.Play();
-        }
-        else
-        {
-            audioSource.Stop();
-        }
-
-        playerLight.pointLightOuterRadius = detectionRadius;
-        playerRb.velocity = new Vector2(direction.x * speed, direction.y * speed);
+        if(inputSystem.Player.Run.ReadValue<float>() > 0) isRun = true;
+        else isRun = false;
     }
 
-    private void Move()
+    private void GetPlayerData()
     {
-        if (inputSystem.Player.Run.ReadValue<float>() == 1f)
-        {
-            speed = runSpeed + tempSpeed;
-        }
-        else if (MicDetection.soundVolume >= 2f)
-        {
-            speed = screamSpeed + tempSpeed;
-            detectionRadius = newDetectionRange + 3f + tempVision;
-        }
-        else
-        {
-            speed = playerData.hero_speed + tempSpeed;
-            detectionRadius = newDetectionRange + tempVision;
-        }
+        walkSpeed = playerData.hero_speed;
     }
 
-    private void OnDrawGizmos()
+    private void PlayerMove()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy") && !isCollide)
+        if (moveDirection != Vector2.zero && isRun && soundValue < 0.5f)
         {
-            isCollide = true;
-            GameManager.Instance.PlayerGotCaught();
+            currentSpeed = walkSpeed + runSpeed;
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy") && isCollide)
+        else if (moveDirection != Vector2.zero && !isRun && soundValue < 0.5f)
         {
-            isCollide = false;
+            currentSpeed = walkSpeed;
         }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("SpeedPotion")){
-            Destroy(collision.gameObject);
-            tempSpeed = 3f;
-            StartCoroutine(EffectTimeSpeed(5f));
-        }
-
-        if (collision.CompareTag("VisionPotion"))
+        else if(moveDirection != Vector2.zero && soundValue > 0.5f)
         {
-            Destroy(collision.gameObject);
-            tempVision = 2f;
-            StartCoroutine(EffectTimeVision(5f));
+            currentSpeed = walkSpeed + runSpeedUsingMic;
         }
+        transform.Translate(currentSpeed * Time.deltaTime * new Vector2(moveDirection.x, moveDirection.y));
     }
 
-    IEnumerator EffectTimeSpeed(float time)
+    private void GetSoundValue(float newSoundValue)
     {
-        yield return new WaitForSeconds(time);
-        tempSpeed = 0;
-    }
-
-    IEnumerator EffectTimeVision(float time)
-    {
-        yield return new WaitForSeconds(time);
-        tempVision = 0;
+        soundValue = newSoundValue;
     }
 }
