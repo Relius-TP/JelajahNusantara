@@ -18149,6 +18149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 787909049}
   - component: {fileID: 787909050}
+  - component: {fileID: 787909051}
   m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
@@ -18221,6 +18222,21 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &787909051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787909048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8557d0482875248afc7309f76d5598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartBeatLightSpeed: 2
+  maxIntensity: 2
+  minIntensity: 1
 --- !u!224 &791569558 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9211284084660066883, guid: b0384a32c97466149b3f3f1ed0ebd1ab, type: 3}
