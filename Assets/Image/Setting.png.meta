@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c7555bf01f5a7b14c8c18f5d552ca054
+guid: bbe0a0c3664deae4a9741c5a7bb856c6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,97 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UIGameplay_0
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 64
-        width: 14
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e46b7897a3161f42b8c31ed0c60e541
-      internalID: 1205216975
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIGameplay_1
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 39
-        width: 24
-        height: 41
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4c40b559b053eec44b685917960e8629
-      internalID: -1421559822
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIGameplay_2
-      rect:
-        serializedVersion: 2
-        x: 89
-        y: 42
-        width: 29
-        height: 31
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f6dfd29102c333f498a422f1d5e4076f
-      internalID: -1778270197
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIGameplay_3
+      name: Setting_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 31
-        width: 4
-        height: 33
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dc0703cd2f1fd8542962f8bd0d93a5e2
-      internalID: -1878706247
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UIGameplay_4
-      rect:
-        serializedVersion: 2
-        x: 10
         y: 0
-        width: 32
-        height: 32
+        width: 149
+        height: 142
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 3, y: 3, z: 3, w: 3}
@@ -234,29 +150,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d852ee7d6d3713a47aa525b0ec98b07c
-      internalID: 1444727178
+      spriteID: 16c43553c9a442f43a42476a7a7491cb
+      internalID: 437339169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UIGameplay_5
+      name: Setting_1
       rect:
         serializedVersion: 2
-        x: 6
-        y: 32
-        width: 2
-        height: 31
+        x: 162
+        y: 119
+        width: 83
+        height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ba99c4010092404b96a6e8a6f9dd534
-      internalID: -2098872675
+      spriteID: 4c2ae4c183c21c148b41890ff06d73c4
+      internalID: -1389879141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Setting_2
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 105
+        width: 83
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 264de871c71959240b3a9dd7410e2ca3
+      internalID: 1398222194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Setting_3
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 86
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 058f3a5045840f34e94555d89ec197d6
+      internalID: 1158228747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Setting_4
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 86
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce1ef52ff2567894c8c8d07d8d50dd6a
+      internalID: 1750866471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Setting_5
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 57
+        width: 48
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 3, y: 2, z: 2, w: 2}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddc184240532d9d4a81090471fa82310
+      internalID: 409521698
       vertices: []
       indices: 
       edges: []
@@ -272,12 +272,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      UIGameplay_0: 1205216975
-      UIGameplay_1: -1421559822
-      UIGameplay_2: -1778270197
-      UIGameplay_3: -1878706247
-      UIGameplay_4: 1444727178
-      UIGameplay_5: -2098872675
+      Setting_0: 437339169
+      Setting_1: -1389879141
+      Setting_2: 1398222194
+      Setting_3: 1158228747
+      Setting_4: 1750866471
+      Setting_5: 409521698
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

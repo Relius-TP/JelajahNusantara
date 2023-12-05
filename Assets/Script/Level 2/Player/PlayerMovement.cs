@@ -7,10 +7,11 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData;
     [SerializeField] private float speed;
+    [SerializeField] private AudioClip walkClip;
+
+    [SerializeField] private AudioSource audioSource;
 
     private Light2D playerLight;
-    private Animator animator;
-
     private InputSystem inputSystem;
     private Vector2 direction;
     private Rigidbody2D playerRb;
@@ -37,10 +38,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         playerLight = GetComponentInChildren<Light2D>();
         playerRb = GetComponent<Rigidbody2D>();
         inputSystem = new InputSystem();
+        audioSource.clip = walkClip;
         newDetectionRange = playerData.hero_visionRange;
         speed = playerData.hero_speed;
         runSpeed = speed + 1;
@@ -51,7 +53,15 @@ public class PlayerMovement : MonoBehaviour
     {
         direction = inputSystem.Player.Movement.ReadValue<Vector2>().normalized;
 
-        Move();
+        if(direction != Vector2.zero )
+        {
+            Move();
+            audioSource.Play();
+        }
+        else
+        {
+            audioSource.Stop();
+        }
 
         playerLight.pointLightOuterRadius = detectionRadius;
         playerRb.velocity = new Vector2(direction.x * speed, direction.y * speed);
@@ -68,29 +78,12 @@ public class PlayerMovement : MonoBehaviour
             speed = screamSpeed + tempSpeed;
             detectionRadius = newDetectionRange + 3f + tempVision;
         }
-        else if (direction != Vector2.zero)
-        {
-            speed = playerData.hero_speed + tempSpeed;
-            detectionRadius = newDetectionRange + tempVision;
-        }
         else
         {
             speed = playerData.hero_speed + tempSpeed;
             detectionRadius = newDetectionRange + tempVision;
         }
     }
-
-    //private void PlayAnimation(string animationPrefix)
-    //{
-    //    if (direction.y > 0)
-    //    {
-    //        animator.SetTrigger(animationPrefix + "Up");
-    //    }
-    //    else if (direction.y < 0)
-    //    {
-    //        animator.SetTrigger(animationPrefix + "Down");
-    //    }
-    //}
 
     private void OnDrawGizmos()
     {
