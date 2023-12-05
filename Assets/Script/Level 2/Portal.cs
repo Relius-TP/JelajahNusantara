@@ -5,6 +5,7 @@ public class Portal : MonoBehaviour
 {
     [SerializeField] private int itemNeeded = 4;
     [SerializeField] private PlayerData playerData;
+    [SerializeField] private GameObject portalLight;
 
     public static bool portalOpen = false;
 
@@ -24,10 +25,16 @@ public class Portal : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
+    private void Start()
+    {
+        portalLight.SetActive(false);
+    }
+
     private void Update()
     {
         if (itemNeeded == 0)
         {
+            portalLight.SetActive(true);
             anim.SetBool("Activated", true);
             portalOpen = true;
         }
