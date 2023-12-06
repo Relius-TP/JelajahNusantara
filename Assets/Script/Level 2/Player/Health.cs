@@ -1,67 +1,59 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public GameObject[] healthICon;
-    public int healthPoin = 3;
-    public PlayerData playerData;
+    [SerializeField] private int health;
+    [SerializeField] private GameObject healthPrefab;
+    [SerializeField] private Transform healthIconBox;
+    [SerializeField] private PlayerData playerData;
+
+    private List<GameObject> healthList;
+
+    private void Awake()
+    {
+        healthList = new List<GameObject>();
+    }
 
     private void Start()
     {
-        healthPoin = playerData.hero_health;
+        SetHealthUI();
     }
 
-    private void OnEnable()
+    private void AddHealth()
     {
-        QTEController.OnQTEResult += SetHealth;
-        PotionDetection.GetLifePotion += GetLifePotion;
-    }
-
-    private void OnDisable()
-    {
-        QTEController.OnQTEResult -= SetHealth;
-        PotionDetection.GetLifePotion -= GetLifePotion;
-    }
-
-    private void SetHealth(QTEState state)
-    {
-        if(state == QTEState.Failure && healthPoin >= 1)
+        if(health != playerData.hero_health)
         {
-            healthPoin--;
+            health++;
         }
     }
 
-    private void Update()
+    private void TakeDamage()
     {
-        ResetHealthUI();
-        for (int i = 0; i < healthPoin; i++)
+        if(health > 0)
         {
-            healthICon[i].SetActive(true);
+            health--;
         }
     }
 
-    private void ResetHealthUI()
+    private void SetHealthUI()
     {
-        foreach (var item in healthICon)
+        DestroyHealthUI();
+
+        for(int i = 0; i < health; i++)
         {
-            item.SetActive(false);
+            var icon = Instantiate(healthPrefab, healthIconBox);
+            healthList.Add(icon);
         }
     }
 
-    private void GetLifePotion(int i)
+    private void DestroyHealthUI()
     {
-        if(healthPoin != playerData.hero_health)
+        foreach(var icon in healthList)
         {
-            healthPoin += i;
+            Destroy(icon);
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("LifePotion"))
-        {
-            GetLifePotion(1);
-            Destroy(collision.gameObject);
-        }
+        healthList.Clear();
     }
 }
