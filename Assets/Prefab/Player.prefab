@@ -240,6 +240,10 @@ GameObject:
   - component: {fileID: 3559765257715293168}
   - component: {fileID: 8999524469865678245}
   - component: {fileID: 5950572969581191268}
+  - component: {fileID: 1168486960996920455}
+  - component: {fileID: 1458576357064156358}
+  - component: {fileID: 2517269969326650109}
+  - component: {fileID: 5621641384655075743}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -407,3 +411,64 @@ MonoBehaviour:
   micSensitivity: 20
   audioSource: {fileID: 7908103943348932362}
   soundVolume: 0
+--- !u!114 &1168486960996920455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863894307210323058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2372309b37942f541af016a3fb2fa746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  healthPrefab: {fileID: 6114415862013196064, guid: 5dbf037d91cd10c4e9d5661f632d3dd0, type: 3}
+  healthIconBox: {fileID: 0}
+  playerData: {fileID: 11400000, guid: b2908938b8f12df46a069fde614685ee, type: 2}
+--- !u!114 &1458576357064156358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863894307210323058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21bfb881cbd2e0c4eaf5a7f5a1be22f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: b2908938b8f12df46a069fde614685ee, type: 2}
+--- !u!114 &2517269969326650109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863894307210323058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d90d744b96b53e43a4e4e06841a9a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5621641384655075743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4863894307210323058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ad20224af0fea48bf1e104ed0ffd06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Yoffset: {x: 0, y: 1, z: 0}
+  interactRange: 2
+  playerData: {fileID: 11400000, guid: b2908938b8f12df46a069fde614685ee, type: 2}
+  ToolTipUI: {fileID: 0}
+  keyIcon: {fileID: 0}
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 128
