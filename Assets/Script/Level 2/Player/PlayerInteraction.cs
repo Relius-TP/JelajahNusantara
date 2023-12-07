@@ -2,10 +2,14 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    [SerializeField] private Vector3 Yoffset;
+
     public float interactRange = 2f;
     public PlayerData playerData;
     public GameObject ToolTipUI;
     public GameObject keyIcon;
+
+    public LayerMask interactableLayer;
 
     private void Start()
     {
@@ -20,17 +24,28 @@ public class PlayerInteraction : MonoBehaviour
 
     private void CheckInteractions()
     {
-        Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, interactRange);
+        Collider2D[] colliderArray = Physics2D.OverlapCircleAll(transform.position, interactRange, interactableLayer);
 
         foreach (Collider2D collie in colliderArray)
         {
-            if (collie.TryGetComponent(out Interactable interactable))
+            float distanceToInteractable = Vector2.Distance(transform.position, collie.transform.position);
+
+            if (distanceToInteractable <= interactRange && collie.enabled == true)
             {
-                HandleInteractable(interactable);
-            }
-            else if (collie.TryGetComponent(out Portal portal))
-            {
-                HandlePortal(portal);
+                if (collie.TryGetComponent(out Interactable interactable))
+                {
+                    SetToolTipActive(true, collie.transform);
+                    HandleInteractable(interactable);
+                }
+                else if (collie.TryGetComponent(out Portal portal))
+                {
+                    SetToolTipActive(true, collie.transform);
+                    HandlePortal(portal);
+                }
+                else
+                {
+                    SetToolTipActive(false);
+                }
             }
             else
             {
@@ -41,8 +56,6 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandleInteractable(Interactable interactable)
     {
-        SetToolTipActive(true);
-
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (!playerData.IsHoldingKey)
@@ -58,8 +71,6 @@ public class PlayerInteraction : MonoBehaviour
 
     private void HandlePortal(Portal portal)
     {
-        SetToolTipActive(true);
-
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (playerData.IsHoldingKey || Portal.portalOpen)
@@ -73,15 +84,13 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
-    private void SetToolTipActive(bool isActive)
+    private void SetToolTipActive(bool isActive, Transform objectPosition = null)
     {
-        ToolTipUI.SetActive(isActive);
-    }
+        if (objectPosition != null)
+        {
+            ToolTipUI.GetComponent<RectTransform>().position = objectPosition.position + Yoffset;
+        }
 
-    private void OnDrawGizmos()
-    {
-        // Menggambar lingkaran deteksi pada Scene View saat objek dipilih.
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, interactRange);
+        ToolTipUI.SetActive(isActive);
     }
 }

@@ -1,67 +1,88 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public GameObject[] healthICon;
-    public int healthPoin = 3;
-    public PlayerData playerData;
+    [SerializeField] private int health;
+    [SerializeField] private GameObject healthPrefab;
+    [SerializeField] private Transform healthIconBox;
+    [SerializeField] private PlayerData playerData;
 
-    private void Start()
-    {
-        healthPoin = playerData.hero_health;
-    }
+    private List<GameObject> healthList;
 
     private void OnEnable()
     {
-        QTEController.OnQTEResult += SetHealth;
-        PotionDetection.GetLifePotion += GetLifePotion;
+        PotionDetection.GetHealthPotion += AddHealth;
+        QTEController.OnQTEResult += TakeDamage;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        QTEController.OnQTEResult -= SetHealth;
-        PotionDetection.GetLifePotion -= GetLifePotion;
+        PotionDetection.GetHealthPotion -= AddHealth;
+        QTEController.OnQTEResult -= TakeDamage;
     }
 
-    private void SetHealth(QTEState state)
+    private void Awake()
     {
-        if(state == QTEState.Failure && healthPoin >= 1)
+        healthList = new List<GameObject>();
+    }
+
+    private void Start()
+    {
+        SetHealthUI();
+    }
+
+    private void AddHealth(int value)
+    {
+        if(health != playerData.hero_health)
         {
-            healthPoin--;
+            health += value;
+        }
+
+        SetHealthUI();
+    }
+
+    private void TakeDamage(QTEState state)
+    {
+        if(state == QTEState.Failure)
+        {
+            if (health > 0)
+            {
+                health--;
+            }
+            
+            if(health <= 0)
+            {
+                Die();
+            }
+
+            SetHealthUI();
         }
     }
 
-    private void Update()
+    private void Die()
     {
-        ResetHealthUI();
-        for (int i = 0; i < healthPoin; i++)
+        GameManager.Instance.UpdateGameState(GameState.PlayerDie);
+    }
+
+    private void SetHealthUI()
+    {
+        DestroyHealthUI();
+
+        for(int i = 0; i < health; i++)
         {
-            healthICon[i].SetActive(true);
+            var icon = Instantiate(healthPrefab, healthIconBox);
+            healthList.Add(icon);
         }
     }
 
-    private void ResetHealthUI()
+    private void DestroyHealthUI()
     {
-        foreach (var item in healthICon)
+        foreach(var icon in healthList)
         {
-            item.SetActive(false);
+            Destroy(icon);
         }
-    }
 
-    private void GetLifePotion(int i)
-    {
-        if(healthPoin != playerData.hero_health)
-        {
-            healthPoin += i;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("LifePotion"))
-        {
-            GetLifePotion(1);
-            Destroy(collision.gameObject);
-        }
+        healthList.Clear();
     }
 }

@@ -7,7 +7,19 @@ public class Pathfinding : MonoBehaviour
     [SerializeField] Transform startPosition;
     private Animator animator;
 
+    private float playerDistance;
+
     NavMeshAgent agent;
+
+    private void OnEnable()
+    {
+        PlayerVision.OnVisionRangeChange += OnVisionChangeUpdate;
+    }
+
+    private void OnDisable()
+    {
+        PlayerVision.OnVisionRangeChange -= OnVisionChangeUpdate;
+    }
 
     void Start()
     {
@@ -19,7 +31,7 @@ public class Pathfinding : MonoBehaviour
 
     void Update()
     {
-        if (Vector2.Distance(transform.position, target.position) <= PlayerMovement.detectionRadius)
+        if (Vector2.Distance(transform.position, target.position) <= playerDistance - 0.5f)
         {
             agent.SetDestination(target.position);
             animator.SetBool("Walk", true);
@@ -32,8 +44,11 @@ public class Pathfinding : MonoBehaviour
         else
         {
             animator.SetBool("Walk", false);
-        }
+        } 
+    }
 
-        
+    private void OnVisionChangeUpdate(float value)
+    {
+        playerDistance = value;
     }
 }
