@@ -10,6 +10,18 @@ public class Health : MonoBehaviour
 
     private List<GameObject> healthList;
 
+    private void OnEnable()
+    {
+        PotionDetection.GetHealthPotion += AddHealth;
+        QTEController.OnQTEResult += TakeDamage;
+    }
+
+    private void OnDestroy()
+    {
+        PotionDetection.GetHealthPotion -= AddHealth;
+        QTEController.OnQTEResult -= TakeDamage;
+    }
+
     private void Awake()
     {
         healthList = new List<GameObject>();
@@ -20,19 +32,25 @@ public class Health : MonoBehaviour
         SetHealthUI();
     }
 
-    private void AddHealth()
+    private void AddHealth(int value)
     {
         if(health != playerData.hero_health)
         {
-            health++;
+            health += value;
         }
+
+        SetHealthUI();
     }
 
-    private void TakeDamage()
+    private void TakeDamage(QTEState state)
     {
-        if(health > 0)
+        if(state == QTEState.Failure)
         {
-            health--;
+            if (health > 0)
+            {
+                health--;
+            }
+            SetHealthUI();
         }
     }
 
