@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayerGotCaught()
     {
-        if (qteController != null)
+        if (qteController != null && state != GameState.PlayerDie)
         {
             UpdateGameState(GameState.GetCaught);
             qteController.StartQTEForGetCaught();

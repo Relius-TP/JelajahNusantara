@@ -50,8 +50,19 @@ public class Health : MonoBehaviour
             {
                 health--;
             }
+            
+            if(health <= 0)
+            {
+                Die();
+            }
+
             SetHealthUI();
         }
+    }
+
+    private void Die()
+    {
+        GameManager.Instance.UpdateGameState(GameState.PlayerDie);
     }
 
     private void SetHealthUI()

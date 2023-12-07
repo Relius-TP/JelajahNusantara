@@ -24,12 +24,14 @@ public class PlayerMovement : MonoBehaviour
     {
         MicDetection.OnSoundValueChanged += GetSoundValue;
         PotionDetection.GetSpeedPotion += OnSpeedPotionEffect;
+        GameManager.GameStateChanged += OnplayerDie;
     }
 
     private void OnDisable()
     {
         MicDetection.OnSoundValueChanged -= GetSoundValue;
         PotionDetection.GetSpeedPotion -= OnSpeedPotionEffect;
+        GameManager.GameStateChanged -= OnplayerDie;
     }
 
     private void Awake()
@@ -55,6 +57,14 @@ public class PlayerMovement : MonoBehaviour
     private void GetPlayerData()
     {
         walkSpeed = playerData.hero_speed;
+    }
+
+    private void OnplayerDie(GameState state)
+    {
+        if(state == GameState.PlayerDie)
+        {
+            inputSystem.Player.Disable();
+        }
     }
 
     private void PlayerMove()
