@@ -7,6 +7,7 @@ public class QTEHandler : MonoBehaviour
 {
     public static QTEHandler instance;
 
+    [Header("QTE Settings")]
     [SerializeField] private List<GameObject> KeyPrefab;
     [SerializeField] private Transform KeyBoxUI;
     [SerializeField] private TMP_Text timerText;

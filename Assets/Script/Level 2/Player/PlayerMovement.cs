@@ -17,7 +17,16 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isRun;
 
+    private Animator animator;
+
+    private AudioSource audioSource;
+    private AudioClip currentClip;
+    [SerializeField] private AudioClip clipWalk;
+    [SerializeField] private AudioClip clipRun;
+
     private Vector2 moveDirection;
+    private float directionYValue;
+    private float directionXValue;
     
 
     private void OnEnable()
@@ -36,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
         inputSystem = new InputSystem();
         inputSystem.Player.Enable();
     }
@@ -48,10 +59,49 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         moveDirection = inputSystem.Player.Movement.ReadValue<Vector2>();
+        directionXValue = moveDirection.x;
+        directionYValue = moveDirection.y;
+
+        AnimationHandler();
+        AudioHandler();
         PlayerMove();
 
         if(inputSystem.Player.Run.ReadValue<float>() > 0) isRun = true;
         else isRun = false;
+    }
+
+    private void AnimationHandler()
+    {
+        animator.SetBool("WalkingDown", (directionXValue != 0 || directionYValue < 0) && !isRun);
+        animator.SetBool("WalkingUp", (directionXValue != 0 || directionYValue > 0) && !isRun);
+        animator.SetBool("RunDown", (directionXValue != 0 || directionYValue < 0) && isRun);
+        animator.SetBool("RunUp", (directionXValue != 0 || directionYValue > 0) && isRun);
+    }
+
+    private void AudioHandler()
+    {
+        if((directionXValue != 0 || directionYValue != 0) && !isRun)
+        {
+            currentClip = clipWalk;
+            audioSource.clip = currentClip;
+            if(!audioSource.isPlaying)
+            {
+                audioSource.Play(); 
+            }
+        }
+        else if((directionXValue != 0 || directionYValue != 0) && isRun)
+        {
+            currentClip = clipRun;
+            audioSource.clip = currentClip;
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            audioSource.Stop();
+        }
     }
 
     private void GetPlayerData()

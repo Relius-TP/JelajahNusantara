@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SkillCheckQTEBossController : MonoBehaviour
 {
@@ -43,7 +42,6 @@ public class SkillCheckQTEBossController : MonoBehaviour
     private bool gettingKey = false;
     private bool needGenerateKey = true;
     private bool isFailed = false;
-    private int counter;
 
     public static bool bossStun = true;
     public static event Action<float> GiveDamage;
@@ -72,7 +70,6 @@ public class SkillCheckQTEBossController : MonoBehaviour
         QTE_TextUI.SetText("");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (bossStun)
@@ -261,7 +258,6 @@ public class SkillCheckQTEBossController : MonoBehaviour
         SetText(keys);
         gettingKey = true;
         isFailed = false;
-        counter = 0;
         inputFromUser.Clear();
     }
 

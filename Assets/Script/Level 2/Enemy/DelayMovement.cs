@@ -4,7 +4,6 @@ using UnityEngine;
 public class DelayMovement : MonoBehaviour
 {
     Pathfinding pathFinding;
-    private AnimationHandler animHandler;
 
     private void OnEnable()
     {
@@ -44,10 +43,8 @@ public class DelayMovement : MonoBehaviour
 
     IEnumerator StunMovement()
     {
-        Debug.Log("Enemy Stunned");
         yield return new WaitForSeconds(2f);
         gameObject.GetComponent<Collider2D>().enabled = true;
         pathFinding.enabled = true;
-        Debug.Log("Enemy Move");
     }
 }
