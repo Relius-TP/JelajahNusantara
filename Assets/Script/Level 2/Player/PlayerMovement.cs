@@ -72,10 +72,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void AnimationHandler()
     {
-        animator.SetBool("WalkingDown", (directionXValue != 0 || directionYValue < 0) && !isRun);
-        animator.SetBool("WalkingUp", (directionXValue != 0 || directionYValue > 0) && !isRun);
-        animator.SetBool("RunDown", (directionXValue != 0 || directionYValue < 0) && isRun);
-        animator.SetBool("RunUp", (directionXValue != 0 || directionYValue > 0) && isRun);
+        animator.SetBool("WalkingDown", (directionYValue < 0) && !isRun);
+        animator.SetBool("WalkingUp", (directionYValue > 0) && !isRun);
+        animator.SetBool("RunDown", (directionYValue < 0) && isRun);
+        animator.SetBool("RunUp", (directionYValue > 0) && isRun);
+        animator.SetBool("SideMove", (directionXValue != 0 && directionYValue == 0));
+
+        if(directionXValue > 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if(directionXValue < 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
     }
 
     private void AudioHandler()
