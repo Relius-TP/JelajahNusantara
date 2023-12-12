@@ -20,7 +20,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Lobby");
+        SceneManager.LoadScene("Level2");
     }
 
     public void Option()
