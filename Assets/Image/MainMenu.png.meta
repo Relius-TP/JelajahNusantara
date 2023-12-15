@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d420f54a22e9574fbadb710bdfeb8e9
+guid: d975d1265c21eb5498e5c5f1c08d4ff6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,85 +136,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BossHP_0
+      name: MainMenu_0
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 216
+        width: 173
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00024b95771a2be45bd4d2e42f3dd34d
+      internalID: -1964958764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainMenu_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 68
-        width: 404
-        height: 34
+        y: 117
+        width: 208
+        height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2d693b80ab66344996d81f818112ff0
-      internalID: 106607910
+      spriteID: a3cb4b6a7a0b5b343baa5f3eac871c5c
+      internalID: -104331984
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BossHP_1
+      name: MainMenu_2
       rect:
         serializedVersion: 2
-        x: 18
-        y: 40
-        width: 30
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 5, y: 4, z: 5, w: 4}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 74e5ba9f4baf8a74888f75529f0ba5f3
-      internalID: 742913430
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BossHP_2
-      rect:
-        serializedVersion: 2
-        x: 67
-        y: 40
-        width: 316
-        height: 11
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a625f3eaa709f0a4391dba818147d171
-      internalID: -763719881
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BossHP_3
-      rect:
-        serializedVersion: 2
-        x: 26
+        x: 40
         y: 0
-        width: 368
-        height: 31
+        width: 128
+        height: 38
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efb9d7411767ca249bbc2f17f2ccac56
-      internalID: -1682723515
+      spriteID: 81394d31df4fe07449f5e448fab5a31e
+      internalID: -1870408386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainMenu_3
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 285
+        width: 515
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1598e1f72f62ea4b9ef0dd9044cedef
+      internalID: -889690375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MainMenu_4
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 476
+        width: 517
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46948690618c0904b9800248e3131c5b
+      internalID: -2115965389
       vertices: []
       indices: 
       edges: []
@@ -230,10 +251,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BossHP_0: 106607910
-      BossHP_1: 742913430
-      BossHP_2: -763719881
-      BossHP_3: -1682723515
+      MainMenu_0: -1964958764
+      MainMenu_1: -104331984
+      MainMenu_2: -1870408386
+      MainMenu_3: -889690375
+      MainMenu_4: -2115965389
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

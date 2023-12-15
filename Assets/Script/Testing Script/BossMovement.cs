@@ -15,7 +15,7 @@ public enum BossState
 
 public class BossMovement : MonoBehaviour
 {
-    [SerializeField] private Image healthBar;
+    [SerializeField] private Slider healthBar;
     [SerializeField] private float bossHealth = 200f;
     private float bossPrimeHealth = 200f;
 
@@ -67,7 +67,7 @@ public class BossMovement : MonoBehaviour
             case BossState.Skill2:
                 StartCoroutine(Skill2Handler());
                 break;
-            case BossState.Died: 
+            case BossState.Died:
             case BossState.Win:
                 DiedHandler();
                 break;
@@ -208,7 +208,7 @@ public class BossMovement : MonoBehaviour
     private void TakeDamage(float damage)
     {
         bossHealth -= damage;
-        healthBar.fillAmount = bossHealth / bossPrimeHealth;
+        healthBar.value = bossHealth / bossPrimeHealth;
 
         if (bossHealth <= 0)
         {

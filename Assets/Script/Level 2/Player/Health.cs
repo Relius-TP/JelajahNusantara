@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ public class Health : MonoBehaviour
     [SerializeField] private PlayerData playerData;
 
     private List<GameObject> healthList;
+
+    public static event Action<float, float> OnTakeDamage;
 
     private void OnEnable()
     {
@@ -57,6 +60,7 @@ public class Health : MonoBehaviour
             }
 
             SetHealthUI();
+            OnTakeDamage?.Invoke(5f, .1f);
         }
     }
 

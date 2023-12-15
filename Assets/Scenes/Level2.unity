@@ -19470,6 +19470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1079252735}
   - component: {fileID: 1079252734}
+  - component: {fileID: 1079252736}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -19532,6 +19533,18 @@ Transform:
   - {fileID: 1207398233}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1079252736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079252733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f67cdcfd54ea924495680fefc7cea24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1092824806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2616852440606664916, guid: eec6eba2c59b7514c84ffc6059fc304a, type: 3}
@@ -20097,6 +20110,7 @@ GameObject:
   - component: {fileID: 1207398236}
   - component: {fileID: 1207398234}
   - component: {fileID: 1207398237}
+  - component: {fileID: 1207398238}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -20180,6 +20194,23 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
+--- !u!114 &1207398238
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207398232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 5
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &1216167245
 GameObject:
   m_ObjectHideFlags: 0
