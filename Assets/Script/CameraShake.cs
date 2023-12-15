@@ -10,11 +10,13 @@ public class CameraShake : MonoBehaviour
     private void OnEnable()
     {
         Health.OnTakeDamage += ShakeCamera;
+        PlayerBossStage.OnTakeDamage += ShakeCamera;
     }
 
     private void OnDisable()
     {
         Health.OnTakeDamage -= ShakeCamera;
+        PlayerBossStage.OnTakeDamage -= ShakeCamera;
     }
 
     private void Awake()

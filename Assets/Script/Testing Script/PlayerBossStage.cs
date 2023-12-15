@@ -16,6 +16,7 @@ public class PlayerBossStage : MonoBehaviour
     private bool isJump = false;
 
     public static event Action<bool> PlayerDied;
+    public static event Action<float, float> OnTakeDamage;
 
     private void Awake()
     {
@@ -45,10 +46,12 @@ public class PlayerBossStage : MonoBehaviour
         health -= 5f;
         healthBar.fillAmount = health / 100f;
 
-        if(health <= 0)
+        if (health <= 0)
         {
             PlayerDied?.Invoke(true);
         }
+
+        OnTakeDamage?.Invoke(2f, .1f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
