@@ -95,11 +95,11 @@ public class SkillCheckHandler : MonoBehaviour
         else if (targetImg.position.x >= minNormalRange.position.x && targetImg.position.x <= maxNormalRange.position.x
             && !(targetImg.position.x > minStrongRange.position.x && targetImg.position.x < maxStrongRange.position.x))
         {
-            OnStateChange?.Invoke(20f);
+            OnStateChange?.Invoke(15f);
         }
         else if (targetImg.position.x >= minStrongRange.position.x && targetImg.position.x <= maxStrongRange.position.x)
         {
-            OnStateChange?.Invoke(35f);
+            OnStateChange?.Invoke(20f);
         }
         else
         {

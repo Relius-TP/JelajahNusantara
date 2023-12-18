@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public enum GameState
 {
+    GameStarted,
     GamePaused,
     NotCaught,
     GetCaught,
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        UpdateGameState(GameState.NotCaught);
+        UpdateGameState(GameState.GameStarted);
     }
 
     private void Update()

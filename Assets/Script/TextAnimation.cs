@@ -25,12 +25,12 @@ public class TextAnimation : MonoBehaviour
 
     private void CheckDamage(float damage)
     {
-        if(damage == 35)
+        if(damage == 20)
         {
             text.text = "PERFECT";
             text.color = Color.green;
         }
-        else if(damage == 20)
+        else if(damage == 15)
         {
             text.text = "GREAT";
             text.color = Color.yellow;

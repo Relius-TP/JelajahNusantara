@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,8 @@ public class Portal : MonoBehaviour
     public static bool portalOpen = false;
 
     private Animator anim;
+
+    public static event Action OnSuccess;
 
     private void OnEnable()
     {
@@ -46,6 +49,7 @@ public class Portal : MonoBehaviour
         {
             itemNeeded--;
             playerData.IsHoldingKey = false;
+            OnSuccess?.Invoke();
         }
     }
 

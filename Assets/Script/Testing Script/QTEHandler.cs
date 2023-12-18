@@ -19,7 +19,6 @@ public class QTEHandler : MonoBehaviour
     private QTEState qteState;
 
     public static event Action<QTEState> OnStateChanged;
-    public static event Action<QTEState> OnQTEResult;
 
     private void Awake()
     {

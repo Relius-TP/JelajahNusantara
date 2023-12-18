@@ -13,6 +13,7 @@ public class BossStageGameManager : MonoBehaviour
     [SerializeField] private GameObject loseUI;
     [SerializeField] private GameObject winUI;
     [SerializeField] private GameObject toolUI;
+    [SerializeField] private GameObject textStatusUI;
 
     private BossState bossState;
 
@@ -75,11 +76,13 @@ public class BossStageGameManager : MonoBehaviour
         else if ((skillCheckSucces) && (!qteSucces) && bossState == BossState.Stunned)
         {
             ResetStatus();
+            OnSuccess?.Invoke(0f);
             StartQTESkillCheckSistem(bossState, skillCheckProgress);
         }
         else if ((!skillCheckSucces || !qteSucces) && bossState == BossState.Stunned)
         {
             ResetStatus();
+            OnSuccess?.Invoke(0f);
             StartQTESkillCheckSistem(bossState, skillCheckProgress);
         }
     }
@@ -94,6 +97,7 @@ public class BossStageGameManager : MonoBehaviour
 
         qteUI.SetActive(skillCheckProgress);
         skillCheckUI.SetActive(skillCheckProgress);
+        textStatusUI.SetActive(skillCheckProgress);
     }
 
     public void ChangeScene(string name)

@@ -48,9 +48,7 @@ public class TextTypeWriterAnim : MonoBehaviour
                     yield break; // hentikan coroutine
                 }
                 else
-                {
-                    //Invoke("EndCheck", 0);
-                    //Debug.Log("end");    
+                {  
                     break;
                 }
             }
@@ -58,9 +56,5 @@ public class TextTypeWriterAnim : MonoBehaviour
             counter += 1;
             yield return new WaitForSeconds(timeBtwnChars);
         }
-
-        //selesai terketik
-
-
     }
 }

@@ -1,9 +1,14 @@
+using System;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
     private bool interacted = false;
     public PlayerData playerData;
+
+    [SerializeField] private AudioClip getKeyClip;
+
+    public static event Action<AudioClip> OnSuccesGetKey;
 
     private void Start()
     {
@@ -30,6 +35,7 @@ public class Interactable : MonoBehaviour
         {
             playerData.IsHoldingKey = true;
             gameObject.SetActive(false);
+            OnSuccesGetKey?.Invoke(getKeyClip);
         }
     }
 }

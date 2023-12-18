@@ -3887,6 +3887,7 @@ MonoBehaviour:
   loseUI: {fileID: 1721322974}
   winUI: {fileID: 339534044}
   toolUI: {fileID: 1095451730}
+  textStatusUI: {fileID: 659752509}
 --- !u!4 &1515160182
 Transform:
   m_ObjectHideFlags: 0

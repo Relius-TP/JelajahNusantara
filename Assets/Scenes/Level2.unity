@@ -916,6 +916,7 @@ Transform:
   - {fileID: 1434712403}
   - {fileID: 455107400}
   - {fileID: 923736319}
+  - {fileID: 1370658760}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &317927500 stripped
@@ -17371,6 +17372,8 @@ MonoBehaviour:
   loseUI: {fileID: 1036762377}
   qteUI: {fileID: 505116777}
   skillCheckUI: {fileID: 1771306973}
+  tutorialUI: {fileID: 1164958346}
+  typeWriterSystem: {fileID: 923736318}
 --- !u!224 &458825315 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7616382430396254129, guid: b0384a32c97466149b3f3f1ed0ebd1ab, type: 3}
@@ -20890,6 +20893,51 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1370658759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1370658760}
+  - component: {fileID: 1370658761}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1370658760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370658759}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 308425607}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1370658761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370658759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 057ff822790fe434f9f4d92e0e1ca9ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_audioSource: {fileID: 830274082}
 --- !u!4 &1392930129 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3814486111220217325, guid: 857382f0e63d9554d8baab13afd40ff7, type: 3}
@@ -30021,6 +30069,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 455107401}
+        m_TargetAssemblyTypeName: CanvasHandler, Assembly-CSharp
+        m_MethodName: CloseTutorialUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1164958346}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -30504,6 +30564,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8999524469865678245, guid: 05a3afe18be1fd84db2936ec9a6e881b, type: 3}
+      propertyPath: clipRun
+      value: 
+      objectReference: {fileID: 8300000, guid: 6fd845ccec76238458a113c5b8cf3003, type: 3}
+    - target: {fileID: 8999524469865678245, guid: 05a3afe18be1fd84db2936ec9a6e881b, type: 3}
+      propertyPath: clipWalk
+      value: 
+      objectReference: {fileID: 8300000, guid: e841e5ca29513f74ab85b41d4ae2df4e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
