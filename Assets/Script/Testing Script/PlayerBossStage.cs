@@ -18,9 +18,12 @@ public class PlayerBossStage : MonoBehaviour
     public static event Action<bool> PlayerDied;
     public static event Action<float, float> OnTakeDamage;
 
+    private Animator animator;
+
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -28,11 +31,21 @@ public class PlayerBossStage : MonoBehaviour
         moveDirection = Input.GetAxisRaw("Horizontal");
         jump = Input.GetKeyDown(KeyCode.W);
         Movement();
+
+        if (Input.GetKeyDown(KeyCode.LeftControl) && gameObject.GetComponent<SpriteRenderer>().flipX == false)
+        {
+            transform.position = new Vector2(transform.position.x + 2, transform.position.y);
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftControl) && gameObject.GetComponent<SpriteRenderer>().flipX == true)
+        {
+            transform.position = new Vector2(transform.position.x - 2, transform.position.y);
+        }
     }
 
     private void Movement()
     {
         playerRb.velocity = new Vector2(moveDirection * speed, playerRb.velocity.y);
+        Flip();
 
         if (jump && !isJump)
         {
@@ -67,6 +80,26 @@ public class PlayerBossStage : MonoBehaviour
         if (collision.CompareTag("Boss"))
         {
             TakeDamage();
+        }
+    }
+    public void Flip()
+    {
+        if (moveDirection < 0)
+        {
+            animator.SetTrigger("Side");
+            animator.SetBool("Idle", false);
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if (moveDirection > 0)
+        {
+            animator.SetTrigger("Side");
+            animator.SetBool("Idle", false);
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if (moveDirection == 0)
+        {
+            animator.SetBool("Idle", true);
+            GetComponent<SpriteRenderer>().flipX = false;
         }
     }
 }

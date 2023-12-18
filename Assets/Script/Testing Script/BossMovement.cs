@@ -105,6 +105,7 @@ public class BossMovement : MonoBehaviour
         else if(bossHealth < 100)
         {
             StartCoroutine(DelayAMoment(BossState.Skill2));
+            skill2Counter = 0;
         }
     }
 

@@ -17,11 +17,13 @@ public class PlayerOnBosStage : MonoBehaviour
     public Image healthBar;
 
     public GameObject gameOver;
+    private Animator animator;
 
     void Start()
     {
         player = this.transform;
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
 
@@ -45,16 +47,6 @@ public class PlayerOnBosStage : MonoBehaviour
         else
         {
             moveSpeed = 20;
-        }
-
-        if (Input.GetKeyDown (KeyCode.RightShift))
-        {
-            TakeDamage(20);
-        }
-
-        if (Input.GetKeyDown (KeyCode.KeypadEnter))
-        {
-            Healing(5);
         }
 
         if (Input.GetKeyDown (KeyCode.LeftControl) && gameObject.GetComponent<SpriteRenderer>().flipX == false )
@@ -110,10 +102,14 @@ public class PlayerOnBosStage : MonoBehaviour
     {
         if (moveHorizontal < 0)
         {
+            animator.SetTrigger("Side");
+            animator.SetBool("Idle", false);
             GetComponent<SpriteRenderer>().flipX = true;
         }
         else if (moveHorizontal > 0)
         {
+            animator.SetTrigger("Side");
+            animator.SetBool("Idle", false);
             GetComponent<SpriteRenderer>().flipX = false;
         }
     }
