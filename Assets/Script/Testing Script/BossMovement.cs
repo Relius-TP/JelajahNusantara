@@ -29,6 +29,10 @@ public class BossMovement : MonoBehaviour
 
     private Animator animator;
 
+    [SerializeField] private AudioClip bossStun;
+    [SerializeField] private AudioClip bossSkillHorizontal;
+    [SerializeField] private AudioClip bossSkillVertical;
+    [SerializeField] private AudioSource audioSource;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -121,6 +125,9 @@ public class BossMovement : MonoBehaviour
 
     IEnumerator Stun()
     {
+        audioSource.clip = bossStun;
+        audioSource.Play();
+
         Vector3 targetPosition;
         yield return new WaitForSeconds(5f);
 
@@ -136,18 +143,26 @@ public class BossMovement : MonoBehaviour
 
         // Pergi ke kanan
         targetPosition = new Vector3(8, -yposition, 0);
+        audioSource.clip = bossSkillHorizontal;
+        audioSource.Play();
         yield return StartCoroutine(MoveToPosition(targetPosition, 5f));
 
         // Pergi ke kiri
         targetPosition = new Vector3(-8, -yposition, 0);
+        audioSource.clip = bossSkillHorizontal;
+        audioSource.Play();
         yield return StartCoroutine(MoveToPosition(targetPosition, 10f));
 
         // Pergi ke kanan
         targetPosition = new Vector3(8, -yposition, 0);
+        audioSource.clip = bossSkillHorizontal;
+        audioSource.Play();
         yield return StartCoroutine(MoveToPosition(targetPosition, 12f));
 
         // Pergi ke kiri
         targetPosition = new Vector3(-8, -yposition, 0);
+        audioSource.clip = bossSkillHorizontal;
+        audioSource.Play();
         yield return StartCoroutine(MoveToPosition(targetPosition, 15f));
 
         UpdateBossState(BossState.Stunned);
@@ -159,38 +174,58 @@ public class BossMovement : MonoBehaviour
 
         // Pergi ke kanan
         targetPosition = new Vector3(8, -yposition, 0);
+        audioSource.clip = bossSkillHorizontal;
+        audioSource.Play();
         yield return StartCoroutine(MoveToPosition(targetPosition, 5f));
 
         // Pergi ke kiri
         targetPosition = new Vector3(6, 2.5f, 0);
+        audioSource.clip = bossSkillVertical;
+        audioSource.Play();
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
         // Pergi ke kanan
         targetPosition = new Vector3(4, -yposition, 0);
+        audioSource.clip = bossSkillVertical;
+        audioSource.Play();
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
         // Pergi ke kiri
         targetPosition = new Vector3(2, 2.5f, 0);
+        audioSource.clip = bossSkillVertical;
+        audioSource.Play();
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
         targetPosition = new Vector3(0, -yposition, 0);
+        audioSource.clip = bossSkillVertical;
+        audioSource.Play();
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
         targetPosition = new Vector3(-2, 2.5f, 0);
+        audioSource.clip = bossSkillVertical;
+        audioSource.Play();
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
         targetPosition = new Vector3(-4, -yposition, 0);
+        audioSource.clip = bossSkillVertical;
+        audioSource.Play();
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
         targetPosition = new Vector3(-6, 2.5f, 0);
+        audioSource.clip = bossSkillVertical;
+        audioSource.Play();
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
         targetPosition = new Vector3(-8, -yposition, 0);
+        audioSource.clip = bossSkillVertical;
+        audioSource.Play();
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
         if (skill2Counter <= 1)
         {
             targetPosition = new Vector3(8, -yposition, 0);
+            audioSource.clip = bossSkillHorizontal;
+            audioSource.Play();
             yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
             skill2Counter++;
             UpdateBossState(BossState.Skill2);

@@ -20,6 +20,9 @@ public class PlayerBossStage : MonoBehaviour
 
     private Animator animator;
 
+    [SerializeField]private AudioClip audioClip;
+    [SerializeField]private AudioSource audioSource;
+
     private void Awake()
     {
         playerRb = GetComponent<Rigidbody2D>();
@@ -84,6 +87,15 @@ public class PlayerBossStage : MonoBehaviour
     }
     public void Flip()
     {
+        if (moveDirection != 0)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = audioClip;
+                audioSource.Play();
+            }
+        }
+
         if (moveDirection < 0)
         {
             animator.SetTrigger("Side");
