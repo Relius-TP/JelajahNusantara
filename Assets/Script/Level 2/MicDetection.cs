@@ -13,8 +13,28 @@ public class MicDetection : MonoBehaviour
 
     public static event Action<float> OnSoundValueChanged;
 
+#if UNITY_WEBGL && !UNITY_EDITOR
+        void Awake()
+        {
+            Microphone.Init();
+            Microphone.QueryAudioInput();
+        }
+#endif
+
+#if UNITY_WEBGL && !UNITY_EDITOR
+        void Update()
+        {
+            Microphone.Update();
+            SetMicValueUI();
+            GetVolumeFromMicrophone();
+        }
+#endif
+
+
+#if !UNITY_WEBGL
     private void Start()
     {
+
         if(Microphone.devices.Length >= 0)
         {
             micConnected = true;
@@ -37,6 +57,7 @@ public class MicDetection : MonoBehaviour
             SetMicValueUI();
         }
     }
+#endif
 
     private void SetMicValueUI()
     {
@@ -45,6 +66,7 @@ public class MicDetection : MonoBehaviour
 
     private void GetVolumeFromMicrophone()
     {
+#if !UNITY_WEBGL
         float[] samples = new float[audioSource.clip.samples];
         float volume = 0.0f;
 
@@ -57,6 +79,10 @@ public class MicDetection : MonoBehaviour
 
         volume /= samples.Length;
         soundVolume = volume * micSensitivity;
+#endif
+#if UNITY_WEBGL && !UNITY_EDITOR
+        soundVolume = Microphone.volumes[0] * micSensitivity;
+#endif
 
         OnSoundValueChanged?.Invoke(soundVolume);
     }
