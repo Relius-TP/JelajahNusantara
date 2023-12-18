@@ -17,6 +17,7 @@ public class BossMovement : MonoBehaviour
 {
     [SerializeField] private Slider healthBar;
     [SerializeField] private float bossHealth = 200f;
+    [SerializeField] private float yposition = 2.5f;
     private float bossPrimeHealth = 200f;
 
     private bool qteSkillCheckStart = false;
@@ -26,8 +27,11 @@ public class BossMovement : MonoBehaviour
     public static event Action<BossState> OnStateChanged;
     public static event Action<BossState, bool> OnPressToStart;
 
+    private Animator animator;
+
     private void Awake()
     {
+        animator = GetComponent<Animator>();
         BossStageGameManager.OnSuccess += TakeDamage;
         PlayerBossStage.PlayerDied += PlayerDied;
     }
@@ -131,19 +135,19 @@ public class BossMovement : MonoBehaviour
         Vector3 targetPosition;
 
         // Pergi ke kanan
-        targetPosition = new Vector3(8, -4, 0);
+        targetPosition = new Vector3(8, -yposition, 0);
         yield return StartCoroutine(MoveToPosition(targetPosition, 5f));
 
         // Pergi ke kiri
-        targetPosition = new Vector3(-8, -4, 0);
+        targetPosition = new Vector3(-8, -yposition, 0);
         yield return StartCoroutine(MoveToPosition(targetPosition, 10f));
 
         // Pergi ke kanan
-        targetPosition = new Vector3(8, -4, 0);
+        targetPosition = new Vector3(8, -yposition, 0);
         yield return StartCoroutine(MoveToPosition(targetPosition, 12f));
 
         // Pergi ke kiri
-        targetPosition = new Vector3(-8, -4, 0);
+        targetPosition = new Vector3(-8, -yposition, 0);
         yield return StartCoroutine(MoveToPosition(targetPosition, 15f));
 
         UpdateBossState(BossState.Stunned);
@@ -154,7 +158,7 @@ public class BossMovement : MonoBehaviour
         Vector3 targetPosition;
 
         // Pergi ke kanan
-        targetPosition = new Vector3(8, -4f, 0);
+        targetPosition = new Vector3(8, -yposition, 0);
         yield return StartCoroutine(MoveToPosition(targetPosition, 5f));
 
         // Pergi ke kiri
@@ -162,31 +166,31 @@ public class BossMovement : MonoBehaviour
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
         // Pergi ke kanan
-        targetPosition = new Vector3(4, -4f, 0);
+        targetPosition = new Vector3(4, -yposition, 0);
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
         // Pergi ke kiri
         targetPosition = new Vector3(2, 2.5f, 0);
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
-        targetPosition = new Vector3(0, -4f, 0);
+        targetPosition = new Vector3(0, -yposition, 0);
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
         targetPosition = new Vector3(-2, 2.5f, 0);
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
-        targetPosition = new Vector3(-4, -4f, 0);
+        targetPosition = new Vector3(-4, -yposition, 0);
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
         targetPosition = new Vector3(-6, 2.5f, 0);
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
-        targetPosition = new Vector3(-8, -4f, 0);
+        targetPosition = new Vector3(-8, -yposition, 0);
         yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
 
         if (skill2Counter <= 1)
         {
-            targetPosition = new Vector3(8, -4f, 0);
+            targetPosition = new Vector3(8, -yposition, 0);
             yield return StartCoroutine(MoveToPosition(targetPosition, 30f));
             skill2Counter++;
             UpdateBossState(BossState.Skill2);
@@ -210,6 +214,7 @@ public class BossMovement : MonoBehaviour
     {
         bossHealth -= damage;
         healthBar.value = bossHealth / bossPrimeHealth;
+        animator.SetTrigger("TakeDamage");
 
         if (bossHealth <= 0)
         {

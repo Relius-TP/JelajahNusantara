@@ -136,57 +136,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Banaspati_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8b28adf34bf74f64f9dc264f937fd689
-      internalID: -1565530434
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Banaspati_1
-      rect:
-        serializedVersion: 2
-        x: 300
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 03b2620b910c9fb44becf89459e12d32
-      internalID: 1167545848
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Banaspati_2
       rect:
         serializedVersion: 2
-        x: 600
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 6310
+        y: 338
+        width: 71
+        height: 71
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -199,358 +157,463 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_3
+      name: Banaspati_28
       rect:
         serializedVersion: 2
-        x: 900
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 3023
+        y: 23
+        width: 240
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27de2d17fc586bb4bbe925b234e49d07
-      internalID: 1264887921
+      spriteID: a3541ba847328bb4d887180cd24e8569
+      internalID: 740616138
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_4
+      name: Banaspati_32
       rect:
         serializedVersion: 2
-        x: 1200
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 6020
+        y: 23
+        width: 243
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bad2845d4a47af443ba76472ed3806e6
-      internalID: 1422037970
+      spriteID: 46abd32d95724ff47a5e5bee579d94b6
+      internalID: 1947357699
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_5
+      name: Banaspati_35
       rect:
         serializedVersion: 2
-        x: 1500
+        x: 2436
         y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 229
+        height: 401
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 413f6f83f4e2c954680e6e2403fb361e
-      internalID: -1398346619
+      spriteID: aebc05e7d91159346b043994b5280a89
+      internalID: 2034828634
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_6
+      name: Banaspati_36
       rect:
         serializedVersion: 2
-        x: 1800
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 2726
+        y: 3
+        width: 241
+        height: 385
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e25d751302f8df842b2afa635a34f925
-      internalID: -1532321927
+      spriteID: 89a9e8ecc6434104a954711267f1cbb7
+      internalID: -692177232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_7
+      name: Banaspati_37
       rect:
         serializedVersion: 2
-        x: 2100
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 3324
+        y: 2
+        width: 242
+        height: 385
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b032650b89aaf546ad2bbd73d731476
-      internalID: -71048323
+      spriteID: 886b6ea287b1ebe4e93cbbb2cbd84625
+      internalID: -1733917238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_8
+      name: Banaspati_38
       rect:
         serializedVersion: 2
-        x: 2400
+        x: 3629
         y: 0
-        width: 300
+        width: 238
         height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08fe97d297c0e5f43ba1d8fd091a4eef
-      internalID: -1377637362
+      spriteID: e9b48be660b2050459e48cf2e94a7976
+      internalID: 1671779471
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_9
+      name: Banaspati_41
       rect:
         serializedVersion: 2
-        x: 2700
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 638
+        y: 19
+        width: 206
+        height: 353
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d16dfd12aa53874b9cb5f6d32fa2835
-      internalID: 1572789906
+      spriteID: 51293d965699a9c4e9cfc4781ab70f15
+      internalID: -520431853
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_10
+      name: Banaspati_42
       rect:
         serializedVersion: 2
-        x: 3000
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 938
+        y: 24
+        width: 225
+        height: 289
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92a3d2dc0eb73dc4b847bdfff186ffad
-      internalID: 887177901
+      spriteID: f7538e6ef7903d1439a4b2091f495323
+      internalID: 2066420786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_11
+      name: Banaspati_44
       rect:
         serializedVersion: 2
-        x: 3300
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 2127
+        y: 6
+        width: 226
+        height: 374
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d436c1b89fe2f9346ba0630fddb63361
-      internalID: 1490447987
+      spriteID: 66c89ba16c1f04744b98373bb1729890
+      internalID: 1961055319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_12
+      name: Banaspati_45
       rect:
         serializedVersion: 2
-        x: 3600
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 3928
+        y: 6
+        width: 226
+        height: 378
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6bd7b8f9811d224c8f8ab143e9f6eea
-      internalID: -26828071
+      spriteID: 46357ee0c7bcf684aabb2904c36eef2f
+      internalID: -2077134522
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_13
+      name: Banaspati_47
       rect:
         serializedVersion: 2
-        x: 3900
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 5135
+        y: 22
+        width: 226
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b269a74a19e79948b3892268c6e1629
-      internalID: 1232810842
+      spriteID: c2ecf1700b30eec4eb39efd93b0ff982
+      internalID: -2121780087
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_14
+      name: Banaspati_48
       rect:
         serializedVersion: 2
-        x: 4200
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 5440
+        y: 19
+        width: 206
+        height: 356
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5dfcf088affae614db29bee701b9cead
-      internalID: 2005967994
+      spriteID: c68a195825e817e439f03175f0277758
+      internalID: 704250510
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_15
+      name: Banaspati_49
       rect:
         serializedVersion: 2
-        x: 4500
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 332
+        y: 10
+        width: 216
+        height: 352
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a1755bac4e6fa8419a676c7d0b0fe04
-      internalID: -1978166366
+      spriteID: c17d2181b553869458b59d5641f17d62
+      internalID: 1395869026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_16
+      name: Banaspati_50
       rect:
         serializedVersion: 2
-        x: 4800
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1240
+        y: 19
+        width: 244
+        height: 348
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 578aaf4e4d970f442b723c738f5dba17
-      internalID: 1203441999
+      spriteID: 49a0af80d4dcf2c41b4c16aa4c7f3f50
+      internalID: -995161872
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_17
+      name: Banaspati_51
       rect:
         serializedVersion: 2
-        x: 5100
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1522
+        y: 10
+        width: 250
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d328271a976aac459e43cf754ea97cb
-      internalID: -405039511
+      spriteID: 236039a4a93786443a34b17db832e550
+      internalID: -494970148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_18
+      name: Banaspati_52
       rect:
         serializedVersion: 2
-        x: 5400
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 1827
+        y: 3
+        width: 232
+        height: 359
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c913576927d83c43b6c854c19d478d9
-      internalID: 573830841
+      spriteID: 8a0ea081550af824abc6555375f9524a
+      internalID: -2051248656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Banaspati_19
+      name: Banaspati_54
       rect:
         serializedVersion: 2
-        x: 5700
-        y: 0
-        width: 300
-        height: 412
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 4231
+        y: 3
+        width: 232
+        height: 362
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d8f0ee8c79cee142aaaf5ebb0788e71
-      internalID: 2046301520
+      spriteID: 37d7283a499a98447aea8020598477eb
+      internalID: -1613430955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Banaspati_55
+      rect:
+        serializedVersion: 2
+        x: 4521
+        y: 10
+        width: 247
+        height: 341
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc2a5560ef123c740b4cc31901abd5a5
+      internalID: 314627449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Banaspati_56
+      rect:
+        serializedVersion: 2
+        x: 4837
+        y: 19
+        width: 241
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63b6f65818d1dcf459d3432b0e0c73f8
+      internalID: 1285320462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Banaspati_57
+      rect:
+        serializedVersion: 2
+        x: 5733
+        y: 10
+        width: 216
+        height: 355
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69e9fb6aae4ab3c43b3f8abdd962dd5d
+      internalID: -134778250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Banaspati_65
+      rect:
+        serializedVersion: 2
+        x: 6429
+        y: 29
+        width: 119
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16be95102c37fcd4dbc8175435d6db2e
+      internalID: 1834223637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Banaspati_73
+      rect:
+        serializedVersion: 2
+        x: 2430
+        y: 129
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07f04ca67c42c7e4fa33b9e5b69fdf34
+      internalID: 973095871
       vertices: []
       indices: 
       edges: []
@@ -579,11 +642,69 @@ TextureImporter:
       Banaspati_18: 573830841
       Banaspati_19: 2046301520
       Banaspati_2: 1000860442
+      Banaspati_20: 184776776
+      Banaspati_21: -1043313890
+      Banaspati_22: -1826375047
+      Banaspati_23: -1189326823
+      Banaspati_24: -2584593
+      Banaspati_25: 1957899904
+      Banaspati_26: 904105873
+      Banaspati_27: -2923449
+      Banaspati_28: 740616138
+      Banaspati_29: -2125076409
       Banaspati_3: 1264887921
+      Banaspati_30: 1661708797
+      Banaspati_31: 1421171900
+      Banaspati_32: 1947357699
+      Banaspati_33: -690515704
+      Banaspati_34: 229739043
+      Banaspati_35: 2034828634
+      Banaspati_36: -692177232
+      Banaspati_37: -1733917238
+      Banaspati_38: 1671779471
+      Banaspati_39: 729978891
       Banaspati_4: 1422037970
+      Banaspati_40: 1062163016
+      Banaspati_41: -520431853
+      Banaspati_42: 2066420786
+      Banaspati_43: 208661858
+      Banaspati_44: 1961055319
+      Banaspati_45: -2077134522
+      Banaspati_46: -1942813844
+      Banaspati_47: -2121780087
+      Banaspati_48: 704250510
+      Banaspati_49: 1395869026
       Banaspati_5: -1398346619
+      Banaspati_50: -995161872
+      Banaspati_51: -494970148
+      Banaspati_52: -2051248656
+      Banaspati_53: 1344212684
+      Banaspati_54: -1613430955
+      Banaspati_55: 314627449
+      Banaspati_56: 1285320462
+      Banaspati_57: -134778250
+      Banaspati_58: 1647069517
+      Banaspati_59: 782126463
       Banaspati_6: -1532321927
+      Banaspati_60: -918408393
+      Banaspati_61: 1754254710
+      Banaspati_62: -630325913
+      Banaspati_63: -237904866
+      Banaspati_64: -593213274
+      Banaspati_65: 1834223637
+      Banaspati_66: 1343587981
+      Banaspati_67: -470186103
+      Banaspati_68: 999416430
+      Banaspati_69: 1580806888
       Banaspati_7: -71048323
+      Banaspati_70: -1703292389
+      Banaspati_71: -196073060
+      Banaspati_72: 2142734519
+      Banaspati_73: 973095871
+      Banaspati_74: 214033655
+      Banaspati_75: 1669463792
+      Banaspati_76: -103637658
+      Banaspati_77: -770923836
       Banaspati_8: -1377637362
       Banaspati_9: 1572789906
   mipmapLimitGroupName: 
