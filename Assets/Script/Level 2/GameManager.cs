@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void ResumeButton()
     {
-        UpdateGameState(state);
+        UpdateGameState(GameState.NotCaught);
     }
 
 

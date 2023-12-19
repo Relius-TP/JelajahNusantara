@@ -3799,7 +3799,7 @@ MonoBehaviour:
   weakGoalImg: {fileID: 147036362}
   normalGoalImg: {fileID: 1269472657}
   strongGoalImg: {fileID: 696659741}
-  targetSpeed: 300
+  targetSpeed: 400
   minWeakRange: {fileID: 1237797155}
   maxWeakRange: {fileID: 1211387961}
   minNormalRange: {fileID: 1449165561}
@@ -4584,7 +4584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 759006622}
-  bossHealth: 200
+  bossHealth: 10
   yposition: 2.8
   bossStun: {fileID: 8300000, guid: 45c4d48121956eb40b58ada007ad6314, type: 3}
   bossSkillHorizontal: {fileID: 8300000, guid: fda9a57a9e50e7d4b93437eb28375e7c, type: 3}
