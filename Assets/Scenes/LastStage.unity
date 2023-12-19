@@ -4584,7 +4584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 759006622}
-  bossHealth: 10
+  bossHealth: 200
   yposition: 2.8
   bossStun: {fileID: 8300000, guid: 45c4d48121956eb40b58ada007ad6314, type: 3}
   bossSkillHorizontal: {fileID: 8300000, guid: fda9a57a9e50e7d4b93437eb28375e7c, type: 3}

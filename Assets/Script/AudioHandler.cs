@@ -9,6 +9,11 @@ public class AudioHandler : MonoBehaviour
         Interactable.OnSuccesGetKey += PlayOneShot;
     }
 
+    private void OnDisable()
+    {
+        Interactable.OnSuccesGetKey -= PlayOneShot;
+    }
+
     private void PlayOneShot(AudioClip clip)
     {
         m_audioSource.PlayOneShot(clip);
