@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         UpdateGameState(GameState.GameStarted);
+        Debug.Log(state);
     }
 
     private void Update()
@@ -47,6 +48,12 @@ public class GameManager : MonoBehaviour
             UpdateGameState(GameState.NotCaught);
         }
     }
+
+    public void ResumeButton()
+    {
+        UpdateGameState(state);
+    }
+
 
     public void UpdateGameState(GameState newState)
     {

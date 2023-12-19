@@ -4,57 +4,34 @@ using UnityEngine;
 
 public class TextTypeWriterAnim : MonoBehaviour
 {
-    //public AnimatorHandler animatorHandler;
     public TMP_Text _textMeshPro;
+
+    [TextArea(10, 20)]
     public string stringArray;
 
     [SerializeField] float timeBtwnChars;
-    //[SerializeField] float timeBtwnWords;
 
-    int i = 0;
-
-    void OnEnable()
+    void Start()
     {
-        stringArray = _textMeshPro.text;
-        EndCheck(); //panggil ini
+        EndCheck();
     }
 
     public void EndCheck()
     {
-        if (i <= stringArray.Length - 1)
-        {
-            //mulai
-            _textMeshPro.text = stringArray;
-            StartCoroutine(TextVisible());
-        }
+        StartCoroutine(TextVisible());
     }
 
     public IEnumerator TextVisible()
     {
-
-        _textMeshPro.ForceMeshUpdate();
-        int totalVisibleCharacters = _textMeshPro.textInfo.characterCount;
-        int counter = 0;
-        while (true)
+        foreach(char c in stringArray)
         {
-            int visibleCount = counter % (totalVisibleCharacters + 1);
-            _textMeshPro.maxVisibleCharacters = visibleCount;
-
-            if (visibleCount >= totalVisibleCharacters)
-            {
-                i += 1;
-                if (i > stringArray.Length - 1) // cek apakah sudah sampai ke teks terakhir
-                {
-                    yield break; // hentikan coroutine
-                }
-                else
-                {  
-                    break;
-                }
-            }
-
-            counter += 1;
+            _textMeshPro.text += c;
             yield return new WaitForSeconds(timeBtwnChars);
         }
+    }
+
+    public void Close()
+    {
+        StopCoroutine(TextVisible());
     }
 }

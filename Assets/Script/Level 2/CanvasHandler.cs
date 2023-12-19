@@ -13,7 +13,6 @@ public class CanvasHandler : MonoBehaviour
     private void Start()
     {
         mainUI.SetActive(true);
-        tutorialUI.SetActive(true);
         GameManager.GameStateChanged += UpdateCanvasUI;
     }
 
@@ -24,6 +23,7 @@ public class CanvasHandler : MonoBehaviour
 
     private void UpdateCanvasUI(GameState state)
     {
+        tutorialUI.SetActive(state == GameState.GameStarted);
         typeWriterSystem.SetActive(state == GameState.GameStarted);
         pauseMenuUI.SetActive(state == GameState.GamePaused);
         loseUI.SetActive(state == GameState.PlayerDie);

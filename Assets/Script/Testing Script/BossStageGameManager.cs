@@ -30,6 +30,7 @@ public class BossStageGameManager : MonoBehaviour
     private void OnDestroy()
     {
         BossMovement.OnPressToStart -= StartQTESkillCheckSistem;
+        BossMovement.OnStateChanged -= BossLoseWin;
         QTEHandler.OnStateChanged -= QTEResultStatus;
         SkillCheckHandler.OnStateChange -= SkillCheckResultStatus;
     }
